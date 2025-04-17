@@ -5,16 +5,6 @@ import 'package:playground/core/managers/navigation_manager.dart';
 import 'package:playground/core/managers/theme_manager.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarColor: ThemeManager.lightTheme.scaffoldBackgroundColor,
-      systemNavigationBarColor: ThemeManager.lightTheme.scaffoldBackgroundColor,
-      systemNavigationBarIconBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.dark,
-    ),
-  );
   runApp(const MyApp());
 }
 
@@ -23,14 +13,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: ColorsManager.backgroundLight,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'freud UI Kit',
-        theme: ThemeManager.lightTheme,
-        initialRoute: NavigationManager.onboardingScreen,
-        routes: NavigationManager.routes,
+    final isDarkMode =
+        MediaQuery.of(context).platformBrightness == Brightness.dark;
+    final backColor =
+        isDarkMode
+            ? ColorsManager.backgroundDark
+            : ColorsManager.backgroundLight;
+    final oppositeBrightness = isDarkMode ? Brightness.light : Brightness.dark;
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: backColor,
+        systemNavigationBarColor: backColor,
+        systemNavigationBarIconBrightness: oppositeBrightness,
+        statusBarIconBrightness: oppositeBrightness,
+      ),
+      child: Container(
+        color: backColor,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'freud UI Kit',
+          theme: isDarkMode ? ThemeManager.darkTheme : ThemeManager.lightTheme,
+          initialRoute: NavigationManager.onboardingScreen,
+          routes: NavigationManager.routes,
+        ),
       ),
     );
   }
