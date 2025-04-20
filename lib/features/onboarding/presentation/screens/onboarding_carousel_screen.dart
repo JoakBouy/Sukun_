@@ -5,7 +5,8 @@ import 'package:playground/core/managers/colors_manager.dart';
 import 'package:playground/core/managers/sizes_manager.dart';
 import 'package:playground/core/managers/strings_manager.dart';
 import 'package:playground/core/managers/theme_manager.dart';
-import 'package:playground/features/onboarding/presentation/widgets/LineProgressBar.dart';
+import 'package:playground/features/onboarding/presentation/widgets/progressbar.dart';
+import 'package:playground/features/onboarding/presentation/widgets/morphing_svg.dart';
 
 class OnboardingCarouselScreen extends StatefulWidget {
   const OnboardingCarouselScreen({super.key});
@@ -56,16 +57,22 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
                 Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20.0),
-                      child: SvgPicture.asset(
-                        AssetsManager.getOnboarding(isDarkMode, currentIndex),
-                        alignment: Alignment.topCenter,
-                        fit: BoxFit.fitHeight,
-                        allowDrawingOutsideViewBox: false,
-                        height: height * 1.7,
-                        clipBehavior: Clip.hardEdge,
-                      ),
+                    Stack(
+                      children: [
+                        MorphingSvg(
+                          currentIndex: currentIndex,
+                          height: height,
+                          isDarkMode: isDarkMode,
+                        ),
+                        SvgPicture.asset(
+                          AssetsManager.getOnboardingC(isDarkMode),
+                          alignment: Alignment.topCenter,
+                          fit: BoxFit.fitHeight,
+                          allowDrawingOutsideViewBox: false,
+                          clipBehavior: Clip.hardEdge,
+                          height: height * 1.65,
+                        ),
+                      ],
                     ),
                     Padding(
                       padding: const EdgeInsets.all(SizesManager.dhPadding),
@@ -89,7 +96,7 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(SizesManager.padding),
-                        child: LineProgressBar(
+                        child: ProgressBar(
                           progress: (0 + currentIndex * 0.2),
                           backgroundColor: ColorsManager.secondaryLight,
                           progressColor: ColorsManager.getAccentColor(

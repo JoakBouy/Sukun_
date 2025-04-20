@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:playground/core/managers/assets_manager.dart';
 import 'package:playground/core/managers/colors_manager.dart';
 import 'package:playground/core/managers/navigation_manager.dart';
@@ -85,9 +86,10 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                   padding: const EdgeInsets.all(SizesManager.padding),
                   child: ElevatedButton(
                     onPressed:
-                        () => Navigator.of(
-                          context,
-                        ).pushNamed(NavigationManager.onboardingCarouselScreen),
+                        () => context.pushNamedTransition(
+                          routeName: NavigationManager.onboardingCarouselScreen,
+                          type: PageTransitionType.sharedAxisHorizontal,
+                        ),
                     style: ThemeManager.elevatedButtonStyle,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
