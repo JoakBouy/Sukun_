@@ -96,7 +96,7 @@ flutter:
   fonts:
     - family: urbanist
       fonts:
-        - asset: assets\fonts\urbanist/Urbanist-thin.ttf
+        - asset: assets\fonts\urbanist/Urbanist-Thin.ttf
           weight: 100
         - asset: assets\fonts\urbanist/Urbanist-ExtraLight.ttf
           weight: 200

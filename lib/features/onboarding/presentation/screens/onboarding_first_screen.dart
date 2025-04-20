@@ -106,25 +106,31 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: SizesManager.padding),
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: StringsManager.alreadyHaveAnAccount,
-                          style: Theme.of(context).textTheme.bodySmall,
-                          children: [
-                            TextSpan(
-                              text: StringsManager.signIn,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.bodySmall!.copyWith(
-                                color: ColorsManager.orange,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ],
+                  child: GestureDetector(
+                    onTap:
+                        () => Navigator.of(context).pushNamed(
+                          NavigationManager.authenticationScreen,
                         ),
-                      ],
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: StringsManager.alreadyHaveAnAccount,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            children: [
+                              TextSpan(
+                                text: StringsManager.signIn,
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.bodySmall!.copyWith(
+                                  color: ColorsManager.orange,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

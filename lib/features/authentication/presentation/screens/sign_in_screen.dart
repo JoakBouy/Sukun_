@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:playground/core/managers/colors_manager.dart';
+
+class SignInScreen extends StatelessWidget {
+  const SignInScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: Text("Sign In Screen")),
+    );
+  }
+}

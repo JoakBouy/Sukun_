@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:playground/core/managers/assets_manager.dart';
 import 'package:playground/core/managers/colors_manager.dart';
+import 'package:playground/core/managers/navigation_manager.dart';
 import 'package:playground/core/managers/sizes_manager.dart';
 import 'package:playground/core/managers/strings_manager.dart';
 import 'package:playground/core/managers/theme_manager.dart';
@@ -146,7 +147,11 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
                         child: ElevatedButton(
                           onPressed:
                               () => setState(() {
-                                currentIndex == 5 ? null : currentIndex++;
+                                currentIndex == 5
+                                    ? Navigator.of(
+                                      context,
+                                    ).popAndPushNamed(NavigationManager.authenticationScreen)
+                                    : currentIndex++;
                               }),
                           style: ThemeManager.circularElevatedButtonStyle,
                           child: SvgPicture.asset(AssetsManager.arrow2),
