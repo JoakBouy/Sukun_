@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:playground/core/managers/assets_manager.dart';
 import 'package:playground/core/managers/colors_manager.dart';
+import 'package:playground/core/managers/navigation_manager.dart';
 import 'package:playground/core/managers/sizes_manager.dart';
 import 'package:playground/core/managers/strings_manager.dart';
+import 'package:playground/core/managers/theme_manager.dart';
 
 class OnboardingFirstScreen extends StatefulWidget {
   const OnboardingFirstScreen({super.key});
@@ -47,8 +49,11 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                             children: [
                               TextSpan(
                                 text: StringsManager.onBoardingFirstTitle2,
-                                style: Theme.of(context).textTheme.titleLarge!
-                                    .copyWith(color: ColorsManager.primaryLight),
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.titleLarge!.copyWith(
+                                  color: ColorsManager.primaryLight,
+                                ),
                               ),
                               TextSpan(
                                 text: StringsManager.onBoardingFirstTitle3,
@@ -73,21 +78,17 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                 Padding(
                   padding: const EdgeInsets.only(top: SizesManager.padding),
                   child: SvgPicture.asset(
-                    AssetsManager.getOnboarding0(isDarkMode),
+                    AssetsManager.getOnboarding(isDarkMode, 0),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(SizesManager.padding),
                   child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: ColorsManager.primary,
-                      foregroundColor: ColorsManager.white,
-                      padding: const EdgeInsets.symmetric(
-                        vertical: SizesManager.padding,
-                        horizontal: SizesManager.dPadding,
-                      ),
-                    ),
+                    onPressed:
+                        () => Navigator.of(
+                          context,
+                        ).pushNamed(NavigationManager.onboardingCarouselScreen),
+                    style: ThemeManager.elevatedButtonStyle,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [

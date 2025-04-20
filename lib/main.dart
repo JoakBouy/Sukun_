@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     final oppositeBrightness = isDarkMode ? Brightness.light : Brightness.dark;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-        statusBarColor: backColor,
+        statusBarColor: Colors.transparent,
         systemNavigationBarColor: backColor,
         systemNavigationBarIconBrightness: oppositeBrightness,
         statusBarIconBrightness: oppositeBrightness,
