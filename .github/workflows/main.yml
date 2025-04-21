@@ -1,6 +1,8 @@
 name: build & release
 on:
   push:
+    tags:
+      - "*"
 
 env:
   flutter-version: "3.29.3"
