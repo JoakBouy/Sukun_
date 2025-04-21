@@ -92,70 +92,62 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: height / 1.6),
+                  padding: EdgeInsets.only(top: height / 1.6, left: SizesManager.padding, right: SizesManager.padding),
                   child: Column(
+                    spacing: SizesManager.dPadding,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(SizesManager.padding),
-                        child: ProgressBar(
-                          progress: (0 + currentIndex * 0.2),
-                          backgroundColor: ColorsManager.secondaryLight,
-                          progressColor: ColorsManager.getAccentColor(
-                            currentIndex,
-                          ),
+                      ProgressBar(
+                        progress: (0 + currentIndex * 0.2),
+                        backgroundColor: ColorsManager.secondaryLight,
+                        progressColor: ColorsManager.getAccentColor(
+                          currentIndex,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(SizesManager.padding),
-                        child: RichText(
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                style: Theme.of(context).textTheme.titleLarge,
-                                text: StringsManager.onBoardingTitle1(
-                                  currentIndex,
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: StringsManager.onBoardingTitle2(
-                                      currentIndex,
-                                    ),
-                                    style: Theme.of(
-                                      context,
-                                    ).textTheme.titleLarge!.copyWith(
-                                      color: ColorsManager.getAccentColor(
-                                        currentIndex,
-                                      ),
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: StringsManager.onBoardingTitle3(
-                                      currentIndex,
-                                    ),
-                                  ),
-                                ],
+                      RichText(
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              style: Theme.of(context).textTheme.titleLarge,
+                              text: StringsManager.onBoardingTitle1(
+                                currentIndex,
                               ),
-                            ],
-                          ),
+                              children: [
+                                TextSpan(
+                                  text: StringsManager.onBoardingTitle2(
+                                    currentIndex,
+                                  ),
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.titleLarge!.copyWith(
+                                    color: ColorsManager.getAccentColor(
+                                      currentIndex,
+                                    ),
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: StringsManager.onBoardingTitle3(
+                                    currentIndex,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(SizesManager.padding),
-                        child: ElevatedButton(
-                          onPressed:
-                              () => setState(() {
-                                currentIndex == 5
-                                    ? Navigator.of(
-                                      context,
-                                    ).popAndPushNamed(NavigationManager.authenticationScreen)
-                                    : currentIndex++;
-                              }),
-                          style: ThemeManager.circularElevatedButtonStyle,
-                          child: SvgPicture.asset(AssetsManager.arrow2),
-                        ),
+                      ElevatedButton(
+                        onPressed:
+                            () => setState(() {
+                              currentIndex == 5
+                                  ? Navigator.of(
+                                    context,
+                                  ).popAndPushNamed(NavigationManager.authenticationScreen)
+                                  : currentIndex++;
+                            }),
+                        style: ThemeManager.circularElevatedButtonStyle,
+                        child: SvgPicture.asset(AssetsManager.arrow2),
                       ),
                     ],
                   ),

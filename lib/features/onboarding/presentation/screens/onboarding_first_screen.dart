@@ -29,45 +29,40 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: SizesManager.padding),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
+          child: SingleChildScrollView(
             child: Column(
+              spacing: SizesManager.padding,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SvgPicture.asset(AssetsManager.getIcon(isDarkMode)),
-                Padding(
-                  padding: const EdgeInsets.all(SizesManager.padding),
-                  child: Center(
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            style: Theme.of(context).textTheme.titleLarge,
-                            text: StringsManager.onBoardingFirstTitle1,
-                            children: [
-                              TextSpan(
-                                text: StringsManager.onBoardingFirstTitle2,
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.titleLarge!.copyWith(
-                                  color: ColorsManager.primaryLight,
-                                ),
-                              ),
-                              TextSpan(
-                                text: StringsManager.onBoardingFirstTitle3,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                Center(
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          style: Theme.of(context).textTheme.titleLarge,
+                          text: StringsManager.onBoardingFirstTitle1,
+                          children: [
+                            TextSpan(
+                              text: StringsManager.onBoardingFirstTitle2,
+                              style: Theme.of(context).textTheme.titleLarge!
+                                  .copyWith(color: ColorsManager.primaryLight),
+                            ),
+                            TextSpan(
+                              text: StringsManager.onBoardingFirstTitle3,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(SizesManager.padding),
+                  padding: const EdgeInsets.only(bottom: SizesManager.padding),
                   child: Center(
                     child: Text(
                       textAlign: TextAlign.center,
@@ -76,41 +71,33 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: SizesManager.padding),
-                  child: SvgPicture.asset(
-                    AssetsManager.getOnboarding(isDarkMode, 0),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(SizesManager.padding),
-                  child: ElevatedButton(
-                    onPressed:
-                        () => context.pushNamedTransition(
-                          routeName: NavigationManager.onboardingCarouselScreen,
-                          type: PageTransitionType.sharedAxisHorizontal,
-                        ),
-                    style: ThemeManager.elevatedButtonStyle,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          StringsManager.getStarted,
-                          style: Theme.of(context).textTheme.labelMedium,
-                        ),
-                        const SizedBox(width: SizesManager.padding),
-                        SvgPicture.asset(AssetsManager.arrow),
-                      ],
-                    ),
+                SvgPicture.asset(AssetsManager.getOnboarding(isDarkMode, 0)),
+                ElevatedButton(
+                  onPressed:
+                      () => context.pushNamedTransition(
+                        routeName: NavigationManager.onboardingCarouselScreen,
+                        type: PageTransitionType.sharedAxisHorizontal,
+                      ),
+                  style: ThemeManager.elevatedButtonStyle,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        StringsManager.getStarted,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                      const SizedBox(width: SizesManager.padding),
+                      SvgPicture.asset(AssetsManager.arrow),
+                    ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: SizesManager.padding),
                   child: GestureDetector(
                     onTap:
-                        () => Navigator.of(context).pushNamed(
-                          NavigationManager.authenticationScreen,
-                        ),
+                        () => Navigator.of(
+                          context,
+                        ).pushNamed(NavigationManager.authenticationScreen),
                     child: RichText(
                       text: TextSpan(
                         children: [
