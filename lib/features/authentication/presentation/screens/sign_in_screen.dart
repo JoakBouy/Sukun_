@@ -123,7 +123,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       children: [
                         OutlinedButton(
                           onPressed: () {},
-                          style: ThemeManager.circularOutlinedButtonLightStyle,
+                          style: ThemeManager.circularOutlinedButtonStyle,
                           child: SvgPicture.asset(
                             AssetsManager.facebook,
                             colorFilter: ColorFilter.mode(
@@ -136,7 +136,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         OutlinedButton(
                           onPressed: () {},
-                          style: ThemeManager.circularOutlinedButtonLightStyle,
+                          style: ThemeManager.circularOutlinedButtonStyle,
                           child: SvgPicture.asset(
                             AssetsManager.google,
                             colorFilter: ColorFilter.mode(
@@ -149,7 +149,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         OutlinedButton(
                           onPressed: () {},
-                          style: ThemeManager.circularOutlinedButtonLightStyle,
+                          style: ThemeManager.circularOutlinedButtonStyle,
                           child: SvgPicture.asset(
                             AssetsManager.instagram,
                             colorFilter: ColorFilter.mode(

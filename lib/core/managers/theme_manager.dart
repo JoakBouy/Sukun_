@@ -20,10 +20,17 @@ class ThemeManager {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        foregroundColor: ColorsManager.white,
         backgroundColor: ColorsManager.primary, // Your custom dark theme color
       ),
     ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        side: const BorderSide(color: ColorsManager.onBackground),
+      ),
+    ),
   );
+
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
@@ -40,8 +47,14 @@ class ThemeManager {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        foregroundColor: ColorsManager.white,
         backgroundColor:
             ColorsManager.primaryLight, // Your custom dark theme color
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        side: const BorderSide(width: 1.4, color: ColorsManager.white),
       ),
     ),
   );
@@ -64,7 +77,7 @@ class ThemeManager {
   );
   static const TextStyle smallTextTheme = TextStyle(
     fontFamily: StringsManager.fontFamily,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w800,
     fontSize: SizesManager.smallText,
     color: ColorsManager.secondary,
   );
@@ -86,29 +99,15 @@ class ThemeManager {
     fontWeight: FontWeight.w900,
     fontSize: SizesManager.smallText,
   );
-  static ButtonStyle outlinedButtonLightStyle = OutlinedButton.styleFrom(
+  static ButtonStyle outlinedButtonStyle = OutlinedButton.styleFrom(
     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    side: const BorderSide(width: 1.2, color: ColorsManager.primary),
   );
-  static ButtonStyle outlinedButtonDarkStyle = outlinedButtonLightStyle
-      .copyWith(
-        side: WidgetStateProperty.all(
-          const BorderSide(width: 1.2, color: ColorsManager.white),
-        ),
-      );
-  static ButtonStyle circularOutlinedButtonLightStyle =
-      OutlinedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        side: const BorderSide(width: 1.2, color: ColorsManager.onBackground),
-      );
-  static ButtonStyle circularOutlinedButtonDarkStyle =
-      circularOutlinedButtonLightStyle.copyWith(
-        side: WidgetStateProperty.all(
-          const BorderSide(width: 1.2, color: ColorsManager.white),
-        ),
-      );
+  static ButtonStyle circularOutlinedButtonStyle = outlinedButtonStyle.copyWith(
+    padding: WidgetStateProperty.all(
+      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+    ),
+  );
   static ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
-    foregroundColor: ColorsManager.white,
     padding: const EdgeInsets.symmetric(
       vertical: SizesManager.padding,
       horizontal: SizesManager.dPadding,

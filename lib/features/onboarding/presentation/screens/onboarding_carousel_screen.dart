@@ -79,10 +79,7 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
                       padding: const EdgeInsets.all(SizesManager.dhPadding),
                       child: OutlinedButton(
                         onPressed: () {},
-                        style:
-                            isDarkMode == 'dark'
-                                ? ThemeManager.outlinedButtonDarkStyle
-                                : ThemeManager.outlinedButtonLightStyle,
+                        style: ThemeManager.outlinedButtonStyle,
                         child: Text(
                           StringsManager.onBoardingTopButton(currentIndex),
                           style: Theme.of(context).textTheme.labelMedium,
@@ -92,7 +89,11 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: height / 1.6, left: SizesManager.padding, right: SizesManager.padding),
+                  padding: EdgeInsets.only(
+                    top: height / 1.6,
+                    left: SizesManager.padding,
+                    right: SizesManager.padding,
+                  ),
                   child: Column(
                     spacing: SizesManager.dPadding,
                     children: [
@@ -141,9 +142,9 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
                         onPressed:
                             () => setState(() {
                               currentIndex == 5
-                                  ? Navigator.of(
-                                    context,
-                                  ).popAndPushNamed(NavigationManager.authenticationScreen)
+                                  ? Navigator.of(context).popAndPushNamed(
+                                    NavigationManager.authenticationScreen,
+                                  )
                                   : currentIndex++;
                             }),
                         style: ThemeManager.circularElevatedButtonStyle,
