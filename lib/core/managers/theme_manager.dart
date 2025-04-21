@@ -9,6 +9,7 @@ class ThemeManager {
     brightness: Brightness.light,
     colorScheme: ColorScheme.fromSeed(seedColor: ColorsManager.primary),
     scaffoldBackgroundColor: ColorsManager.backgroundLight,
+    fontFamily: StringsManager.fontFamily,
     textTheme: TextTheme(
       titleLarge: titleTheme.copyWith(color: ColorsManager.primary),
       titleMedium: subtitleTheme,
@@ -36,6 +37,7 @@ class ThemeManager {
     brightness: Brightness.dark,
     primaryColor: ColorsManager.primaryLight,
     scaffoldBackgroundColor: ColorsManager.backgroundDark,
+    fontFamily: StringsManager.fontFamily,
     textTheme: TextTheme(
       titleLarge: titleTheme,
       titleMedium: subtitleTheme.copyWith(color: ColorsManager.secondaryLight),
@@ -59,45 +61,38 @@ class ThemeManager {
     ),
   );
   static const TextStyle titleTheme = TextStyle(
-    fontFamily: StringsManager.fontFamily,
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.title,
   );
   static const TextStyle subtitleTheme = TextStyle(
-    fontFamily: StringsManager.fontFamily,
     fontWeight: FontWeight.w500,
     fontSize: SizesManager.subTitle,
     color: ColorsManager.secondary,
   );
   static const TextStyle displaySmall = TextStyle(
-    fontFamily: StringsManager.fontFamily,
     fontWeight: FontWeight.w700,
     fontSize: SizesManager.buttonText,
     color: ColorsManager.white,
   );
   static const TextStyle smallTextTheme = TextStyle(
-    fontFamily: StringsManager.fontFamily,
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.smallText,
     color: ColorsManager.secondary,
   );
   static const TextStyle labelLarge = TextStyle(
-    fontFamily: StringsManager.fontFamily,
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.subTitle,
     color: ColorsManager.secondary,
   );
   static const TextStyle labelMedium = TextStyle(
-    fontFamily: StringsManager.fontFamily,
-    color: ColorsManager.primary,
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.smallText2,
+    color: ColorsManager.primary,
   );
   static const TextStyle labelSmall = TextStyle(
-    fontFamily: StringsManager.fontFamily,
-    color: ColorsManager.primary,
     fontWeight: FontWeight.w900,
     fontSize: SizesManager.smallText,
+    color: ColorsManager.primary,
   );
   static ButtonStyle outlinedButtonStyle = OutlinedButton.styleFrom(
     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
