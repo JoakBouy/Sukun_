@@ -84,7 +84,7 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                     children: [
                       Text(
                         StringsManager.getStarted,
-                        style: Theme.of(context).textTheme.labelMedium,
+                        style: Theme.of(context).textTheme.displaySmall,
                       ),
                       const SizedBox(width: SizesManager.padding),
                       SvgPicture.asset(AssetsManager.arrow),

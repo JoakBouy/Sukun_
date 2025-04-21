@@ -7,8 +7,10 @@ class ColorsManager {
   static const Color primaryLight = Color(0xFF926247);
   static const Color secondary = Color(0xFF736B66);
   static const Color secondaryLight = Color(0xFFE8DDD9);
+  static const Color onBackground = Color(0xFFC9C7C5);
   static const Color backgroundLight = Color(0xFFF7F4F2);
   static const Color backgroundDark = Color(0xFF251404);
+  static const Color onBackgroundDark = Color(0xFF372315);
   static const Color green = Color(0xFF9BB168);
   static const Color lightGreen = Color(0xFFE5EAD7);
   static const Color darkGreen = Color(0xFF3D4A26);
@@ -24,6 +26,7 @@ class ColorsManager {
   static const Color violet = Color(0xFFA694F5);
   static const Color lightViolet = Color(0xFFDDD1FF);
   static const Color darkViolet = Color(0xFF3C357C);
+  static const Color iconDark = Color(0xFF5A554E);
 
   static Color getAccentColor(int index) {
     switch (index) {

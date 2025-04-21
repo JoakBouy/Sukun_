@@ -85,7 +85,7 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
                                 : ThemeManager.outlinedButtonLightStyle,
                         child: Text(
                           StringsManager.onBoardingTopButton(currentIndex),
-                          style: Theme.of(context).textTheme.labelSmall,
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                       ),
                     ),

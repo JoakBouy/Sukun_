@@ -1,4 +1,5 @@
 class StringsManager {
+  static const String fontFamily = 'Urbanist';
   static const String onBoardingFirstTitle1 = 'Welcome to the ultimate';
   static const String onBoardingFirstTitle2 = ' freud ';
   static const String onBoardingFirstTitle3 = 'UI Kit!';
@@ -6,9 +7,18 @@ class StringsManager {
       'Your mindful mental health AI companion for everyone, anywhere 🍃';
   static const String getStarted = 'Get Started';
   static const String alreadyHaveAnAccount = 'Already have an account? ';
+  static const String noAccount = 'Don\'t have an account? ';
   static const String signIn = 'Sign In';
-  static const String onBoardingSecondTitle = 'Your Mental Health Companion';
-  static const String fontFamily = 'Urbanist';
+  static const String signUp = 'Sign Up';
+  static const String authenticationTitle = 'Sign In To freud.ai';
+  static const String authenticationTitle2 = 'Sign Up For Free';
+  static const String forgotPassword = 'Forgot Password';
+  static const String email = 'Email Address';
+  static const String email2 = 'Enter your email...';
+  static const String password = 'Password';
+  static const String password2 = 'Enter your password...';
+  static const String confirmPassword = 'Password Confirmation';
+  static const String confirmPassword2 = 'Confirm your password...';
 
   static String onBoardingTopButton(int index) {
     switch (index) {
@@ -43,6 +53,7 @@ class StringsManager {
         return '';
     }
   }
+
   static String onBoardingTitle2(int index) {
     switch (index) {
       case 1:
@@ -59,6 +70,7 @@ class StringsManager {
         return '';
     }
   }
+
   static String onBoardingTitle3(int index) {
     switch (index) {
       case 1:
@@ -75,5 +87,4 @@ class StringsManager {
         return '';
     }
   }
-
 }
