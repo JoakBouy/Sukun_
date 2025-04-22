@@ -10,14 +10,14 @@ import 'package:playground/core/managers/theme_manager.dart';
 import 'package:playground/features/authentication/presentation/widgets/custom_text_field.dart';
 import 'package:playground/features/authentication/presentation/widgets/top_bar_widget.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   late String isDarkMode;
   late final double height = MediaQuery.of(context).size.height;
   @override
@@ -50,7 +50,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         bottom: SizesManager.dPadding,
                       ),
                       child: Text(
-                        StringsManager.authenticationTitle,
+                        StringsManager.authenticationTitle2,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
@@ -89,6 +89,23 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
+                      vertical: SizesManager.hPadding,
+                    ),
+                    child: Text(
+                      StringsManager.confirmPassword,
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                  ),
+                  CustomTextField(
+                    controller: TextEditingController(),
+                    hintText: StringsManager.confirmPassword2,
+                    iconPath: AssetsManager.lock,
+                    isDarkMode: isDarkMode,
+                    isObscure: true,
+                    leadingIcon: AssetsManager.eye,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
                       vertical: SizesManager.dPadding,
                     ),
                     child: ElevatedButton(
@@ -104,7 +121,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            StringsManager.signIn,
+                            StringsManager.signUp,
                             style: Theme.of(context).textTheme.displaySmall,
                           ),
                           const SizedBox(width: SizesManager.padding),
@@ -168,18 +185,18 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Center(
                       child: GestureDetector(
                         onTap:
-                            () => Navigator.of(
-                              context,
-                            ).pushReplacementNamed(NavigationManager.signUpScreen),
+                            () => Navigator.of(context).pushReplacementNamed(
+                              NavigationManager.authenticationScreen,
+                            ),
                         child: RichText(
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: StringsManager.noAccount,
+                                text: StringsManager.alreadyHaveAnAccount,
                                 style: Theme.of(context).textTheme.bodySmall,
                                 children: [
                                   TextSpan(
-                                    text: StringsManager.signUp,
+                                    text: StringsManager.signIn,
                                     style: Theme.of(
                                       context,
                                     ).textTheme.bodySmall!.copyWith(
@@ -190,28 +207,6 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ],
                               ),
                             ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: SizesManager.hPadding,
-                      ),
-                      child: GestureDetector(
-                        onTap:
-                            () => Navigator.of(
-                              context,
-                            ).pushNamed(NavigationManager.authenticationScreen),
-                        child: Text(
-                          StringsManager.forgotPassword,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(
-                            color: ColorsManager.orange,
-                            decoration: TextDecoration.underline,
                           ),
                         ),
                       ),
