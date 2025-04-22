@@ -25,6 +25,11 @@ class StringsManager {
   static const String forgotPasswordListTitle2 = 'Password';
   static const String forgotPasswordListTitle3 = 'Google Authenticator';
   static const String sendPassword = 'Send Password';
+  static const String resendPassword = 'Re-Send Password';
+  static const String forgetPasswordPopup1 =
+      'We’ve Sent Verification Code to ****-****-***24';
+  static const String forgetPasswordPopup2 =
+      'Didn’t receive the link? Then re-send the password below! 🔑';
 
   static String onBoardingTopButton(int index) {
     switch (index) {

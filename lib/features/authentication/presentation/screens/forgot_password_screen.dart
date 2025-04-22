@@ -7,6 +7,7 @@ import 'package:playground/core/managers/strings_manager.dart';
 import 'package:playground/core/managers/theme_manager.dart';
 import 'package:playground/core/widgets/back_button.dart';
 import 'package:playground/features/authentication/presentation/widgets/forgot_password_card.dart';
+import 'package:playground/features/authentication/presentation/widgets/popup_widget.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -71,7 +72,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 vertical: SizesManager.padding,
               ),
               child: ElevatedButton(
-                onPressed: () => {},
+                onPressed:
+                    () => showDialog<void>(
+                      context: context,
+                      barrierDismissible: false, // user must tap button!
+                      builder: (BuildContext context) {
+                        return const PopupWidget();
+                      },
+                    ),
                 style: ThemeManager.elevatedButtonStyle,
                 child: Row(
                   mainAxisSize: MainAxisSize.max,

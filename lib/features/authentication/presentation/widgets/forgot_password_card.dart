@@ -16,15 +16,23 @@ class ForgotPasswordCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Card(
       elevation: !selected ? 0 : 6,
       shadowColor: ColorsManager.green,
-      color: ColorsManager.white,
+      color: isDarkMode ? ColorsManager.onBackgroundDark : ColorsManager.white,
       shape: RoundedRectangleBorder(
         side:
             !selected
                 ? BorderSide.none
-                : BorderSide(color: ColorsManager.lightGreen, width: 4, strokeAlign: BorderSide.strokeAlignOutside),
+                : BorderSide(
+                  color:
+                      isDarkMode
+                          ? ColorsManager.darkGreen
+                          : ColorsManager.lightGreen,
+                  width: 4,
+                  strokeAlign: BorderSide.strokeAlignOutside,
+                ),
         borderRadius: BorderRadius.circular(
           SizesManager.circularBorderRadius * 2,
         ),
@@ -39,7 +47,7 @@ class ForgotPasswordCard extends StatelessWidget {
               ),
               child: SvgPicture.asset(iconPath, fit: BoxFit.fill),
             ),
-            Text(title, style: Theme.of(context).textTheme.labelLarge),
+            Text(title, style: Theme.of(context).textTheme.displayMedium),
           ],
         ),
       ),

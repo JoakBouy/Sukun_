@@ -13,10 +13,12 @@ class ThemeManager {
     textTheme: TextTheme(
       titleLarge: titleTheme.copyWith(color: ColorsManager.primary),
       titleMedium: subtitleTheme,
+      titleSmall: titleSmallTheme,
       bodySmall: smallTextTheme,
       labelLarge: labelLarge,
       labelMedium: labelMedium,
       labelSmall: labelSmall,
+      displayMedium: displayMedium,
       displaySmall: displaySmall,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -41,10 +43,12 @@ class ThemeManager {
     textTheme: TextTheme(
       titleLarge: titleTheme,
       titleMedium: subtitleTheme.copyWith(color: ColorsManager.secondaryLight),
+      titleSmall: titleSmallTheme.copyWith(color: ColorsManager.white),
       bodySmall: smallTextTheme.copyWith(color: ColorsManager.onBackground),
       labelLarge: labelLarge.copyWith(color: ColorsManager.onBackground),
       labelMedium: labelMedium.copyWith(color: ColorsManager.white),
       labelSmall: labelSmall.copyWith(color: ColorsManager.white),
+      displayMedium: displayMedium.copyWith(color: ColorsManager.white),
       displaySmall: displaySmall,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -64,10 +68,20 @@ class ThemeManager {
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.title,
   );
+  static const TextStyle titleSmallTheme = TextStyle(
+    color: ColorsManager.primary,
+    fontWeight: FontWeight.w800,
+    fontSize: SizesManager.titleSmall,
+  );
   static const TextStyle subtitleTheme = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: SizesManager.subTitle,
     color: ColorsManager.secondary,
+  );
+  static const TextStyle displayMedium = TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: SizesManager.displayMedium,
+    color: ColorsManager.primary,
   );
   static const TextStyle displaySmall = TextStyle(
     fontWeight: FontWeight.w700,
