@@ -1,11 +1,11 @@
 {
-    "name": "playground",
-    "short_name": "playground",
+    "name": "freud_ai",
+    "short_name": "freud_ai",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A Playground of Flutter projects.",
+    "description": "A freud_ai of Flutter projects.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:playground/core/managers/assets_manager.dart';
-import 'package:playground/core/managers/colors_manager.dart';
-import 'package:playground/core/managers/navigation_manager.dart';
-import 'package:playground/core/managers/sizes_manager.dart';
-import 'package:playground/core/managers/strings_manager.dart';
-import 'package:playground/core/managers/theme_manager.dart';
-import 'package:playground/features/onboarding/presentation/widgets/progressbar.dart';
-import 'package:playground/features/onboarding/presentation/widgets/morphing_svg.dart';
+import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/navigation_manager.dart';
+import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:freud_ai/core/managers/strings_manager.dart';
+import 'package:freud_ai/core/managers/theme_manager.dart';
+import 'package:freud_ai/features/onboarding/presentation/widgets/progressbar.dart';
+import 'package:freud_ai/features/onboarding/presentation/widgets/morphing_svg.dart';
 
 class OnboardingCarouselScreen extends StatefulWidget {
   const OnboardingCarouselScreen({super.key});

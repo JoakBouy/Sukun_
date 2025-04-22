@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:playground/core/managers/colors_manager.dart';
-import 'package:playground/core/managers/sizes_manager.dart';
+import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/sizes_manager.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;

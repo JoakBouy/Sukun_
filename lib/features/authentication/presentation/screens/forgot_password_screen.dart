@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:playground/core/managers/assets_manager.dart';
-import 'package:playground/core/managers/colors_manager.dart';
-import 'package:playground/core/managers/sizes_manager.dart';
-import 'package:playground/core/managers/strings_manager.dart';
-import 'package:playground/core/managers/theme_manager.dart';
-import 'package:playground/core/widgets/back_button.dart';
-import 'package:playground/features/authentication/presentation/widgets/forgot_password_card.dart';
-import 'package:playground/features/authentication/presentation/widgets/popup_widget.dart';
+import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:freud_ai/core/managers/strings_manager.dart';
+import 'package:freud_ai/core/managers/theme_manager.dart';
+import 'package:freud_ai/core/widgets/back_button.dart';
+import 'package:freud_ai/features/authentication/presentation/widgets/forgot_password_card.dart';
+import 'package:freud_ai/features/authentication/presentation/widgets/popup_widget.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});

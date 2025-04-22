@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
-import 'package:freud_ai/core/managers/navigation_manager.dart';
-import 'package:freud_ai/core/managers/theme_manager.dart';
+import 'package:playground/core/managers/colors_manager.dart';
+import 'package:playground/core/managers/navigation_manager.dart';
+import 'package:playground/core/managers/theme_manager.dart';
 
 void main() {
   runApp(const MyApp());

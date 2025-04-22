@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:playground/core/managers/assets_manager.dart';
-import 'package:playground/core/managers/colors_manager.dart';
-import 'package:playground/core/managers/navigation_manager.dart';
-import 'package:playground/core/managers/sizes_manager.dart';
-import 'package:playground/core/managers/strings_manager.dart';
-import 'package:playground/core/managers/theme_manager.dart';
+import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/navigation_manager.dart';
+import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:freud_ai/core/managers/strings_manager.dart';
+import 'package:freud_ai/core/managers/theme_manager.dart';
 
 class OnboardingFirstScreen extends StatefulWidget {
   const OnboardingFirstScreen({super.key});

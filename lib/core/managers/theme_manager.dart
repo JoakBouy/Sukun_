@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:playground/core/managers/colors_manager.dart';
-import 'package:playground/core/managers/sizes_manager.dart';
-import 'package:playground/core/managers/strings_manager.dart';
+import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:freud_ai/core/managers/strings_manager.dart';
 
 class ThemeManager {
   static ThemeData lightTheme = ThemeData(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:playground/core/managers/assets_manager.dart';
-import 'package:playground/core/managers/colors_manager.dart';
-import 'package:playground/core/managers/sizes_manager.dart';
-import 'package:playground/core/managers/strings_manager.dart';
-import 'package:playground/core/managers/theme_manager.dart';
+import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:freud_ai/core/managers/strings_manager.dart';
+import 'package:freud_ai/core/managers/theme_manager.dart';
 
 class PopupWidget extends StatelessWidget {
   const PopupWidget({super.key});

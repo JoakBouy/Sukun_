@@ -1,6 +1,6 @@
-# playground
+# freud_ai
 
-A Playground of Flutter projects.
+A Flutter UI Challenge.
 
 ## freud UI Kit
 

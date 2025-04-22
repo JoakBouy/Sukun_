@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:playground/features/authentication/presentation/screens/authentication_view.dart';
-import 'package:playground/features/authentication/presentation/screens/forgot_password_screen.dart';
-import 'package:playground/features/authentication/presentation/screens/sign_up_screen.dart';
-import 'package:playground/features/onboarding/presentation/screens/onboarding_carousel_screen.dart';
-import 'package:playground/features/onboarding/presentation/screens/onboarding_view.dart';
+import 'package:freud_ai/features/authentication/presentation/screens/authentication_view.dart';
+import 'package:freud_ai/features/authentication/presentation/screens/forgot_password_screen.dart';
+import 'package:freud_ai/features/authentication/presentation/screens/sign_up_screen.dart';
+import 'package:freud_ai/features/onboarding/presentation/screens/onboarding_carousel_screen.dart';
+import 'package:freud_ai/features/onboarding/presentation/screens/onboarding_view.dart';
 
 class NavigationManager {
   static const String onboardingScreen = '/onboarding';

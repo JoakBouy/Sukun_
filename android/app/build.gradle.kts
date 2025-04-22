@@ -19,7 +19,7 @@ val detStoreFile = keyProperties.getProperty("storeFile")
 val detStorePassword = keyProperties.getProperty("storePassword")
 
 android {
-    namespace = "com.moazsalem.playground"
+    namespace = "com.moazsalem.freud.ai"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
@@ -33,7 +33,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.moazsalem.playground"
+        applicationId = "com.moazsalem.freud.ai"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

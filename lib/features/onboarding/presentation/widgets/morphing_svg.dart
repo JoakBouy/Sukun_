@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:playground/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/assets_manager.dart';
 
 class MorphingSvg extends StatefulWidget {
   final String isDarkMode;

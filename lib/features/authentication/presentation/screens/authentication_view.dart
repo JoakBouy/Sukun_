@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:playground/features/authentication/presentation/screens/sign_in_screen.dart';
+import 'package:freud_ai/features/authentication/presentation/screens/sign_in_screen.dart';
 
 class AuthenticationView extends StatelessWidget {
   const AuthenticationView({super.key});
