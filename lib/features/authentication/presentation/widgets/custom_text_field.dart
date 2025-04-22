@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:playground/core/managers/colors_manager.dart';
 import 'package:playground/core/managers/sizes_manager.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
   final FocusNode? focusNode;
   final String hintText;
@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
   final bool? isObscure;
   final String? leadingIcon;
   final String isDarkMode;
+  final String? Function(String?)? validator;
   const CustomTextField({
     super.key,
     required this.controller,
@@ -20,11 +21,25 @@ class CustomTextField extends StatelessWidget {
     this.isObscure,
     this.leadingIcon,
     required this.isDarkMode,
+    this.validator,
   });
+
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  bool? showPassword;
+  @override
+  void initState() {
+    super.initState();
+    showPassword = widget.isObscure;
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: (value) => widget.controller.text = value,
       cursorColor: ColorsManager.green,
       cursorWidth: 3.0,
       cursorHeight: 16.0,
@@ -32,16 +47,19 @@ class CustomTextField extends StatelessWidget {
       style: Theme.of(context).textTheme.labelLarge,
       decoration: InputDecoration(
         suffixIcon:
-            leadingIcon != null
+            widget.leadingIcon != null
                 ? Padding(
                   padding: const EdgeInsets.only(right: SizesManager.hPadding),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed:
+                        () => setState(() {
+                          showPassword = !showPassword!;
+                        }),
                     icon: SvgPicture.asset(
-                      leadingIcon!,
+                      widget.leadingIcon!,
                       fit: BoxFit.scaleDown,
                       colorFilter: ColorFilter.mode(
-                        isDarkMode == 'dark'
+                        widget.isDarkMode == 'dark'
                             ? ColorsManager.iconDark
                             : ColorsManager.onBackground,
                         BlendMode.srcIn,
@@ -53,10 +71,10 @@ class CustomTextField extends StatelessWidget {
         prefixIcon: Padding(
           padding: const EdgeInsets.only(left: SizesManager.hPadding),
           child: SvgPicture.asset(
-            iconPath,
+            widget.iconPath,
             fit: BoxFit.scaleDown,
             colorFilter: ColorFilter.mode(
-              isDarkMode == 'dark'
+              widget.isDarkMode == 'dark'
                   ? ColorsManager.white
                   : ColorsManager.primary,
               BlendMode.srcIn,
@@ -65,7 +83,7 @@ class CustomTextField extends StatelessWidget {
         ),
         filled: true,
         fillColor:
-            isDarkMode == 'dark'
+            widget.isDarkMode == 'dark'
                 ? ColorsManager.onBackgroundDark
                 : ColorsManager.white,
         border: OutlineInputBorder(
@@ -74,7 +92,7 @@ class CustomTextField extends StatelessWidget {
           ),
           borderSide: BorderSide.none,
         ),
-        hintText: hintText,
+        hintText: widget.hintText,
         hintStyle: Theme.of(context).textTheme.labelLarge,
         labelStyle: Theme.of(context).textTheme.labelLarge,
         focusedBorder: OutlineInputBorder(
@@ -83,7 +101,7 @@ class CustomTextField extends StatelessWidget {
           ),
           borderSide: BorderSide(
             color:
-                isDarkMode == 'dark'
+                widget.isDarkMode == 'dark'
                     ? ColorsManager.darkGreen
                     : ColorsManager.lightGreen,
             width: 4.0,
@@ -102,7 +120,8 @@ class CustomTextField extends StatelessWidget {
           borderSide: BorderSide(color: ColorsManager.orange, width: 4.0),
         ),
       ),
-      obscureText: isObscure ?? false,
+      obscureText: showPassword ?? false,
+      validator: widget.validator,
     );
   }
 }
