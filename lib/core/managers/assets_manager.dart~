@@ -10,10 +10,6 @@ class AssetsManager {
   static const String facebook = '$svg/facebook.svg';
   static const String google = '$svg/google.svg';
   static const String instagram = '$svg/instagram.svg';
-  static const String back = '$svg/back.svg';
-  static const String p_2fa = '$svg/2fa.svg';
-  static const String password = '$svg/password.svg';
-  static const String googleAuth = '$svg/google_auth.svg';
 
   static String getIcon(isDarkMode) {
     return '$svg/$isDarkMode/icon.svg';

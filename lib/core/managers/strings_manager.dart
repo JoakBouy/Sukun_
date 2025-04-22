@@ -19,6 +19,12 @@ class StringsManager {
   static const String password2 = 'Enter your password...';
   static const String confirmPassword = 'Password Confirmation';
   static const String confirmPassword2 = 'Confirm your password...';
+  static const String forgotPasswordSubtitle =
+      'Select contact details where you want to reset your password';
+  static const String forgotPasswordListTitle1 = 'Use 2FA';
+  static const String forgotPasswordListTitle2 = 'Password';
+  static const String forgotPasswordListTitle3 = 'Google Authenticator';
+  static const String sendPassword = 'Send Password';
 
   static String onBoardingTopButton(int index) {
     switch (index) {

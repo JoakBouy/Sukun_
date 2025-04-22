@@ -44,6 +44,13 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   @override
+  dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -230,7 +237,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: GestureDetector(
                           onTap:
                               () => Navigator.of(context).pushNamed(
-                                NavigationManager.authenticationScreen,
+                                NavigationManager.forgotPasswordScreen,
                               ),
                           child: Text(
                             StringsManager.forgotPassword,
