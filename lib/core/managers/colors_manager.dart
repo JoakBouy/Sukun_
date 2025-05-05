@@ -5,6 +5,10 @@ class ColorsManager {
   static const Color black = Colors.black;
   static const Color primary = Color(0xFF4F3422);
   static const Color primaryLight = Color(0xFF926247);
+  static const Color primaryContainer = Color(0xFFE8DDD9);
+  static const Color primaryContainerDark = Color(0xFF4F3422);
+  static const Color onPrimaryContainer = Color(0xFF926247);
+  static const Color onPrimaryContainerDark = Color(0xFFC0A091);
   static const Color secondary = Color(0xFF736B66);
   static const Color secondaryLight = Color(0xFFE8DDD9);
   static const Color onBackground = Color(0xFFC9C7C5);

@@ -36,6 +36,7 @@ class _SignInScreenState extends State<SignInScreen> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Welcome Back')));
+      Navigator.of(context).pushNamed(NavigationManager.assessmentMainScreen);
     } else {
       ScaffoldMessenger.of(
         context,
@@ -156,7 +157,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           OutlinedButton(
-                            onPressed: () {},
+                            onPressed:
+                                () => Navigator.of(context).pushNamed(
+                                  NavigationManager.assessmentMainScreen,
+                                ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
                               AssetsManager.facebook,
@@ -169,7 +173,10 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                           ),
                           OutlinedButton(
-                            onPressed: () {},
+                            onPressed:
+                                () => Navigator.of(context).pushNamed(
+                                  NavigationManager.assessmentMainScreen,
+                                ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
                               AssetsManager.google,
@@ -182,7 +189,10 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                           ),
                           OutlinedButton(
-                            onPressed: () {},
+                            onPressed:
+                                () => Navigator.of(context).pushNamed(
+                                  NavigationManager.assessmentMainScreen,
+                                ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
                               AssetsManager.instagram,

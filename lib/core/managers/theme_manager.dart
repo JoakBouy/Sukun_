@@ -7,7 +7,12 @@ class ThemeManager {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    colorScheme: ColorScheme.fromSeed(seedColor: ColorsManager.primary),
+    colorScheme: ColorScheme.light(
+      primary: ColorsManager.primary,
+      secondary: ColorsManager.secondary,
+      primaryContainer: ColorsManager.primaryContainer,
+      onPrimaryContainer: ColorsManager.onPrimaryContainer,
+    ),
     scaffoldBackgroundColor: ColorsManager.backgroundLight,
     fontFamily: StringsManager.fontFamily,
     textTheme: TextTheme(
@@ -38,6 +43,12 @@ class ThemeManager {
     useMaterial3: true,
     brightness: Brightness.dark,
     primaryColor: ColorsManager.primaryLight,
+    colorScheme: ColorScheme.dark(
+      primary: ColorsManager.primaryLight,
+      secondary: ColorsManager.secondaryLight,
+      primaryContainer: ColorsManager.primaryContainerDark,
+      onPrimaryContainer: ColorsManager.onPrimaryContainerDark,
+    ),
     scaffoldBackgroundColor: ColorsManager.backgroundDark,
     fontFamily: StringsManager.fontFamily,
     textTheme: TextTheme(

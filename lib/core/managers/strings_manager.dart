@@ -30,6 +30,7 @@ class StringsManager {
       'We’ve Sent Verification Code to ****-****-***24';
   static const String forgetPasswordPopup2 =
       'Didn’t receive the link? Then re-send the password below! 🔑';
+  static const String assessmentTitle = 'Assessment';
 
   static String onBoardingTopButton(int index) {
     switch (index) {
