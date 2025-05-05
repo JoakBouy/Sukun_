@@ -31,6 +31,30 @@ class StringsManager {
   static const String forgetPasswordPopup2 =
       'Didn’t receive the link? Then re-send the password below! 🔑';
   static const String assessmentTitle = 'Assessment';
+  static const String assessmentTitle1 = 'What’s your health goal for today?';
+  static const String assessmentTitle1Radio1 = 'I want to reduce stress';
+  static const String assessmentTitle1Radio2 = 'I want to try AI therapy';
+  static const String assessmentTitle1Radio3 = 'I want to cope with trauma';
+  static const String assessmentTitle1Radio4 = 'I want to be a better person';
+  static const String assessmentTitle1Radio5 = 'Just trying out the app, mate!';
+  static const String assessmentTitle2 = 'What’s your official gender?';
+  static const String assessmentTitle3 = 'What’s your age?';
+  static const String assessmentTitle4 = 'What’s your weight?';
+  static const String assessmentTitle5 = 'How would you describe your mood?';
+  static const String assessmentTitle6 =
+      'Have you sought professional help before?';
+  static const String assessmentTitle7 =
+      'Are you experiencing any physical distress?';
+  static const String assessmentTitle8 =
+      'How would you rate your sleep quality?';
+  static const String assessmentTitle9 = 'Are you taking any medications?';
+  static const String assessmentTitle10 = 'Please specify your medications!';
+  static const String assessmentTitle11 =
+      'Do you have other mental health symptoms?';
+  static const String assessmentTitle12 =
+      'How would you rate your stress level?';
+  static const String assessmentTitle13 = 'AI Sound Analysis';
+  static const String assessmentTitle14 = 'Expression Analysis';
 
   static String onBoardingTopButton(int index) {
     switch (index) {

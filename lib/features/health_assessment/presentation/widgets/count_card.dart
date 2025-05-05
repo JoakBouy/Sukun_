@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freud_ai/core/managers/sizes_manager.dart';
 
 class CountCard extends StatelessWidget {
   final int count;
@@ -7,16 +8,19 @@ class CountCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(SizesManager.hPadding),
       child: Card(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Theme.of(context).colorScheme.secondaryContainer,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
+          padding: const EdgeInsets.symmetric(
+            horizontal: SizesManager.padding,
+            vertical: SizesManager.tinyPadding,
+          ),
           child: Text(
             '$count of 14',
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
               color: Theme.of(context).colorScheme.onPrimaryContainer,
-              fontSize: 14,
+              fontSize: SizesManager.font14,
             ),
           ),
         ),
