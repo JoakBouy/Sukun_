@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:freud_ai/core/widgets/custom_button.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:freud_ai/core/managers/assets_manager.dart';
 import 'package:freud_ai/core/managers/colors_manager.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
-import 'package:freud_ai/core/managers/theme_manager.dart';
 
 class OnboardingFirstScreen extends StatefulWidget {
   const OnboardingFirstScreen({super.key});
@@ -72,24 +72,13 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                   ),
                 ),
                 SvgPicture.asset(AssetsManager.getOnboarding(isDarkMode, 0)),
-                ElevatedButton(
+                CustomButton(
+                  text: StringsManager.getStarted,
                   onPressed:
                       () => context.pushNamedTransition(
                         routeName: NavigationManager.onboardingCarouselScreen,
                         type: PageTransitionType.sharedAxisHorizontal,
                       ),
-                  style: ThemeManager.elevatedButtonStyle,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        StringsManager.getStarted,
-                        style: Theme.of(context).textTheme.displaySmall,
-                      ),
-                      const SizedBox(width: SizesManager.padding),
-                      SvgPicture.asset(AssetsManager.arrow),
-                    ],
-                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: SizesManager.padding),

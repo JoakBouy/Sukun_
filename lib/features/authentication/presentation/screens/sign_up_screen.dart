@@ -6,6 +6,7 @@ import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
+import 'package:freud_ai/core/widgets/custom_button.dart';
 import 'package:freud_ai/features/authentication/presentation/widgets/custom_text_field.dart';
 import 'package:freud_ai/features/authentication/presentation/widgets/top_bar_widget.dart';
 
@@ -158,21 +159,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       padding: const EdgeInsets.symmetric(
                         vertical: SizesManager.dPadding,
                       ),
-                      child: ElevatedButton(
+                      child: CustomButton(
+                        text: StringsManager.signUp,
                         onPressed: () => submitForm(),
-                        style: ThemeManager.elevatedButtonStyle,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              StringsManager.signUp,
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                            const SizedBox(width: SizesManager.padding),
-                            SvgPicture.asset(AssetsManager.arrow),
-                          ],
-                        ),
                       ),
                     ),
                     Padding(

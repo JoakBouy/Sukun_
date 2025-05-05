@@ -6,6 +6,7 @@ class StringsManager {
   static const String onBoardingFirstSubtitle =
       'Your mindful mental health AI companion for everyone, anywhere 🍃';
   static const String getStarted = 'Get Started';
+  static const String continueButton = 'Continue';
   static const String alreadyHaveAnAccount = 'Already have an account? ';
   static const String noAccount = 'Don\'t have an account? ';
   static const String signIn = 'Sign In';

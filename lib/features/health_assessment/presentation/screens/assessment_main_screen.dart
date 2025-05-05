@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:freud_ai/core/managers/assets_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/widgets/custom_app_bar.dart';
+import 'package:freud_ai/core/widgets/custom_button.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/count_card.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/radio_card.dart';
 
@@ -36,7 +38,7 @@ class AssessmentMainScreen extends StatelessWidget {
                       RadioCard(
                         value: 1,
                         title: StringsManager.assessmentTitle1Radio1,
-                        icon: Icons.mood_bad,
+                        icon: AssetsManager.solidHeart,
                         groupValue: groupValue,
                         onChanged: (val) {
                           setState(() {
@@ -47,7 +49,7 @@ class AssessmentMainScreen extends StatelessWidget {
                       RadioCard(
                         value: 2,
                         title: StringsManager.assessmentTitle1Radio2,
-                        icon: Icons.mood_bad,
+                        icon: AssetsManager.solidRobot,
                         groupValue: groupValue,
                         onChanged: (val) {
                           setState(() {
@@ -58,7 +60,7 @@ class AssessmentMainScreen extends StatelessWidget {
                       RadioCard(
                         value: 3,
                         title: StringsManager.assessmentTitle1Radio3,
-                        icon: Icons.mood_bad,
+                        icon: AssetsManager.solidFlag,
                         groupValue: groupValue,
                         onChanged: (val) {
                           setState(() {
@@ -69,7 +71,7 @@ class AssessmentMainScreen extends StatelessWidget {
                       RadioCard(
                         value: 4,
                         title: StringsManager.assessmentTitle1Radio4,
-                        icon: Icons.mood_bad,
+                        icon: AssetsManager.solidHappy,
                         groupValue: groupValue,
                         onChanged: (val) {
                           setState(() {
@@ -80,7 +82,7 @@ class AssessmentMainScreen extends StatelessWidget {
                       RadioCard(
                         value: 5,
                         title: StringsManager.assessmentTitle1Radio5,
-                        icon: Icons.mood_bad,
+                        icon: AssetsManager.solidMobile,
                         groupValue: groupValue,
                         onChanged: (val) {
                           setState(() {
@@ -94,6 +96,16 @@ class AssessmentMainScreen extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: SizesManager.tPadding,
+          horizontal: SizesManager.padding,
+        ),
+        child: CustomButton(
+          text: StringsManager.continueButton,
+          onPressed: () {},
         ),
       ),
     );

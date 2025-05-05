@@ -19,7 +19,7 @@ class CountCard extends StatelessWidget {
           child: Text(
             '$count of 14',
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              color: Theme.of(context).colorScheme.onPrimaryContainer,
+              color: Theme.of(context).colorScheme.onSecondaryContainer,
               fontSize: SizesManager.font14,
             ),
           ),

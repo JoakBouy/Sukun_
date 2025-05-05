@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freud_ai/core/managers/colors_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 
@@ -6,7 +7,7 @@ class RadioCard extends StatefulWidget {
   final int value;
   final int groupValue;
   final String title;
-  final IconData icon;
+  final String icon;
   final void Function(int?) onChanged;
 
   const RadioCard({
@@ -27,51 +28,64 @@ class _RadioCardState extends State<RadioCard> {
   Widget build(BuildContext context) {
     final bool selected = widget.groupValue == widget.value;
 
-    return Card(
-      color:
-          selected
-              ? ColorsManager.green
-              : Theme.of(context).colorScheme.primaryContainer,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(SizesManager.circularBorderRadius),
-      ),
-      child: RadioListTile<int>(
-        value: widget.value,
-        groupValue: widget.groupValue,
-        onChanged: widget.onChanged,
-        activeColor: Colors.white,
-        controlAffinity: ListTileControlAffinity.trailing,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: SizesManager.tinyPadding),
+      child: Card(
+        color:
+            selected
+                ? ColorsManager.green
+                : Theme.of(context).colorScheme.primaryContainer,
         shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color:
+                selected
+                    ? Theme.of(context).colorScheme.onPrimaryFixed
+                    : Theme.of(context).colorScheme.primaryContainer,
+            width: selected ? 4 : 0,
+            strokeAlign: BorderSide.strokeAlignOutside,
+          ),
           borderRadius: BorderRadius.circular(
             SizesManager.circularBorderRadius,
           ),
         ),
-        title: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: SizesManager.tinyPadding,
-            vertical: SizesManager.vPadding,
+        child: RadioListTile<int>(
+          value: widget.value,
+          groupValue: widget.groupValue,
+          onChanged: widget.onChanged,
+          activeColor: Colors.white,
+          controlAffinity: ListTileControlAffinity.trailing,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              SizesManager.circularBorderRadius,
+            ),
           ),
-          child: Row(
-            children: [
-              Icon(
-                widget.icon,
-                color:
-                    selected
-                        ? Colors.white
-                        : Theme.of(context).colorScheme.onPrimaryContainer,
-              ),
-              const SizedBox(width: SizesManager.hPadding),
-              Text(
-                widget.title,
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  fontSize: SizesManager.smallText2,
-                  color:
-                      selected
-                          ? Colors.white
-                          : Theme.of(context).colorScheme.onPrimaryContainer,
+          title: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: SizesManager.tinyPadding,
+              vertical: SizesManager.vPadding,
+            ),
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  widget.icon,
+                  colorFilter: ColorFilter.mode(
+                    selected ? Colors.white : ColorsManager.onBackground,
+                    BlendMode.srcIn,
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(width: SizesManager.hPadding),
+                Text(
+                  widget.title,
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    fontSize: SizesManager.smallText2,
+                    color:
+                        selected
+                            ? Colors.white
+                            : Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

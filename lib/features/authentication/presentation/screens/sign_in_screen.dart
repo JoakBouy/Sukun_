@@ -6,6 +6,7 @@ import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
+import 'package:freud_ai/core/widgets/custom_button.dart';
 import 'package:freud_ai/features/authentication/presentation/widgets/custom_text_field.dart';
 import 'package:freud_ai/features/authentication/presentation/widgets/top_bar_widget.dart';
 
@@ -36,7 +37,9 @@ class _SignInScreenState extends State<SignInScreen> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Welcome Back')));
-      Navigator.of(context).pushNamed(NavigationManager.assessmentMainScreen);
+      Navigator.of(
+        context,
+      ).pushReplacementNamed(NavigationManager.assessmentMainScreen);
     } else {
       ScaffoldMessenger.of(
         context,
@@ -131,21 +134,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       padding: const EdgeInsets.symmetric(
                         vertical: SizesManager.dPadding,
                       ),
-                      child: ElevatedButton(
+                      child: CustomButton(
+                        text: StringsManager.signIn,
                         onPressed: () => submitForm(),
-                        style: ThemeManager.elevatedButtonStyle,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              StringsManager.signIn,
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                            const SizedBox(width: SizesManager.padding),
-                            SvgPicture.asset(AssetsManager.arrow),
-                          ],
-                        ),
                       ),
                     ),
                     Padding(
@@ -158,9 +149,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         children: [
                           OutlinedButton(
                             onPressed:
-                                () => Navigator.of(context).pushNamed(
-                                  NavigationManager.assessmentMainScreen,
-                                ),
+                                () =>
+                                    Navigator.of(context).pushReplacementNamed(
+                                      NavigationManager.assessmentMainScreen,
+                                    ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
                               AssetsManager.facebook,
@@ -174,9 +166,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                           OutlinedButton(
                             onPressed:
-                                () => Navigator.of(context).pushNamed(
-                                  NavigationManager.assessmentMainScreen,
-                                ),
+                                () =>
+                                    Navigator.of(context).pushReplacementNamed(
+                                      NavigationManager.assessmentMainScreen,
+                                    ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
                               AssetsManager.google,
@@ -190,9 +183,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                           OutlinedButton(
                             onPressed:
-                                () => Navigator.of(context).pushNamed(
-                                  NavigationManager.assessmentMainScreen,
-                                ),
+                                () =>
+                                    Navigator.of(context).pushReplacementNamed(
+                                      NavigationManager.assessmentMainScreen,
+                                    ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
                               AssetsManager.instagram,

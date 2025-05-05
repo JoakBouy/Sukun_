@@ -14,6 +14,11 @@ class AssetsManager {
   static const String p_2fa = '$svg/2fa.svg';
   static const String password = '$svg/password.svg';
   static const String googleAuth = '$svg/google_auth.svg';
+  static const String solidHeart = '$svg/solid_heart.svg';
+  static const String solidRobot = '$svg/solid_robot.svg';
+  static const String solidFlag = '$svg/solid_flag.svg';
+  static const String solidHappy = '$svg/solid_happy.svg';
+  static const String solidMobile = '$svg/solid_mobile.svg';
 
   static String getIcon(isDarkMode) {
     return '$svg/$isDarkMode/icon.svg';
