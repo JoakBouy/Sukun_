@@ -95,6 +95,12 @@ flutter:
     - assets/images/svgs/solid_flag.svg
     - assets/images/svgs/solid_happy.svg
     - assets/images/svgs/solid_mobile.svg
+    - assets/images/svgs/light/male.svg
+    - assets/images/svgs/light/female.svg
+    - assets/images/svgs/dark/male.svg
+    - assets/images/svgs/dark/female.svg
+    - assets/images/svgs/male_icon.svg
+    - assets/images/svgs/female_icon.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

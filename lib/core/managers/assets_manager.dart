@@ -19,6 +19,8 @@ class AssetsManager {
   static const String solidFlag = '$svg/solid_flag.svg';
   static const String solidHappy = '$svg/solid_happy.svg';
   static const String solidMobile = '$svg/solid_mobile.svg';
+  static const String maleIcon = '$svg/male_icon.svg';
+  static const String femaleIcon = '$svg/female_icon.svg';
 
   static String getIcon(isDarkMode) {
     return '$svg/$isDarkMode/icon.svg';
@@ -34,5 +36,13 @@ class AssetsManager {
 
   static String forgotPassword(isDarkMode) {
     return '$svg/$isDarkMode/forgot_password.svg';
+  }
+
+  static String getMale(isDarkMode) {
+    return '$svg/$isDarkMode/male.svg';
+  }
+
+  static String getFemale(isDarkMode) {
+    return '$svg/$isDarkMode/female.svg';
   }
 }

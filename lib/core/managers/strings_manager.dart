@@ -39,6 +39,8 @@ class StringsManager {
   static const String assessmentTitle1Radio4 = 'I want to be a better person';
   static const String assessmentTitle1Radio5 = 'Just trying out the app, mate!';
   static const String assessmentTitle2 = 'What’s your official gender?';
+  static const String male = 'I am Male';
+  static const String female = 'I am Female';
   static const String assessmentTitle3 = 'What’s your age?';
   static const String assessmentTitle4 = 'What’s your weight?';
   static const String assessmentTitle5 = 'How would you describe your mood?';
