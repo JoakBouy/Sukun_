@@ -10,17 +10,19 @@ class CountCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(SizesManager.hPadding),
       child: Card(
+        elevation: 0,
         color: Theme.of(context).colorScheme.secondaryContainer,
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: SizesManager.padding,
-            vertical: SizesManager.tinyPadding,
+            horizontal: SizesManager.vPadding,
+            vertical: SizesManager.tinyPadding + 1,
           ),
           child: Text(
             '$count of 14',
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
               color: Theme.of(context).colorScheme.onSecondaryContainer,
               fontSize: SizesManager.font14,
+              fontWeight: FontWeight.w800,
             ),
           ),
         ),

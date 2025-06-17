@@ -15,7 +15,12 @@ PreferredSizeWidget customAppBar(
         CustomBackButton(),
         Padding(
           padding: const EdgeInsets.all(SizesManager.padding),
-          child: Text(title, style: Theme.of(context).textTheme.displayMedium),
+          child: Text(
+            title,
+            style: Theme.of(
+              context,
+            ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w800),
+          ),
         ),
       ],
     ),
