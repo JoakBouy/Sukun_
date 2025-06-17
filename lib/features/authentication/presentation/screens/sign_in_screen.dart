@@ -149,10 +149,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         children: [
                           OutlinedButton(
                             onPressed:
-                                () =>
-                                    Navigator.of(context).pushReplacementNamed(
-                                      NavigationManager.assessmentMainScreen,
-                                    ),
+                                () => Navigator.of(context).pushNamed(
+                                  NavigationManager.assessmentMainScreen,
+                                ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
                               AssetsManager.facebook,
@@ -166,10 +165,9 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                           OutlinedButton(
                             onPressed:
-                                () =>
-                                    Navigator.of(context).pushReplacementNamed(
-                                      NavigationManager.assessmentMainScreen,
-                                    ),
+                                () => Navigator.of(context).pushNamed(
+                                  NavigationManager.assessmentMainScreen,
+                                ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
                               AssetsManager.google,
@@ -183,10 +181,9 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                           OutlinedButton(
                             onPressed:
-                                () =>
-                                    Navigator.of(context).pushReplacementNamed(
-                                      NavigationManager.assessmentMainScreen,
-                                    ),
+                                () => Navigator.of(context).pushNamed(
+                                  NavigationManager.assessmentMainScreen,
+                                ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
                               AssetsManager.instagram,
@@ -206,9 +203,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: Center(
                         child: GestureDetector(
                           onTap:
-                              () => Navigator.of(context).pushReplacementNamed(
-                                NavigationManager.signUpScreen,
-                              ),
+                              () => Navigator.of(
+                                context,
+                              ).pushNamed(NavigationManager.signUpScreen),
                           child: RichText(
                             text: TextSpan(
                               children: [

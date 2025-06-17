@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freud_ai/features/authentication/presentation/screens/authentication_view.dart';
 import 'package:freud_ai/features/authentication/presentation/screens/forgot_password_screen.dart';
 import 'package:freud_ai/features/authentication/presentation/screens/sign_up_screen.dart';
-import 'package:freud_ai/features/health_assessment/presentation/screens/assessment_main_screen.dart';
+import 'package:freud_ai/features/health_assessment/presentation/screens/main_screen/assessment_main_screen.dart';
 import 'package:freud_ai/features/onboarding/presentation/screens/onboarding_carousel_screen.dart';
 import 'package:freud_ai/features/onboarding/presentation/screens/onboarding_view.dart';
 
