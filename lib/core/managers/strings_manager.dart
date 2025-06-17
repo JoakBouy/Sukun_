@@ -41,6 +41,7 @@ class StringsManager {
   static const String assessmentTitle2 = 'What’s your official gender?';
   static const String male = 'I am Male';
   static const String female = 'I am Female';
+  static const String assessment2SkipButton = 'Prefer to skip, thanks';
   static const String assessmentTitle3 = 'What’s your age?';
   static const String assessmentTitle4 = 'What’s your weight?';
   static const String assessmentTitle5 = 'How would you describe your mood?';

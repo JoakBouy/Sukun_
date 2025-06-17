@@ -101,6 +101,7 @@ flutter:
     - assets/images/svgs/dark/female.svg
     - assets/images/svgs/male_icon.svg
     - assets/images/svgs/female_icon.svg
+    - assets/images/svgs/X.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

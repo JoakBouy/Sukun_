@@ -21,6 +21,7 @@ class AssetsManager {
   static const String solidMobile = '$svg/solid_mobile.svg';
   static const String maleIcon = '$svg/male_icon.svg';
   static const String femaleIcon = '$svg/female_icon.svg';
+  static const String X = '$svg/X.svg';
 
   static String getIcon(isDarkMode) {
     return '$svg/$isDarkMode/icon.svg';

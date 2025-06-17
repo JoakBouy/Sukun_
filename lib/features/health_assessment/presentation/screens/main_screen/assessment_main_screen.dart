@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/colors_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/widgets/custom_app_bar.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
 import 'package:freud_ai/features/health_assessment/presentation/screens/first_screen/assessment_first_screen.dart';
+import 'package:freud_ai/features/health_assessment/presentation/screens/second_screen/assessment_second_screen.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/count_card.dart';
 
 class AssessmentMainScreen extends StatefulWidget {
@@ -33,26 +36,53 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
       ),
       body: PageView(
         controller: _pageController,
-        children: [AssessmentFirstScreen(), Container()],
+        children: [AssessmentFirstScreen(), AssessmentSecondScreen()],
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: SizesManager.tPadding,
           horizontal: SizesManager.padding,
         ),
-        child: CustomButton(
-          text: StringsManager.continueButton,
-          onPressed:
-              () => {
-                _pageController.animateToPage(
-                  _currentPage + 1,
-                  duration: Duration(milliseconds: 200),
-                  curve: Curves.easeIn,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (_currentPage == 1)
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: SizesManager.padding,
                 ),
-                setState(() {
-                  _currentPage <= 12 ? _currentPage += 1 : null;
-                }),
-              },
+                child: CustomButton(
+                  text: StringsManager.assessment2SkipButton,
+                  icon: AssetsManager.X,
+                  color: ColorsManager.green,
+                  onPressed:
+                      () => {
+                        _pageController.animateToPage(
+                          _currentPage + 1,
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.easeIn,
+                        ),
+                        setState(() {
+                          _currentPage <= 12 ? _currentPage += 1 : null;
+                        }),
+                      },
+                ),
+              ),
+            CustomButton(
+              text: StringsManager.continueButton,
+              onPressed:
+                  () => {
+                    _pageController.animateToPage(
+                      _currentPage + 1,
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.easeIn,
+                    ),
+                    setState(() {
+                      _currentPage <= 12 ? _currentPage += 1 : null;
+                    }),
+                  },
+            ),
+          ],
         ),
       ),
     );
