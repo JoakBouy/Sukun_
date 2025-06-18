@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/features/health_assessment/presentation/screens/second_screen/widgets/gender_card_widget.dart';
-import 'package:freud_ai/features/health_assessment/presentation/widgets/radio_card.dart';
 
 class AssessmentSecondScreen extends StatefulWidget {
   const AssessmentSecondScreen({super.key});
