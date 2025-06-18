@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'freud UI Kit',
           theme: isDarkMode ? ThemeManager.darkTheme : ThemeManager.lightTheme,
-          initialRoute: NavigationManager.authenticationScreen,
+          initialRoute: NavigationManager.onboardingScreen,
           routes: NavigationManager.routes,
         ),
       ),

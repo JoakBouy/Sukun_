@@ -203,9 +203,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: Center(
                         child: GestureDetector(
                           onTap:
-                              () => Navigator.of(
-                                context,
-                              ).pushNamed(NavigationManager.signUpScreen),
+                              () => Navigator.of(context).pushReplacementNamed(
+                                NavigationManager.signUpScreen,
+                              ),
                           child: RichText(
                             text: TextSpan(
                               children: [
