@@ -9,9 +9,10 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: -200,
-      top: -650,
+    return OverflowBox(
+      alignment: Alignment.bottomCenter,
+      maxWidth: 800,
+      maxHeight: 800,
       child: Container(
         alignment: Alignment.bottomCenter,
         width: 800,

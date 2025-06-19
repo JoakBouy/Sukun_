@@ -58,198 +58,211 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
+          clipBehavior: Clip.none,
           children: [
-            TopBar(),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: SizesManager.padding,
-              ),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: height * 0.25,
-                          bottom: SizesManager.dPadding,
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SizesManager.padding,
+                  ),
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: height * 0.25,
+                              bottom: SizesManager.dPadding,
+                            ),
+                            child: Text(
+                              StringsManager.authenticationTitle2,
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
+                          ),
                         ),
-                        child: Text(
-                          StringsManager.authenticationTitle2,
-                          style: Theme.of(context).textTheme.titleLarge,
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: SizesManager.hPadding,
+                          ),
+                          child: Text(
+                            StringsManager.email,
+                            style: Theme.of(context).textTheme.labelSmall,
+                          ),
                         ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: SizesManager.hPadding,
-                      ),
-                      child: Text(
-                        StringsManager.email,
-                        style: Theme.of(context).textTheme.labelSmall,
-                      ),
-                    ),
-                    CustomTextField(
-                      controller: emailController,
-                      iconPath: AssetsManager.email,
-                      hintText: StringsManager.email2,
-                      isDarkMode: isDarkMode,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Email is required';
-                        } else if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                          return 'Enter a valid email';
-                        }
-                        return null;
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: SizesManager.hPadding,
-                      ),
-                      child: Text(
-                        StringsManager.password,
-                        style: Theme.of(context).textTheme.labelSmall,
-                      ),
-                    ),
-                    CustomTextField(
-                      controller: passwordController,
-                      hintText: StringsManager.password2,
-                      iconPath: AssetsManager.lock,
-                      isDarkMode: isDarkMode,
-                      isObscure: true,
-                      leadingIcon: AssetsManager.eye,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Password is required';
-                        } else if (value.length < 6) {
-                          return 'Password must be at least 6 characters';
-                        }
-                        return null;
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: SizesManager.hPadding,
-                      ),
-                      child: Text(
-                        StringsManager.confirmPassword,
-                        style: Theme.of(context).textTheme.labelSmall,
-                      ),
-                    ),
-                    CustomTextField(
-                      controller: passwordConformationController,
-                      hintText: StringsManager.confirmPassword2,
-                      iconPath: AssetsManager.lock,
-                      isDarkMode: isDarkMode,
-                      isObscure: true,
-                      leadingIcon: AssetsManager.eye,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Password Conformation is required';
-                        } else if (passwordController.text !=
-                            passwordConformationController.text) {
-                          return 'Passwords do not match';
-                        }
-                        return null;
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: SizesManager.dPadding,
-                      ),
-                      child: CustomButton(
-                        text: StringsManager.signUp,
-                        onPressed: () => submitForm(),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: SizesManager.padding,
-                      ),
-                      child: Row(
-                        spacing: SizesManager.padding,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          OutlinedButton(
-                            onPressed: () {},
-                            style: ThemeManager.circularOutlinedButtonStyle,
-                            child: SvgPicture.asset(
-                              AssetsManager.facebook,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode == 'dark'
-                                    ? ColorsManager.white
-                                    : ColorsManager.primary,
-                                BlendMode.srcIn,
-                              ),
-                            ),
+                        CustomTextField(
+                          controller: emailController,
+                          iconPath: AssetsManager.email,
+                          hintText: StringsManager.email2,
+                          isDarkMode: isDarkMode,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Email is required';
+                            } else if (!RegExp(
+                              r'\S+@\S+\.\S+',
+                            ).hasMatch(value)) {
+                              return 'Enter a valid email';
+                            }
+                            return null;
+                          },
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: SizesManager.hPadding,
                           ),
-                          OutlinedButton(
-                            onPressed: () {},
-                            style: ThemeManager.circularOutlinedButtonStyle,
-                            child: SvgPicture.asset(
-                              AssetsManager.google,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode == 'dark'
-                                    ? ColorsManager.white
-                                    : ColorsManager.primary,
-                                BlendMode.srcIn,
-                              ),
-                            ),
+                          child: Text(
+                            StringsManager.password,
+                            style: Theme.of(context).textTheme.labelSmall,
                           ),
-                          OutlinedButton(
-                            onPressed: () {},
-                            style: ThemeManager.circularOutlinedButtonStyle,
-                            child: SvgPicture.asset(
-                              AssetsManager.instagram,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode == 'dark'
-                                    ? ColorsManager.white
-                                    : ColorsManager.primary,
-                                BlendMode.srcIn,
-                              ),
-                            ),
+                        ),
+                        CustomTextField(
+                          controller: passwordController,
+                          hintText: StringsManager.password2,
+                          iconPath: AssetsManager.lock,
+                          isDarkMode: isDarkMode,
+                          isObscure: true,
+                          leadingIcon: AssetsManager.eye,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Password is required';
+                            } else if (value.length < 6) {
+                              return 'Password must be at least 6 characters';
+                            }
+                            return null;
+                          },
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: SizesManager.hPadding,
                           ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: SizesManager.padding),
-                      child: Center(
-                        child: GestureDetector(
-                          onTap:
-                              () => Navigator.of(context).pushReplacementNamed(
-                                NavigationManager.authenticationScreen,
+                          child: Text(
+                            StringsManager.confirmPassword,
+                            style: Theme.of(context).textTheme.labelSmall,
+                          ),
+                        ),
+                        CustomTextField(
+                          controller: passwordConformationController,
+                          hintText: StringsManager.confirmPassword2,
+                          iconPath: AssetsManager.lock,
+                          isDarkMode: isDarkMode,
+                          isObscure: true,
+                          leadingIcon: AssetsManager.eye,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Password Conformation is required';
+                            } else if (passwordController.text !=
+                                passwordConformationController.text) {
+                              return 'Passwords do not match';
+                            }
+                            return null;
+                          },
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: SizesManager.dPadding,
+                          ),
+                          child: CustomButton(
+                            text: StringsManager.signUp,
+                            onPressed: () => submitForm(),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: SizesManager.padding,
+                          ),
+                          child: Row(
+                            spacing: SizesManager.padding,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              OutlinedButton(
+                                onPressed: () {},
+                                style: ThemeManager.circularOutlinedButtonStyle,
+                                child: SvgPicture.asset(
+                                  AssetsManager.facebook,
+                                  colorFilter: ColorFilter.mode(
+                                    isDarkMode == 'dark'
+                                        ? ColorsManager.white
+                                        : ColorsManager.primary,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
                               ),
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: StringsManager.alreadyHaveAnAccount,
-                                  style: Theme.of(context).textTheme.bodySmall,
+                              OutlinedButton(
+                                onPressed: () {},
+                                style: ThemeManager.circularOutlinedButtonStyle,
+                                child: SvgPicture.asset(
+                                  AssetsManager.google,
+                                  colorFilter: ColorFilter.mode(
+                                    isDarkMode == 'dark'
+                                        ? ColorsManager.white
+                                        : ColorsManager.primary,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
+                              ),
+                              OutlinedButton(
+                                onPressed: () {},
+                                style: ThemeManager.circularOutlinedButtonStyle,
+                                child: SvgPicture.asset(
+                                  AssetsManager.instagram,
+                                  colorFilter: ColorFilter.mode(
+                                    isDarkMode == 'dark'
+                                        ? ColorsManager.white
+                                        : ColorsManager.primary,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: SizesManager.padding,
+                          ),
+                          child: Center(
+                            child: GestureDetector(
+                              onTap:
+                                  () => Navigator.of(
+                                    context,
+                                  ).pushReplacementNamed(
+                                    NavigationManager.authenticationScreen,
+                                  ),
+                              child: RichText(
+                                text: TextSpan(
                                   children: [
                                     TextSpan(
-                                      text: StringsManager.signIn,
-                                      style: Theme.of(
-                                        context,
-                                      ).textTheme.bodySmall!.copyWith(
-                                        color: ColorsManager.orange,
-                                        decoration: TextDecoration.underline,
-                                      ),
+                                      text: StringsManager.alreadyHaveAnAccount,
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                      children: [
+                                        TextSpan(
+                                          text: StringsManager.signIn,
+                                          style: Theme.of(
+                                            context,
+                                          ).textTheme.bodySmall!.copyWith(
+                                            color: ColorsManager.orange,
+                                            decoration:
+                                                TextDecoration.underline,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
+            SizedBox(height: 180, child: TopBar()),
           ],
         ),
       ),
