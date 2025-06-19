@@ -4,13 +4,11 @@ import 'package:freud_ai/core/managers/assets_manager.dart';
 
 class MorphingSvg extends StatefulWidget {
   final String isDarkMode;
-  final double height;
   final int currentIndex;
 
   const MorphingSvg({
     super.key,
     required this.isDarkMode,
-    required this.height,
     required this.currentIndex,
   });
 
@@ -48,11 +46,7 @@ class MorphingSvgState extends State<MorphingSvg> {
         key: ValueKey<int>(widget.currentIndex),
         child: SvgPicture.asset(
           AssetsManager.getOnboarding(widget.isDarkMode, widget.currentIndex),
-          alignment: Alignment.topCenter,
-          fit: BoxFit.fitHeight,
           allowDrawingOutsideViewBox: false,
-          clipBehavior: Clip.hardEdge,
-          height: widget.height * 1.65,
         ),
       ),
     );

@@ -31,10 +31,6 @@ class AssetsManager {
     return '$svg/$isDarkMode/onboarding_$number.svg';
   }
 
-  static String getOnboardingC(isDarkMode) {
-    return '$svg/$isDarkMode/onboardingC.svg';
-  }
-
   static String forgotPassword(isDarkMode) {
     return '$svg/$isDarkMode/forgot_password.svg';
   }

@@ -19,10 +19,11 @@ class OnboardingCarouselScreen extends StatefulWidget {
 class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
   int currentIndex = 1;
   late String isDarkMode;
-  late final double height = MediaQuery.of(context).size.height;
+  late double height;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    height = MediaQuery.of(context).size.height;
     isDarkMode =
         MediaQuery.of(context).platformBrightness == Brightness.dark
             ? 'dark'
@@ -48,113 +49,124 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
           currentIndex,
           isDarkMode,
         ),
-        body: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: SizesManager.padding),
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                Stack(
-                  alignment: Alignment.topCenter,
-                  children: [
-                    Stack(
-                      children: [
-                        MorphingSvg(
-                          currentIndex: currentIndex,
-                          height: height,
-                          isDarkMode: isDarkMode,
-                        ),
-                        SvgPicture.asset(
-                          AssetsManager.getOnboardingC(isDarkMode),
-                          alignment: Alignment.topCenter,
-                          fit: BoxFit.fitHeight,
-                          allowDrawingOutsideViewBox: false,
-                          clipBehavior: Clip.hardEdge,
-                          height: height * 1.65,
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(SizesManager.dhPadding),
-                      child: OutlinedButton(
-                        onPressed: () {},
-                        style: ThemeManager.outlinedButtonStyle,
-                        child: Text(
-                          StringsManager.onBoardingTopButton(currentIndex),
-                          style: Theme.of(context).textTheme.labelMedium,
-                        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: SizesManager.padding),
+          child: Stack(
+            children: [
+              Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 80.0),
+                    child: OverflowBox(
+                      alignment: Alignment.topCenter,
+                      maxWidth: height < 880 ? 1100 : 1350,
+                      maxHeight: height < 880 ? 1100 : 1350,
+                      child: MorphingSvg(
+                        currentIndex: currentIndex,
+                        isDarkMode: isDarkMode,
                       ),
                     ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: height / 1.6,
-                    left: SizesManager.padding,
-                    right: SizesManager.padding,
                   ),
-                  child: Column(
-                    spacing: SizesManager.dPadding,
-                    children: [
-                      ProgressBar(
-                        progress: (0 + currentIndex * 0.2),
-                        backgroundColor: ColorsManager.secondaryLight,
-                        progressColor: ColorsManager.getAccentColor(
-                          currentIndex,
+                  Padding(
+                    padding: const EdgeInsets.all(SizesManager.dhPadding),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      style: ThemeManager.outlinedButtonStyle,
+                      child: Text(
+                        StringsManager.onBoardingTopButton(currentIndex),
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: height),
+                    child: OverflowBox(
+                      maxWidth: height < 850 ? 700 : 800,
+                      maxHeight: height < 850 ? 700 : 800,
+                      child: Container(
+                        width: 800, // fixed diameter = minRadius * 2
+                        height: 800,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Theme.of(context).colorScheme.primaryContainer,
                         ),
                       ),
-                      RichText(
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              style: Theme.of(context).textTheme.titleLarge,
-                              text: StringsManager.onBoardingTitle1(
-                                currentIndex,
-                              ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 40.0),
+                    child: SizedBox(
+                      width: 400,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        spacing: SizesManager.dPadding,
+                        children: [
+                          ProgressBar(
+                            progress: (0 + currentIndex * 0.2),
+                            backgroundColor: ColorsManager.secondaryLight,
+                            progressColor: ColorsManager.getAccentColor(
+                              currentIndex,
+                            ),
+                          ),
+                          RichText(
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
                               children: [
                                 TextSpan(
-                                  text: StringsManager.onBoardingTitle2(
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                  text: StringsManager.onBoardingTitle1(
                                     currentIndex,
                                   ),
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.titleLarge!.copyWith(
-                                    color: ColorsManager.getAccentColor(
-                                      currentIndex,
+                                  children: [
+                                    TextSpan(
+                                      text: StringsManager.onBoardingTitle2(
+                                        currentIndex,
+                                      ),
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.titleLarge!.copyWith(
+                                        color: ColorsManager.getAccentColor(
+                                          currentIndex,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: StringsManager.onBoardingTitle3(
-                                    currentIndex,
-                                  ),
+                                    TextSpan(
+                                      text: StringsManager.onBoardingTitle3(
+                                        currentIndex,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                          ElevatedButton(
+                            onPressed:
+                                () => setState(() {
+                                  currentIndex == 5
+                                      ? Navigator.of(context).popAndPushNamed(
+                                        NavigationManager.authenticationScreen,
+                                      )
+                                      : currentIndex++;
+                                }),
+                            style: ThemeManager.circularElevatedButtonStyle,
+                            child: SvgPicture.asset(AssetsManager.arrow2),
+                          ),
+                        ],
                       ),
-                      ElevatedButton(
-                        onPressed:
-                            () => setState(() {
-                              currentIndex == 5
-                                  ? Navigator.of(context).popAndPushNamed(
-                                    NavigationManager.authenticationScreen,
-                                  )
-                                  : currentIndex++;
-                            }),
-                        style: ThemeManager.circularElevatedButtonStyle,
-                        child: SvgPicture.asset(AssetsManager.arrow2),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
