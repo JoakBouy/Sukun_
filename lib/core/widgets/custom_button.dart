@@ -20,8 +20,8 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
+    return FractionallySizedBox(
+      widthFactor: 0.6,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ThemeManager.elevatedButtonStyle.copyWith(
@@ -30,16 +30,20 @@ class CustomButton extends StatelessWidget {
           ),
           elevation: WidgetStatePropertyAll(0),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          spacing: SizesManager.hPadding,
+          runSpacing: SizesManager.hPadding,
           children: [
             Text(
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.fade,
               text,
               style: Theme.of(context).textTheme.displaySmall?.copyWith(
                 color: color ?? ColorsManager.white,
               ),
             ),
-            const SizedBox(width: SizesManager.padding),
             SvgPicture.asset(icon),
           ],
         ),
