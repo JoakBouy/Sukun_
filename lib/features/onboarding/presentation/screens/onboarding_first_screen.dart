@@ -40,6 +40,8 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                 SvgPicture.asset(AssetsManager.getIcon(isDarkMode)),
                 Center(
                   child: RichText(
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       children: [
@@ -65,6 +67,8 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                   padding: const EdgeInsets.only(bottom: SizesManager.padding),
                   child: Center(
                     child: Text(
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       StringsManager.onBoardingFirstSubtitle,
                       style: Theme.of(context).textTheme.titleMedium,
@@ -88,6 +92,8 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                           context,
                         ).pushNamed(NavigationManager.authenticationScreen),
                     child: RichText(
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                       text: TextSpan(
                         children: [
                           TextSpan(
