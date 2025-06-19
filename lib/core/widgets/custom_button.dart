@@ -20,8 +20,9 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FractionallySizedBox(
-      widthFactor: 0.6,
+    return SizedBox(
+      height: 60,
+      width: 600,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ThemeManager.elevatedButtonStyle.copyWith(
@@ -44,7 +45,13 @@ class CustomButton extends StatelessWidget {
                 color: color ?? ColorsManager.white,
               ),
             ),
-            SvgPicture.asset(icon),
+            SvgPicture.asset(
+              icon,
+              colorFilter: ColorFilter.mode(
+                color ?? ColorsManager.white,
+                BlendMode.srcIn,
+              ),
+            ),
           ],
         ),
       ),

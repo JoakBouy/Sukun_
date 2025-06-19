@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/assets_manager.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
-import 'package:freud_ai/core/managers/theme_manager.dart';
 import 'package:freud_ai/core/widgets/back_button.dart';
+import 'package:freud_ai/core/widgets/custom_button.dart';
 import 'package:freud_ai/features/authentication/presentation/widgets/forgot_password_card.dart';
 import 'package:freud_ai/features/authentication/presentation/widgets/popup_widget.dart';
 
@@ -28,80 +26,86 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: SizesManager.padding),
-              child: CustomBackButton(),
-            ),
-            Text(
-              StringsManager.forgotPassword,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: SizesManager.padding,
-              ),
-              child: Text(
-                StringsManager.forgotPasswordSubtitle,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap:
-                      () => setState(() {
-                        selectedIndex = index;
-                      }),
-                  child: ForgotPasswordCard(
-                    iconPath: items[index].icon,
-                    title: items[index].title,
-                    selected: selectedIndex == index,
+      child: SizedBox(
+        width: 600,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 600,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: SizesManager.padding),
+                    child: CustomBackButton(),
                   ),
-                );
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: SizesManager.padding,
-              ),
-              child: ElevatedButton(
-                onPressed:
-                    () => showDialog<void>(
-                      context: context,
-                      barrierDismissible: false, // user must tap button!
-                      builder: (BuildContext context) {
-                        return const PopupWidget();
-                      },
-                    ),
-                style: ThemeManager.elevatedButtonStyle,
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      StringsManager.sendPassword,
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    const SizedBox(width: SizesManager.padding),
-                    SvgPicture.asset(
-                      AssetsManager.lock,
-                      colorFilter: ColorFilter.mode(
-                        ColorsManager.white,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                  ],
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                width: 600,
+                child: Text(
+                  StringsManager.forgotPassword,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              SizedBox(
+                width: 600,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: SizesManager.padding,
+                  ),
+                  child: Text(
+                    StringsManager.forgotPasswordSubtitle,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ),
+              ),
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 600),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: SizesManager.tinyPadding,
+                      ),
+                      child: GestureDetector(
+                        onTap:
+                            () => setState(() {
+                              selectedIndex = index;
+                            }),
+                        child: ForgotPasswordCard(
+                          iconPath: items[index].icon,
+                          title: items[index].title,
+                          selected: selectedIndex == index,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: SizesManager.padding,
+                ),
+                child: CustomButton(
+                  text: StringsManager.sendPassword,
+                  icon: AssetsManager.lock,
+                  onPressed:
+                      () => showDialog<void>(
+                        context: context,
+                        barrierDismissible: false, // user must tap button!
+                        builder: (BuildContext context) {
+                          return const PopupWidget();
+                        },
+                      ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

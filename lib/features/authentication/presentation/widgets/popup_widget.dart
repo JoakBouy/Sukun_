@@ -4,7 +4,7 @@ import 'package:freud_ai/core/managers/assets_manager.dart';
 import 'package:freud_ai/core/managers/colors_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
-import 'package:freud_ai/core/managers/theme_manager.dart';
+import 'package:freud_ai/core/widgets/custom_button.dart';
 
 class PopupWidget extends StatelessWidget {
   const PopupWidget({super.key});
@@ -65,27 +65,10 @@ class PopupWidget extends StatelessWidget {
             ),
           ),
           actions: <Widget>[
-            ElevatedButton(
+            CustomButton(
+              text: StringsManager.resendPassword,
+              icon: AssetsManager.lock,
               onPressed: () => Navigator.of(context).pop(),
-              style: ThemeManager.elevatedButtonStyle,
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    StringsManager.resendPassword,
-                    style: Theme.of(context).textTheme.displaySmall,
-                  ),
-                  const SizedBox(width: SizesManager.padding),
-                  SvgPicture.asset(
-                    AssetsManager.lock,
-                    colorFilter: ColorFilter.mode(
-                      ColorsManager.white,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                ],
-              ),
             ),
           ],
         ),

@@ -76,13 +76,20 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                   ),
                 ),
                 SvgPicture.asset(AssetsManager.getOnboarding(isDarkMode, 0)),
-                CustomButton(
-                  text: StringsManager.getStarted,
-                  onPressed:
-                      () => context.pushNamedTransition(
-                        routeName: NavigationManager.onboardingCarouselScreen,
-                        type: PageTransitionType.sharedAxisHorizontal,
-                      ),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 600),
+                  child: FractionallySizedBox(
+                    widthFactor: 0.6,
+                    child: CustomButton(
+                      text: StringsManager.getStarted,
+                      onPressed:
+                          () => context.pushNamedTransition(
+                            routeName:
+                                NavigationManager.onboardingCarouselScreen,
+                            type: PageTransitionType.sharedAxisHorizontal,
+                          ),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: SizesManager.padding),
