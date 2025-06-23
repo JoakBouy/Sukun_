@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
 import 'package:freud_ai/core/managers/colors_manager.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
-import 'package:freud_ai/features/onboarding/presentation/widgets/progressbar.dart';
+import 'package:freud_ai/features/onboarding/presentation/widgets/bottom_navigation.dart';
 import 'package:freud_ai/features/onboarding/presentation/widgets/morphing_svg.dart';
 
 class OnboardingCarouselScreen extends StatefulWidget {
@@ -19,11 +17,9 @@ class OnboardingCarouselScreen extends StatefulWidget {
 class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
   int currentIndex = 1;
   late String isDarkMode;
-  late double height;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    height = MediaQuery.of(context).size.height;
     isDarkMode =
         MediaQuery.of(context).platformBrightness == Brightness.dark
             ? 'dark'
@@ -66,90 +62,16 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
                   ),
                 ),
               ),
-              Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: height),
-                    child: OverflowBox(
-                      maxWidth: height < 850 ? 700 : 800,
-                      maxHeight: height < 850 ? 700 : 800,
-                      child: Container(
-                        width: 800, // fixed diameter = minRadius * 2
-                        height: 800,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context).colorScheme.primaryContainer,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 40.0),
-                    child: SizedBox(
-                      width: 400,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: SizesManager.dPadding,
-                        children: [
-                          ProgressBar(
-                            progress: (0 + currentIndex * 0.2),
-                            backgroundColor: ColorsManager.secondaryLight,
-                            progressColor: ColorsManager.getAccentColor(
-                              currentIndex,
-                            ),
-                          ),
-                          RichText(
-                            maxLines: 4,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                  text: StringsManager.onBoardingTitle1(
-                                    currentIndex,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                      text: StringsManager.onBoardingTitle2(
-                                        currentIndex,
-                                      ),
-                                      style: Theme.of(
-                                        context,
-                                      ).textTheme.titleLarge!.copyWith(
-                                        color: ColorsManager.getAccentColor(
-                                          currentIndex,
-                                        ),
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: StringsManager.onBoardingTitle3(
-                                        currentIndex,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed:
-                                () => setState(() {
-                                  currentIndex == 5
-                                      ? Navigator.of(context).popAndPushNamed(
-                                        NavigationManager.authenticationScreen,
-                                      )
-                                      : currentIndex++;
-                                }),
-                            style: ThemeManager.circularElevatedButtonStyle,
-                            child: SvgPicture.asset(AssetsManager.arrow2),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+              BottomNavigation(
+                currentIndex: currentIndex,
+                onTap:
+                    () => setState(() {
+                      currentIndex == 5
+                          ? Navigator.of(context).popAndPushNamed(
+                            NavigationManager.authenticationScreen,
+                          )
+                          : currentIndex++;
+                    }),
               ),
             ],
           ),
