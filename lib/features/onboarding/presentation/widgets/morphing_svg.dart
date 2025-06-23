@@ -18,6 +18,7 @@ class MorphingSvg extends StatefulWidget {
 
 class MorphingSvgState extends State<MorphingSvg> {
   late int _previousIndex;
+  late Size size;
 
   @override
   void initState() {
@@ -37,16 +38,29 @@ class MorphingSvgState extends State<MorphingSvg> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    size = MediaQuery.sizeOf(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 500),
       switchInCurve: Curves.easeIn,
       switchOutCurve: Curves.easeOut,
-      child: SizedBox(
+      child: Padding(
         key: ValueKey<int>(widget.currentIndex),
-        child: SvgPicture.asset(
-          AssetsManager.getOnboarding(widget.isDarkMode, widget.currentIndex),
-          allowDrawingOutsideViewBox: false,
+        padding: EdgeInsets.only(bottom: size.height / 3.3),
+        child: OverflowBox(
+          alignment: Alignment.bottomCenter,
+          maxWidth: size.width * 2,
+          maxHeight: size.height * 2,
+          child: SvgPicture.asset(
+            fit: BoxFit.fitWidth,
+            AssetsManager.getOnboarding(widget.isDarkMode, widget.currentIndex),
+            allowDrawingOutsideViewBox: false,
+          ),
         ),
       ),
     );

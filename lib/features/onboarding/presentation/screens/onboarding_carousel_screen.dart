@@ -52,34 +52,19 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
         body: Padding(
           padding: const EdgeInsets.only(top: SizesManager.padding),
           child: Stack(
+            alignment: Alignment.topCenter,
             children: [
-              Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 80.0),
-                    child: OverflowBox(
-                      alignment: Alignment.topCenter,
-                      maxWidth: height < 880 ? 1100 : 1350,
-                      maxHeight: height < 880 ? 1100 : 1350,
-                      child: MorphingSvg(
-                        currentIndex: currentIndex,
-                        isDarkMode: isDarkMode,
-                      ),
-                    ),
+              MorphingSvg(currentIndex: currentIndex, isDarkMode: isDarkMode),
+              Padding(
+                padding: const EdgeInsets.all(SizesManager.dhPadding),
+                child: OutlinedButton(
+                  onPressed: () {},
+                  style: ThemeManager.outlinedButtonStyle,
+                  child: Text(
+                    StringsManager.onBoardingTopButton(currentIndex),
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(SizesManager.dhPadding),
-                    child: OutlinedButton(
-                      onPressed: () {},
-                      style: ThemeManager.outlinedButtonStyle,
-                      child: Text(
-                        StringsManager.onBoardingTopButton(currentIndex),
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
               Stack(
                 alignment: Alignment.bottomCenter,
