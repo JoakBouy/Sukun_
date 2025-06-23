@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:freud_ai/core/managers/colors_manager.dart';
@@ -5,7 +7,9 @@ import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(enabled: !kReleaseMode, builder: (context) => const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -30,6 +34,8 @@ class MyApp extends StatelessWidget {
       child: Container(
         color: backColor,
         child: MaterialApp(
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
           debugShowCheckedModeBanner: false,
           title: 'freud UI Kit',
           theme: isDarkMode ? ThemeManager.darkTheme : ThemeManager.lightTheme,
