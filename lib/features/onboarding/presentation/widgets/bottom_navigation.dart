@@ -35,11 +35,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
         Padding(
           padding: EdgeInsets.only(top: size.height),
           child: OverflowBox(
-            maxWidth: size.height < 850 ? 700 : 800,
-            maxHeight: size.height < 850 ? 700 : 800,
+            maxWidth: size.width * 1.8 > 1000 ? 1000 : size.width * 1.8,
+            maxHeight: size.height,
             child: Container(
-              width: 800, // fixed diameter = minRadius * 2
-              height: 800,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Theme.of(context).colorScheme.primaryContainer,
@@ -48,12 +46,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40.0),
+          padding: EdgeInsets.all(size.height * 0.1 * size.aspectRatio),
           child: SizedBox(
-            width: 400,
+            width: size.width - 40,
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              spacing: SizesManager.dPadding,
+              spacing: size.height * 0.05 * size.aspectRatio,
               children: [
                 ProgressBar(
                   progress: (0 + widget.currentIndex * 0.2),
