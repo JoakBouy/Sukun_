@@ -74,7 +74,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     Center(
                       child: Padding(
                         padding: EdgeInsets.only(
-                          top: height * 0.25,
+                          top: 220,
                           bottom: SizesManager.dPadding,
                         ),
                         child: Text(
@@ -237,6 +237,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 40),
                   ],
                 ),
               ),

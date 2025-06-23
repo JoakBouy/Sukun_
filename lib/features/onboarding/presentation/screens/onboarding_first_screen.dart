@@ -79,7 +79,7 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 600),
                   child: FractionallySizedBox(
-                    widthFactor: 0.6,
+                    widthFactor: 0.65,
                     child: CustomButton(
                       text: StringsManager.getStarted,
                       onPressed:

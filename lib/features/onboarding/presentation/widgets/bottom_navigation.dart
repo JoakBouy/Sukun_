@@ -33,7 +33,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       alignment: Alignment.bottomCenter,
       children: [
         Padding(
-          padding: EdgeInsets.only(top: size.height),
+          padding: EdgeInsets.only(top: size.height - 40),
           child: OverflowBox(
             maxWidth: size.width * 1.8 > 1000 ? 1000 : size.width * 1.8,
             maxHeight: size.height,

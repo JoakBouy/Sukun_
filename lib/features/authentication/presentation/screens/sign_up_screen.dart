@@ -73,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Center(
                       child: Padding(
                         padding: EdgeInsets.only(
-                          top: height * 0.25,
+                          top: 220,
                           bottom: SizesManager.dPadding,
                         ),
                         child: Text(
@@ -223,6 +223,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 40),
                   ],
                 ),
               ),
