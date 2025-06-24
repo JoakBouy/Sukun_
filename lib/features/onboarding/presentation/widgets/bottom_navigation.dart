@@ -32,15 +32,19 @@ class _BottomNavigationState extends State<BottomNavigation> {
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
-        Padding(
-          padding: EdgeInsets.only(top: size.height - 40),
-          child: OverflowBox(
-            maxWidth: size.width * 1.8 > 1000 ? 1000 : size.width * 1.8,
-            maxHeight: size.height,
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Theme.of(context).colorScheme.primaryContainer,
+        OverflowBox(
+          alignment: Alignment.bottomCenter,
+          maxWidth: size.width * 2,
+          child: ClipRect(
+            child: Align(
+              alignment: Alignment.topCenter,
+              heightFactor: 0.5,
+              child: Container(
+                width: size.width * 2,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                ),
               ),
             ),
           ),

@@ -48,7 +48,7 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
         body: Padding(
           padding: const EdgeInsets.only(top: SizesManager.padding),
           child: Stack(
-            alignment: Alignment.topCenter,
+            alignment: Alignment.bottomCenter,
             children: [
               MorphingSvg(currentIndex: currentIndex, isDarkMode: isDarkMode),
               SafeArea(
