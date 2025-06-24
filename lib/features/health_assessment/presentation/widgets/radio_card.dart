@@ -74,14 +74,23 @@ class _RadioCardState extends State<RadioCard> {
                   ),
                 ),
                 const SizedBox(width: SizesManager.hPadding),
-                Text(
-                  widget.title,
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontSize: SizesManager.smallText2,
-                    color:
-                        selected
-                            ? Colors.white
-                            : Theme.of(context).colorScheme.onPrimaryContainer,
+                SizedBox(
+                  width: MediaQuery.sizeOf(context).width * 0.5,
+                  child: Wrap(
+                    children: [
+                      Text(
+                        widget.title,
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          fontSize: SizesManager.smallText2,
+                          color:
+                              selected
+                                  ? Colors.white
+                                  : Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimaryContainer,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
