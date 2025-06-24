@@ -19,7 +19,7 @@ class ForgotPasswordCard extends StatelessWidget {
     return Card(
       elevation: !selected ? 0 : 6,
       shadowColor: Theme.of(context).extension<CustomColors>()!.green,
-      color: Theme.of(context).colorScheme.onSurface,
+      color: Theme.of(context).colorScheme.primaryContainer,
       shape: RoundedRectangleBorder(
         side:
             !selected

@@ -24,88 +24,90 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
-      child: SizedBox(
-        width: 600,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 600,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: SizesManager.padding),
-                    child: CustomBackButton(),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
+        child: SizedBox(
+          width: 600,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 600,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: SizesManager.padding),
+                      child: CustomBackButton(),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 600,
-                child: Text(
-                  StringsManager.forgotPassword,
-                  style: Theme.of(context).textTheme.titleLarge,
+                SizedBox(
+                  width: 600,
+                  child: Text(
+                    StringsManager.forgotPassword,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 600,
-                child: Padding(
+                SizedBox(
+                  width: 600,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: SizesManager.padding,
+                    ),
+                    child: Text(
+                      StringsManager.forgotPasswordSubtitle,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 600),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: SizesManager.tinyPadding,
+                        ),
+                        child: GestureDetector(
+                          onTap:
+                              () => setState(() {
+                                selectedIndex = index;
+                              }),
+                          child: ForgotPasswordCard(
+                            iconPath: items[index].icon,
+                            title: items[index].title,
+                            selected: selectedIndex == index,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: SizesManager.padding,
                   ),
-                  child: Text(
-                    StringsManager.forgotPasswordSubtitle,
-                    style: Theme.of(context).textTheme.bodyLarge,
+                  child: CustomButton(
+                    text: StringsManager.sendPassword,
+                    icon: AssetsManager.lock,
+                    onPressed:
+                        () => showDialog<void>(
+                          context: context,
+                          barrierDismissible: false, // user must tap button!
+                          builder: (BuildContext context) {
+                            return const PopupWidget();
+                          },
+                        ),
                   ),
                 ),
-              ),
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 600),
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: items.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: SizesManager.tinyPadding,
-                      ),
-                      child: GestureDetector(
-                        onTap:
-                            () => setState(() {
-                              selectedIndex = index;
-                            }),
-                        child: ForgotPasswordCard(
-                          iconPath: items[index].icon,
-                          title: items[index].title,
-                          selected: selectedIndex == index,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: SizesManager.padding,
-                ),
-                child: CustomButton(
-                  text: StringsManager.sendPassword,
-                  icon: AssetsManager.lock,
-                  onPressed:
-                      () => showDialog<void>(
-                        context: context,
-                        barrierDismissible: false, // user must tap button!
-                        builder: (BuildContext context) {
-                          return const PopupWidget();
-                        },
-                      ),
-                ),
-              ),
-              SizedBox(height: 20),
-            ],
+                SizedBox(height: 20),
+              ],
+            ),
           ),
         ),
       ),

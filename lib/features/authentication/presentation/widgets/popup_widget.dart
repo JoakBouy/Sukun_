@@ -29,7 +29,7 @@ class PopupWidget extends StatelessWidget {
               horizontal: SizesManager.padding,
               vertical: SizesManager.padding - 4,
             ),
-            backgroundColor: Theme.of(context).colorScheme.onSurface,
+            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
             title: SvgPicture.asset(AssetsManager.forgotPassword(isDarkMode)),
             content: SingleChildScrollView(
               child: ListBody(

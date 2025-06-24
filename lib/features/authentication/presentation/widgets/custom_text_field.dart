@@ -78,13 +78,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
               widget.iconPath,
               fit: BoxFit.scaleDown,
               colorFilter: ColorFilter.mode(
-                Theme.of(context).extension<CustomColors>()!.activeIconColor,
+                Theme.of(context).colorScheme.onSurface,
                 BlendMode.srcIn,
               ),
             ),
           ),
           filled: true,
-          fillColor: Theme.of(context).colorScheme.onPrimaryContainer,
+          fillColor: Theme.of(context).colorScheme.primaryContainer,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
               SizesManager.circularBorderRadius,
