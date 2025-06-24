@@ -34,36 +34,43 @@ class GenderCardWidget extends StatelessWidget {
           SizesManager.cardCircularBorderRadius,
         ),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        spacing: 0,
+      child: Stack(
+        alignment: Alignment.topRight,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(SizesManager.padding + 2),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  isMale ? StringsManager.male : StringsManager.female,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontSize: 18,
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 0,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(SizesManager.padding + 2),
+                child: SizedBox(
+                  height: 140,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        isMale ? StringsManager.male : StringsManager.female,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontSize: 18,
+                          color:
+                              Theme.of(context).colorScheme.onPrimaryContainer,
+                        ),
+                      ),
+                      SvgPicture.asset(
+                        isMale
+                            ? AssetsManager.maleIcon
+                            : AssetsManager.femaleIcon,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).colorScheme.onPrimaryContainer,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 70.0),
-                  child: SvgPicture.asset(
-                    isMale ? AssetsManager.maleIcon : AssetsManager.femaleIcon,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).colorScheme.onPrimaryContainer,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
           ClipRRect(
             borderRadius: BorderRadius.only(
@@ -73,6 +80,8 @@ class GenderCardWidget extends StatelessWidget {
               ),
             ),
             child: SvgPicture.asset(
+              height: 180,
+              width: MediaQuery.sizeOf(context).width / 1.65,
               isMale
                   ? AssetsManager.getMale(isDarkTheme)
                   : AssetsManager.getFemale(isDarkTheme),
