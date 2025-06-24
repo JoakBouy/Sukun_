@@ -9,7 +9,11 @@ import 'package:freud_ai/core/managers/theme_manager.dart';
 
 void main() {
   runApp(
-    DevicePreview(enabled: !kReleaseMode, builder: (context) => const MyApp()),
+    DevicePreview(
+      defaultDevice: Devices.ios.iPhone16ProMax,
+      enabled: !kReleaseMode,
+      builder: (context) => const MyApp(),
+    ),
   );
 }
 
