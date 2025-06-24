@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'freud UI Kit',
         theme: isDarkMode ? ThemeManager.darkTheme : ThemeManager.lightTheme,
+        themeAnimationCurve: Curves.bounceInOut,
         initialRoute: NavigationManager.onboardingScreen,
         routes: NavigationManager.routes,
       ),

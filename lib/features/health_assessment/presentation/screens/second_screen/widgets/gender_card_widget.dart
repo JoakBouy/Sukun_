@@ -53,8 +53,7 @@ class GenderCardWidget extends StatelessWidget {
                         isMale ? StringsManager.male : StringsManager.female,
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontSize: 18,
-                          color:
-                              Theme.of(context).colorScheme.onPrimaryContainer,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                       SvgPicture.asset(
@@ -62,7 +61,7 @@ class GenderCardWidget extends StatelessWidget {
                             ? AssetsManager.maleIcon
                             : AssetsManager.femaleIcon,
                         colorFilter: ColorFilter.mode(
-                          Theme.of(context).colorScheme.onPrimaryContainer,
+                          Theme.of(context).colorScheme.onSurface,
                           BlendMode.srcIn,
                         ),
                       ),
