@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 
 class RadioCard extends StatefulWidget {
@@ -33,7 +33,7 @@ class _RadioCardState extends State<RadioCard> {
       child: Card(
         color:
             selected
-                ? ColorsManager.green
+                ? Theme.of(context).extension<CustomColors>()!.green
                 : Theme.of(context).colorScheme.primaryContainer,
         shape: RoundedRectangleBorder(
           side: BorderSide(
@@ -69,7 +69,13 @@ class _RadioCardState extends State<RadioCard> {
                 SvgPicture.asset(
                   widget.icon,
                   colorFilter: ColorFilter.mode(
-                    selected ? Colors.white : ColorsManager.onBackground,
+                    selected
+                        ? Theme.of(
+                          context,
+                        ).extension<CustomColors>()!.activeIconColor
+                        : Theme.of(
+                          context,
+                        ).extension<CustomColors>()!.iconColor,
                     BlendMode.srcIn,
                   ),
                 ),

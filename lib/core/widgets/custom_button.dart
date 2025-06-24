@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/assets_manager.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
 
@@ -27,7 +27,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         style: ThemeManager.elevatedButtonStyle.copyWith(
           backgroundColor: WidgetStatePropertyAll(
-            color?.withAlpha(60) ?? ColorsManager.primary,
+            color?.withAlpha(60) ?? Theme.of(context).colorScheme.primary,
           ),
           elevation: WidgetStatePropertyAll(0),
         ),
@@ -42,13 +42,14 @@ class CustomButton extends StatelessWidget {
               overflow: TextOverflow.fade,
               text,
               style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                color: color ?? ColorsManager.white,
+                color:
+                    color ?? Theme.of(context).colorScheme.onPrimaryContainer,
               ),
             ),
             SvgPicture.asset(
               icon,
               colorFilter: ColorFilter.mode(
-                color ?? ColorsManager.white,
+                color ?? Theme.of(context).colorScheme.onPrimaryContainer,
                 BlendMode.srcIn,
               ),
             ),

@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 
 class ThemeManager {
+  // Light Theme data
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
     colorScheme: ColorScheme.light(
-      primary: ColorsManager.primary,
-      secondary: ColorsManager.secondary,
-      primaryContainer: ColorsManager.white,
-      onPrimaryContainer: ColorsManager.primary,
-      secondaryContainer: ColorsManager.primaryContainer,
-      onSecondaryContainer: ColorsManager.onPrimaryContainer,
-      onSurface: ColorsManager.primary,
-      onPrimaryFixed: ColorsManager.lightGreen,
+      primary: CustomColors.light().primary,
+      secondary: CustomColors.light().secondary,
+      primaryContainer: CustomColors.light().primaryContainer,
+      onPrimaryContainer: CustomColors.light().onPrimaryContainer,
+      surface: CustomColors.light().background,
+      onSurface: CustomColors.light().onBackground,
     ),
-    scaffoldBackgroundColor: ColorsManager.backgroundLight,
+    scaffoldBackgroundColor: CustomColors.light().background,
     fontFamily: StringsManager.fontFamily,
     textTheme: TextTheme(
-      titleLarge: titleTheme.copyWith(color: ColorsManager.primary),
+      titleLarge: titleTheme.copyWith(color: CustomColors.light().primary),
       titleMedium: subtitleTheme,
       titleSmall: titleSmallTheme,
       bodySmall: smallTextTheme,
@@ -32,100 +31,93 @@ class ThemeManager {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: ColorsManager.white,
-        backgroundColor: ColorsManager.primary, // Your custom dark theme color
+        foregroundColor: CustomColors.light().primaryContainer,
+        backgroundColor: CustomColors.light().primary,
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        side: const BorderSide(color: ColorsManager.onBackground),
+        side: BorderSide(color: CustomColors.light().onBackground),
       ),
     ),
+    extensions: <ThemeExtension<dynamic>>[CustomColors.light()],
   );
 
+  // Dark Theme data
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    primaryColor: ColorsManager.primaryLight,
     colorScheme: ColorScheme.dark(
-      primary: ColorsManager.primaryLight,
-      secondary: ColorsManager.secondaryLight,
-      primaryContainer: ColorsManager.onBackgroundDark,
-      onPrimaryContainer: ColorsManager.white,
-      secondaryContainer: ColorsManager.primaryContainerDark,
-      onSecondaryContainer: ColorsManager.onPrimaryContainerDark,
-      onSurface: ColorsManager.white,
-      onPrimaryFixed: ColorsManager.darkGreen,
+      primary: CustomColors.dark().primary,
+      secondary: CustomColors.dark().secondary,
+      primaryContainer: CustomColors.dark().primaryContainer,
+      onPrimaryContainer: CustomColors.dark().onPrimaryContainer,
+      surface: CustomColors.dark().background,
+      onSurface: CustomColors.dark().onBackground,
     ),
-    scaffoldBackgroundColor: ColorsManager.backgroundDark,
+    scaffoldBackgroundColor: CustomColors.dark().background,
     fontFamily: StringsManager.fontFamily,
     textTheme: TextTheme(
       titleLarge: titleTheme,
-      titleMedium: subtitleTheme.copyWith(color: ColorsManager.secondaryLight),
-      titleSmall: titleSmallTheme.copyWith(color: ColorsManager.white),
-      bodySmall: smallTextTheme.copyWith(color: ColorsManager.onBackground),
-      labelLarge: labelLarge.copyWith(color: ColorsManager.onBackground),
-      labelMedium: labelMedium.copyWith(color: ColorsManager.white),
-      labelSmall: labelSmall.copyWith(color: ColorsManager.white),
-      displayMedium: displayMedium.copyWith(color: ColorsManager.white),
+      titleMedium: subtitleTheme,
+      titleSmall: titleSmallTheme,
+      bodySmall: smallTextTheme,
+      labelLarge: labelLarge,
+      labelMedium: labelMedium,
+      labelSmall: labelSmall,
+      displayMedium: displayMedium,
       displaySmall: displaySmall,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: ColorsManager.white,
-        backgroundColor:
-            ColorsManager.primaryLight, // Your custom dark theme color
+        foregroundColor: CustomColors.dark().onBackground,
+        backgroundColor: CustomColors.dark().primary,
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        side: const BorderSide(width: 1.4, color: ColorsManager.white),
+        side: BorderSide(width: 1.4, color: CustomColors.dark().onBackground),
       ),
     ),
+    extensions: <ThemeExtension<dynamic>>[CustomColors.dark()],
   );
+
+  // Text Styles
   static const TextStyle titleTheme = TextStyle(
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.title,
   );
   static const TextStyle titleSmallTheme = TextStyle(
-    color: ColorsManager.primary,
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.titleSmall,
   );
   static const TextStyle subtitleTheme = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: SizesManager.subTitle,
-    color: ColorsManager.secondary,
   );
   static const TextStyle displayMedium = TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: SizesManager.displayMedium,
-    color: ColorsManager.primary,
   );
   static const TextStyle displaySmall = TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: SizesManager.buttonText,
-    color: ColorsManager.white,
   );
   static const TextStyle smallTextTheme = TextStyle(
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.smallText,
-    color: ColorsManager.secondary,
   );
   static const TextStyle labelLarge = TextStyle(
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.subTitle,
-    color: ColorsManager.secondary,
   );
   static const TextStyle labelMedium = TextStyle(
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.smallText2,
-    color: ColorsManager.primary,
   );
   static const TextStyle labelSmall = TextStyle(
     fontWeight: FontWeight.w900,
     fontSize: SizesManager.smallText,
-    color: ColorsManager.primary,
   );
   static ButtonStyle outlinedButtonStyle = OutlinedButton.styleFrom(
     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),

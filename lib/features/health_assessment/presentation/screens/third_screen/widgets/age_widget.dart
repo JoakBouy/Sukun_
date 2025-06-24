@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/core/helpers/scale_helper.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 
 class AgeWidget extends StatelessWidget {
   const AgeWidget({super.key, required this.controller});
@@ -30,13 +29,15 @@ class AgeWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(200),
                         side: BorderSide(
-                          color: ColorsManager.green.withAlpha(80),
+                          color: Theme.of(
+                            context,
+                          ).extension<CustomColors>()!.green.withAlpha(80),
                           width: 4,
                           strokeAlign: BorderSide.strokeAlignOutside,
                         ),
                       ),
                       elevation: 0,
-                      color: ColorsManager.green,
+                      color: Theme.of(context).extension<CustomColors>()!.green,
                       child: Center(
                         child: Text(
                           (index + 1).toString(),

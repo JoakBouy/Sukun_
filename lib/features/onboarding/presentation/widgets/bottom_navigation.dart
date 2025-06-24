@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/helpers/scale_helper.dart';
 import 'package:freud_ai/core/managers/assets_manager.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
-import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
 import 'package:freud_ai/features/onboarding/presentation/widgets/progressbar.dart';
@@ -30,6 +29,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    final Color accentColor = getAccentColor(widget.currentIndex, context);
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
@@ -64,10 +64,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 children: [
                   ProgressBar(
                     progress: (0 + widget.currentIndex * 0.2),
-                    backgroundColor: ColorsManager.secondaryLight,
-                    progressColor: ColorsManager.getAccentColor(
-                      widget.currentIndex,
-                    ),
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                    progressColor: accentColor,
                   ),
                   RichText(
                     maxLines: 4,
@@ -85,13 +83,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
                               text: StringsManager.onBoardingTitle2(
                                 widget.currentIndex,
                               ),
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleLarge!.copyWith(
-                                color: ColorsManager.getAccentColor(
-                                  widget.currentIndex,
-                                ),
-                              ),
+                              style: Theme.of(context).textTheme.titleLarge!
+                                  .copyWith(color: accentColor),
                             ),
                             TextSpan(
                               text: StringsManager.onBoardingTitle3(
@@ -116,4 +109,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
       ],
     );
   }
+}
+
+getAccentColor(final int index, final BuildContext context) {
+  final List<Color> accentColors = [
+    Theme.of(context).extension<CustomColors>()!.greenAccent,
+    Theme.of(context).extension<CustomColors>()!.orangeAccent,
+    Theme.of(context).extension<CustomColors>()!.greyAccent,
+    Theme.of(context).extension<CustomColors>()!.yellowAccent,
+    Theme.of(context).extension<CustomColors>()!.violetAccent,
+  ];
+  return accentColors[index - 1];
 }

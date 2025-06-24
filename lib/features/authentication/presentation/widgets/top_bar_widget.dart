@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/assets_manager.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 
 class TopBar extends StatelessWidget {
@@ -19,7 +19,7 @@ class TopBar extends StatelessWidget {
         height: 800,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: ColorsManager.green,
+          color: Theme.of(context).extension<CustomColors>()!.green,
         ),
         child: Padding(
           padding: const EdgeInsets.only(bottom: SizesManager.dhPadding),

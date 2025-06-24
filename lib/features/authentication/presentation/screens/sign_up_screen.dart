@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freud_ai/core/managers/assets_manager.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
@@ -155,9 +155,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: SvgPicture.asset(
                               AssetsManager.facebook,
                               colorFilter: ColorFilter.mode(
-                                isDarkMode == 'dark'
-                                    ? ColorsManager.white
-                                    : ColorsManager.primary,
+                                Theme.of(context).colorScheme.onSurface,
                                 BlendMode.srcIn,
                               ),
                             ),
@@ -168,9 +166,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: SvgPicture.asset(
                               AssetsManager.google,
                               colorFilter: ColorFilter.mode(
-                                isDarkMode == 'dark'
-                                    ? ColorsManager.white
-                                    : ColorsManager.primary,
+                                Theme.of(context).colorScheme.onSurface,
                                 BlendMode.srcIn,
                               ),
                             ),
@@ -181,9 +177,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: SvgPicture.asset(
                               AssetsManager.instagram,
                               colorFilter: ColorFilter.mode(
-                                isDarkMode == 'dark'
-                                    ? ColorsManager.white
-                                    : ColorsManager.primary,
+                                Theme.of(context).colorScheme.onSurface,
                                 BlendMode.srcIn,
                               ),
                             ),
@@ -211,7 +205,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       style: Theme.of(
                                         context,
                                       ).textTheme.bodySmall!.copyWith(
-                                        color: ColorsManager.orange,
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).extension<CustomColors>()!.orange,
                                         decoration: TextDecoration.underline,
                                       ),
                                     ),

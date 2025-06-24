@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/assets_manager.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 
 class CustomBackButton extends StatelessWidget {
@@ -9,10 +9,7 @@ class CustomBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color color =
-        Theme.of(context).brightness == Brightness.dark
-            ? ColorsManager.onBackground
-            : ColorsManager.primary;
+    final Color color = Theme.of(context).colorScheme.onSurface;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: SizesManager.dPadding),
       child: GestureDetector(

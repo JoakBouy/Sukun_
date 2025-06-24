@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 
 class ForgotPasswordCard extends StatelessWidget {
@@ -16,20 +16,17 @@ class ForgotPasswordCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Card(
       elevation: !selected ? 0 : 6,
-      shadowColor: ColorsManager.green,
-      color: isDarkMode ? ColorsManager.onBackgroundDark : ColorsManager.white,
+      shadowColor: Theme.of(context).extension<CustomColors>()!.green,
+      color: Theme.of(context).colorScheme.onSurface,
       shape: RoundedRectangleBorder(
         side:
             !selected
                 ? BorderSide.none
                 : BorderSide(
                   color:
-                      isDarkMode
-                          ? ColorsManager.darkGreen
-                          : ColorsManager.lightGreen,
+                      Theme.of(context).extension<CustomColors>()!.greenAccent,
                   width: 4,
                   strokeAlign: BorderSide.strokeAlignOutside,
                 ),

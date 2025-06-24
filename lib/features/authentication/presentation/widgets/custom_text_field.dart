@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -42,7 +42,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       width: 600,
       child: TextFormField(
         onChanged: (value) => widget.controller.text = value,
-        cursorColor: ColorsManager.green,
+        cursorColor: Theme.of(context).extension<CustomColors>()!.green,
         cursorWidth: 3.0,
         cursorHeight: 16.0,
         cursorOpacityAnimates: true,
@@ -63,9 +63,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         widget.leadingIcon!,
                         fit: BoxFit.scaleDown,
                         colorFilter: ColorFilter.mode(
-                          widget.isDarkMode == 'dark'
-                              ? ColorsManager.iconDark
-                              : ColorsManager.onBackground,
+                          Theme.of(
+                            context,
+                          ).extension<CustomColors>()!.iconColor,
                           BlendMode.srcIn,
                         ),
                       ),
@@ -78,18 +78,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
               widget.iconPath,
               fit: BoxFit.scaleDown,
               colorFilter: ColorFilter.mode(
-                widget.isDarkMode == 'dark'
-                    ? ColorsManager.white
-                    : ColorsManager.primary,
+                Theme.of(context).extension<CustomColors>()!.activeIconColor,
                 BlendMode.srcIn,
               ),
             ),
           ),
           filled: true,
-          fillColor:
-              widget.isDarkMode == 'dark'
-                  ? ColorsManager.onBackgroundDark
-                  : ColorsManager.white,
+          fillColor: Theme.of(context).colorScheme.onPrimaryContainer,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
               SizesManager.circularBorderRadius,
@@ -104,10 +99,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               SizesManager.circularBorderRadius,
             ),
             borderSide: BorderSide(
-              color:
-                  widget.isDarkMode == 'dark'
-                      ? ColorsManager.darkGreen
-                      : ColorsManager.lightGreen,
+              color: Theme.of(context).extension<CustomColors>()!.greenAccent,
               width: 4.0,
             ),
           ),
@@ -115,13 +107,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
             borderRadius: BorderRadius.circular(
               SizesManager.circularBorderRadius,
             ),
-            borderSide: BorderSide(color: ColorsManager.orange, width: 4.0),
+            borderSide: BorderSide(
+              color: Theme.of(context).extension<CustomColors>()!.orange,
+              width: 4.0,
+            ),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
               SizesManager.circularBorderRadius,
             ),
-            borderSide: BorderSide(color: ColorsManager.orange, width: 4.0),
+            borderSide: BorderSide(
+              color: Theme.of(context).extension<CustomColors>()!.orange,
+              width: 4.0,
+            ),
           ),
         ),
         obscureText: showPassword ?? false,

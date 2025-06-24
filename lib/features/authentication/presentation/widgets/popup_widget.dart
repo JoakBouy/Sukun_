@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freud_ai/core/managers/assets_manager.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
@@ -30,10 +29,7 @@ class PopupWidget extends StatelessWidget {
               horizontal: SizesManager.padding,
               vertical: SizesManager.padding - 4,
             ),
-            backgroundColor:
-                isDarkMode == 'dark'
-                    ? ColorsManager.onBackgroundDark
-                    : ColorsManager.white,
+            backgroundColor: Theme.of(context).colorScheme.onSurface,
             title: SvgPicture.asset(AssetsManager.forgotPassword(isDarkMode)),
             content: SingleChildScrollView(
               child: ListBody(
@@ -67,11 +63,15 @@ class PopupWidget extends StatelessWidget {
             onPressed: () => Navigator.of(context).pop(),
             style: ElevatedButton.styleFrom(
               shape: CircleBorder(),
-              backgroundColor: ColorsManager.white,
+              backgroundColor: Colors.white,
               padding: EdgeInsets.all(20),
             ),
             child: SizedBox(
-              child: Icon(Icons.close, color: ColorsManager.primary, size: 32),
+              child: Icon(
+                Icons.close,
+                color: Theme.of(context).colorScheme.primary,
+                size: 32,
+              ),
             ),
           ),
         ),

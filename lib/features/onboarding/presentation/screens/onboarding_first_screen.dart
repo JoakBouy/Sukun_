@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:freud_ai/core/managers/assets_manager.dart';
-import 'package:freud_ai/core/managers/colors_manager.dart';
+import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
@@ -51,8 +51,11 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                           children: [
                             TextSpan(
                               text: StringsManager.onBoardingFirstTitle2,
-                              style: Theme.of(context).textTheme.titleLarge!
-                                  .copyWith(color: ColorsManager.primaryLight),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.titleLarge!.copyWith(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                             ),
                             TextSpan(
                               text: StringsManager.onBoardingFirstTitle3,
@@ -112,7 +115,10 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                                 style: Theme.of(
                                   context,
                                 ).textTheme.bodySmall!.copyWith(
-                                  color: ColorsManager.orange,
+                                  color:
+                                      Theme.of(
+                                        context,
+                                      ).extension<CustomColors>()!.orange,
                                   decoration: TextDecoration.underline,
                                 ),
                               ),
