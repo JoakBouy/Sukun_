@@ -1,5 +1,5 @@
 class StringsManager {
-  static const String fontFamily = 'Urbanist';
+  static const String fontFamily = 'urbanist';
   static const String onBoardingFirstTitle1 = 'Welcome to the ultimate';
   static const String onBoardingFirstTitle2 = ' freud ';
   static const String onBoardingFirstTitle3 = 'UI Kit!';
