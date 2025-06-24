@@ -47,7 +47,16 @@ class ForgotPasswordCard extends StatelessWidget {
               ),
               child: SvgPicture.asset(iconPath, fit: BoxFit.fill),
             ),
-            Text(title, style: Theme.of(context).textTheme.displayMedium),
+            SizedBox(
+              width:
+                  MediaQuery.sizeOf(context).width * 0.4 > 400
+                      ? 400
+                      : MediaQuery.sizeOf(context).width * 0.4,
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+            ),
           ],
         ),
       ),
