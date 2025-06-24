@@ -46,12 +46,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(size.height * 0.1 * size.aspectRatio),
+          padding: const EdgeInsets.only(bottom: 20.0),
           child: SizedBox(
-            width: size.width - 40,
+            height: size.height / 2.8 < 280 ? 280 : size.height / 2.8,
+            width: size.width * 1.6 > 1000 ? 500 : size.width * 0.9,
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              spacing: size.height * 0.05 * size.aspectRatio,
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: (size.height / 3) * 0.1,
               children: [
                 ProgressBar(
                   progress: (0 + widget.currentIndex * 0.2),

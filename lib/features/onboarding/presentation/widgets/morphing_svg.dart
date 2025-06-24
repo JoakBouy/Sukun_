@@ -51,13 +51,17 @@ class MorphingSvgState extends State<MorphingSvg> {
       switchOutCurve: Curves.easeOut,
       child: Padding(
         key: ValueKey<int>(widget.currentIndex),
-        padding: EdgeInsets.only(bottom: size.height / 3.3),
+        padding: EdgeInsets.only(
+          bottom: size.height / 3.3 < 280 ? 280 : size.height / 3.3,
+        ),
         child: OverflowBox(
           alignment: Alignment.bottomCenter,
           maxWidth: size.width * 2,
           maxHeight: size.height * 2,
           child: SvgPicture.asset(
-            fit: BoxFit.fitWidth,
+            height: size.height / 1.6,
+            width: size.width * 1.2,
+            fit: BoxFit.fill,
             AssetsManager.getOnboarding(widget.isDarkMode, widget.currentIndex),
             allowDrawingOutsideViewBox: false,
           ),

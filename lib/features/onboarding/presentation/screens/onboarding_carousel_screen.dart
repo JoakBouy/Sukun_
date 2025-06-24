@@ -51,10 +51,9 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
             alignment: Alignment.topCenter,
             children: [
               MorphingSvg(currentIndex: currentIndex, isDarkMode: isDarkMode),
-              Padding(
-                padding: const EdgeInsets.all(SizesManager.dhPadding),
+              SafeArea(
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: null,
                   style: ThemeManager.outlinedButtonStyle,
                   child: Text(
                     StringsManager.onBoardingTopButton(currentIndex),
