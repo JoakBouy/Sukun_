@@ -121,22 +121,22 @@ class ThemeManager {
   );
   static TextStyle smallTextTheme = TextStyle(
     color: CustomColors.light().onPrimaryContainer,
-    fontWeight: FontWeight.w800,
+    fontWeight: FontWeight.w700,
     fontSize: SizesManager.smallText,
   );
   static TextStyle labelLarge = TextStyle(
     color: CustomColors.light().onPrimaryContainer,
-    fontWeight: FontWeight.w800,
-    fontSize: SizesManager.subTitle,
+    fontWeight: FontWeight.w700,
+    fontSize: SizesManager.subTitle - 1,
   );
   static TextStyle labelMedium = TextStyle(
     color: CustomColors.light().onBackground,
-    fontWeight: FontWeight.w800,
+    fontWeight: FontWeight.w700,
     fontSize: SizesManager.smallText2,
   );
   static TextStyle labelSmall = TextStyle(
-    color: CustomColors.light().onPrimaryContainer,
-    fontWeight: FontWeight.w900,
+    color: CustomColors.light().onBackground,
+    fontWeight: FontWeight.w800,
     fontSize: SizesManager.smallText,
   );
   static ButtonStyle outlinedButtonStyle = OutlinedButton.styleFrom(

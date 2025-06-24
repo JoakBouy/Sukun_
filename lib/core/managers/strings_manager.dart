@@ -65,13 +65,13 @@ class StringsManager {
       case 1:
         return 'Step One';
       case 2:
-        return 'Step two';
+        return 'Step Two';
       case 3:
-        return 'Step three';
+        return 'Step Three';
       case 4:
-        return 'Step four';
+        return 'Step Four';
       case 5:
-        return 'Step five';
+        return 'Step Five';
       default:
         return '';
     }

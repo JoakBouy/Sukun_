@@ -46,10 +46,7 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: SizesManager.padding,
-            horizontal: SizesManager.padding,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

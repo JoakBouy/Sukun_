@@ -3,14 +3,13 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
 
 void main() {
   runApp(
     DevicePreview(
-      defaultDevice: Devices.ios.iPhone16ProMax,
+      defaultDevice: Devices.ios.iPhone16Pro,
       enabled: !kReleaseMode,
       builder: (context) => const MyApp(),
     ),
