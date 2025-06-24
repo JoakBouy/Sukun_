@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:freud_ai/core/helpers/scale_helper.dart';
 import 'package:freud_ai/core/managers/assets_manager.dart';
 import 'package:freud_ai/core/managers/colors_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
@@ -51,61 +52,64 @@ class _BottomNavigationState extends State<BottomNavigation> {
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 20.0),
-          child: SizedBox(
-            height: size.height / 2.8 < 280 ? 280 : size.height / 2.8,
-            width: size.width * 1.6 > 1000 ? 500 : size.width * 0.9,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              spacing: (size.height / 3) * 0.1,
-              children: [
-                ProgressBar(
-                  progress: (0 + widget.currentIndex * 0.2),
-                  backgroundColor: ColorsManager.secondaryLight,
-                  progressColor: ColorsManager.getAccentColor(
-                    widget.currentIndex,
+          child: Transform.scale(
+            scale: ScaleHelper.calculate(size),
+            child: SizedBox(
+              height: size.height / 2.8 < 280 ? 280 : size.height / 2.8,
+              width: size.width * 1.6 > 1000 ? 500 : size.width * 0.9,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: (size.height / 3) * 0.1,
+                children: [
+                  ProgressBar(
+                    progress: (0 + widget.currentIndex * 0.2),
+                    backgroundColor: ColorsManager.secondaryLight,
+                    progressColor: ColorsManager.getAccentColor(
+                      widget.currentIndex,
+                    ),
                   ),
-                ),
-                RichText(
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        style: Theme.of(context).textTheme.titleLarge,
-                        text: StringsManager.onBoardingTitle1(
-                          widget.currentIndex,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: StringsManager.onBoardingTitle2(
-                              widget.currentIndex,
+                  RichText(
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          style: Theme.of(context).textTheme.titleLarge,
+                          text: StringsManager.onBoardingTitle1(
+                            widget.currentIndex,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: StringsManager.onBoardingTitle2(
+                                widget.currentIndex,
+                              ),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.titleLarge!.copyWith(
+                                color: ColorsManager.getAccentColor(
+                                  widget.currentIndex,
+                                ),
+                              ),
                             ),
-                            style: Theme.of(
-                              context,
-                            ).textTheme.titleLarge!.copyWith(
-                              color: ColorsManager.getAccentColor(
+                            TextSpan(
+                              text: StringsManager.onBoardingTitle3(
                                 widget.currentIndex,
                               ),
                             ),
-                          ),
-                          TextSpan(
-                            text: StringsManager.onBoardingTitle3(
-                              widget.currentIndex,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: widget.onTap,
-                  style: ThemeManager.circularElevatedButtonStyle,
-                  child: SvgPicture.asset(AssetsManager.arrow2),
-                ),
-              ],
+                  ElevatedButton(
+                    onPressed: widget.onTap,
+                    style: ThemeManager.circularElevatedButtonStyle,
+                    child: SvgPicture.asset(AssetsManager.arrow2),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
