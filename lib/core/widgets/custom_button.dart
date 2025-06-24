@@ -41,15 +41,14 @@ class CustomButton extends StatelessWidget {
               maxLines: 2,
               overflow: TextOverflow.fade,
               text,
-              style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                color:
-                    color ?? Theme.of(context).colorScheme.onPrimaryContainer,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.displaySmall?.copyWith(color: color ?? Colors.white),
             ),
             SvgPicture.asset(
               icon,
               colorFilter: ColorFilter.mode(
-                color ?? Theme.of(context).colorScheme.onPrimaryContainer,
+                color ?? Colors.white,
                 BlendMode.srcIn,
               ),
             ),

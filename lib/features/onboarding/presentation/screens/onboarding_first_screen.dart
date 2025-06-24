@@ -54,7 +54,10 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                               style: Theme.of(
                                 context,
                               ).textTheme.titleLarge!.copyWith(
-                                color: Theme.of(context).colorScheme.primary,
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).extension<CustomColors>()!.lightPrimary,
                               ),
                             ),
                             TextSpan(

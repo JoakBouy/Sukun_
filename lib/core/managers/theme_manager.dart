@@ -59,13 +59,25 @@ class ThemeManager {
     fontFamily: StringsManager.fontFamily,
     textTheme: TextTheme(
       titleLarge: titleTheme,
-      titleMedium: subtitleTheme,
-      titleSmall: titleSmallTheme,
-      bodySmall: smallTextTheme,
-      labelLarge: labelLarge,
-      labelMedium: labelMedium,
-      labelSmall: labelSmall,
-      displayMedium: displayMedium,
+      titleMedium: subtitleTheme.copyWith(
+        color: CustomColors.dark().onBackground,
+      ),
+      titleSmall: titleSmallTheme.copyWith(
+        color: CustomColors.dark().onBackground,
+      ),
+      bodySmall: smallTextTheme.copyWith(
+        color: CustomColors.dark().onPrimaryContainer,
+      ),
+      labelLarge: labelLarge.copyWith(
+        color: CustomColors.dark().onPrimaryContainer,
+      ),
+      labelMedium: labelMedium.copyWith(
+        color: CustomColors.dark().onBackground,
+      ),
+      labelSmall: labelSmall.copyWith(color: CustomColors.dark().onBackground),
+      displayMedium: displayMedium.copyWith(
+        color: CustomColors.dark().onBackground,
+      ),
       displaySmall: displaySmall,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -87,35 +99,43 @@ class ThemeManager {
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.title,
   );
-  static const TextStyle titleSmallTheme = TextStyle(
+  static TextStyle titleSmallTheme = TextStyle(
+    color: CustomColors.light().primary,
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.titleSmall,
   );
-  static const TextStyle subtitleTheme = TextStyle(
+  static TextStyle subtitleTheme = TextStyle(
+    color: CustomColors.light().onPrimaryContainer,
     fontWeight: FontWeight.w500,
     fontSize: SizesManager.subTitle,
   );
-  static const TextStyle displayMedium = TextStyle(
+  static TextStyle displayMedium = TextStyle(
+    color: CustomColors.light().primary,
     fontWeight: FontWeight.w700,
     fontSize: SizesManager.displayMedium,
   );
-  static const TextStyle displaySmall = TextStyle(
+  static TextStyle displaySmall = TextStyle(
+    color: CustomColors.light().primaryContainer,
     fontWeight: FontWeight.w700,
     fontSize: SizesManager.buttonText,
   );
-  static const TextStyle smallTextTheme = TextStyle(
+  static TextStyle smallTextTheme = TextStyle(
+    color: CustomColors.light().onPrimaryContainer,
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.smallText,
   );
-  static const TextStyle labelLarge = TextStyle(
+  static TextStyle labelLarge = TextStyle(
+    color: CustomColors.light().onPrimaryContainer,
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.subTitle,
   );
-  static const TextStyle labelMedium = TextStyle(
+  static TextStyle labelMedium = TextStyle(
+    color: CustomColors.light().onBackground,
     fontWeight: FontWeight.w800,
     fontSize: SizesManager.smallText2,
   );
-  static const TextStyle labelSmall = TextStyle(
+  static TextStyle labelSmall = TextStyle(
+    color: CustomColors.light().onPrimaryContainer,
     fontWeight: FontWeight.w900,
     fontSize: SizesManager.smallText,
   );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/core/managers/custom_colors.dart';
+import 'package:freud_ai/core/helpers/accent_color_helper.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
@@ -41,7 +41,10 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: AccentColorHelper.getAccentColor(
+          currentIndex - 1,
+          context,
+        ),
         body: Padding(
           padding: const EdgeInsets.only(top: SizesManager.padding),
           child: Stack(

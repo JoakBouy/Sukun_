@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomColors extends ThemeExtension<CustomColors> {
   final Color primary;
+  final Color lightPrimary;
   final Color primaryContainer;
   final Color onPrimaryContainer;
   final Color secondary;
@@ -22,6 +23,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
 
   const CustomColors({
     required this.primary,
+    required this.lightPrimary,
     required this.primaryContainer,
     required this.onPrimaryContainer,
     required this.secondary,
@@ -39,6 +41,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   @override
   ThemeExtension<CustomColors> copyWith({
     Color? primary,
+    Color? lightPrimary,
     Color? primaryContainer,
     Color? onPrimaryContainer,
     Color? secondary,
@@ -53,6 +56,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? violetAccent,
   }) => CustomColors(
     primary: primary ?? this.primary,
+    lightPrimary: lightPrimary ?? this.lightPrimary,
     primaryContainer: primaryContainer ?? this.primaryContainer,
     onPrimaryContainer: onPrimaryContainer ?? this.onPrimaryContainer,
     secondary: secondary ?? this.secondary,
@@ -77,6 +81,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     }
     return CustomColors(
       primary: Color.lerp(primary, other.primary, t)!,
+      lightPrimary: Color.lerp(lightPrimary, other.lightPrimary, t)!,
       primaryContainer:
           Color.lerp(primaryContainer, other.primaryContainer, t)!,
       onPrimaryContainer:
@@ -96,6 +101,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
 
   static CustomColors light() => const CustomColors(
     primary: Color(0xFF4F3422),
+    lightPrimary: Color(0xFF926247),
     primaryContainer: Color(0xFFFFFFFF),
     onPrimaryContainer: Color(0xFF736B66),
     secondary: Color(0xFF9db068),
@@ -112,6 +118,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
 
   static CustomColors dark() => const CustomColors(
     primary: Color(0xFF926247),
+    lightPrimary: Color(0xFFC0A091),
     primaryContainer: Color(0xFF372315),
     onPrimaryContainer: Color(0xFFC9C7C5),
     secondary: Color(0xFF9db068),
