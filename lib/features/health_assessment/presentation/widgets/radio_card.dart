@@ -39,7 +39,7 @@ class _RadioCardState extends State<RadioCard> {
           side: BorderSide(
             color:
                 selected
-                    ? Theme.of(context).colorScheme.onPrimaryFixed
+                    ? Theme.of(context).colorScheme.secondary.withAlpha(60)
                     : Theme.of(context).colorScheme.primaryContainer,
             width: selected ? 4 : 0,
             strokeAlign: BorderSide.strokeAlignOutside,
@@ -94,9 +94,7 @@ class _RadioCardState extends State<RadioCard> {
                           color:
                               selected
                                   ? Colors.white
-                                  : Theme.of(
-                                    context,
-                                  ).colorScheme.onPrimaryContainer,
+                                  : Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                     ],

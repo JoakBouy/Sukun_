@@ -64,7 +64,7 @@ class AgeWidget extends StatelessWidget {
                             height: 0.8,
                             color: Theme.of(
                               context,
-                            ).colorScheme.secondary.withAlpha(
+                            ).extension<CustomColors>()!.iconColor.withAlpha(
                               (constraints.maxHeight / 0.6).toInt().clamp(
                                 0,
                                 255,
