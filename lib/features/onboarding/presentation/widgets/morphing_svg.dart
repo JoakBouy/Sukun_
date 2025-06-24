@@ -49,22 +49,13 @@ class MorphingSvgState extends State<MorphingSvg> {
       duration: const Duration(milliseconds: 500),
       switchInCurve: Curves.easeIn,
       switchOutCurve: Curves.easeOut,
-      child: Padding(
-        key: ValueKey<int>(widget.currentIndex),
-        padding: EdgeInsets.only(
-          bottom: size.height / 3.3 < 280 ? 280 : size.height / 3.3,
-        ),
-        child: OverflowBox(
-          alignment: Alignment.bottomCenter,
-          maxWidth: size.width * 2,
-          maxHeight: size.height * 2,
-          child: SvgPicture.asset(
-            height: size.height / 1.6,
-            width: size.width * 1.2,
-            fit: BoxFit.fill,
-            AssetsManager.getOnboarding(widget.isDarkMode, widget.currentIndex),
-            allowDrawingOutsideViewBox: false,
-          ),
+      child: OverflowBox(
+        alignment: Alignment.topCenter,
+        maxWidth: size.width * 2,
+        child: SvgPicture.asset(
+          width: size.height * 0.9,
+          AssetsManager.getOnboarding(widget.isDarkMode, widget.currentIndex),
+          allowDrawingOutsideViewBox: false,
         ),
       ),
     );

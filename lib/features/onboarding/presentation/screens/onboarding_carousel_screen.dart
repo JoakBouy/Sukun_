@@ -48,7 +48,7 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
         body: Padding(
           padding: const EdgeInsets.only(top: SizesManager.padding),
           child: Stack(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.topCenter,
             children: [
               MorphingSvg(currentIndex: currentIndex, isDarkMode: isDarkMode),
               SafeArea(
@@ -61,16 +61,19 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
                   ),
                 ),
               ),
-              BottomNavigation(
-                currentIndex: currentIndex,
-                onTap:
-                    () => setState(() {
-                      currentIndex == 5
-                          ? Navigator.of(context).popAndPushNamed(
-                            NavigationManager.authenticationScreen,
-                          )
-                          : currentIndex++;
-                    }),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: BottomNavigation(
+                  currentIndex: currentIndex,
+                  onTap:
+                      () => setState(() {
+                        currentIndex == 5
+                            ? Navigator.of(context).popAndPushNamed(
+                              NavigationManager.authenticationScreen,
+                            )
+                            : currentIndex++;
+                      }),
+                ),
               ),
             ],
           ),
