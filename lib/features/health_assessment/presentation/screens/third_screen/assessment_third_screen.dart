@@ -21,20 +21,22 @@ class _AssessmentThirdScreenState extends State<AssessmentThirdScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(SizesManager.padding),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              textAlign: TextAlign.center,
-              StringsManager.assessmentTitle3,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            SizedBox(height: SizesManager.dhPadding),
-            AgeWidget(controller: _controller),
-          ],
+    return Center(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(SizesManager.padding),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                textAlign: TextAlign.center,
+                StringsManager.assessmentTitle3,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              SizedBox(height: SizesManager.dhPadding),
+              AgeWidget(controller: _controller),
+            ],
+          ),
         ),
       ),
     );

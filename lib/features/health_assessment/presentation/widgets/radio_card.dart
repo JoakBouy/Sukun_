@@ -75,7 +75,10 @@ class _RadioCardState extends State<RadioCard> {
                 ),
                 const SizedBox(width: SizesManager.hPadding),
                 SizedBox(
-                  width: MediaQuery.sizeOf(context).width * 0.5,
+                  width:
+                      MediaQuery.sizeOf(context).width * 0.5 > 400
+                          ? 400
+                          : MediaQuery.sizeOf(context).width * 0.5,
                   child: Wrap(
                     children: [
                       Text(

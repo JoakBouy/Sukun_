@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freud_ai/core/helpers/scale_helper.dart';
 import 'package:freud_ai/core/managers/colors_manager.dart';
 
 class AgeWidget extends StatelessWidget {
@@ -9,6 +10,7 @@ class AgeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 450,
+      width: 450,
       child: CarouselView.weighted(
         controller: controller,
         scrollDirection: Axis.vertical,
