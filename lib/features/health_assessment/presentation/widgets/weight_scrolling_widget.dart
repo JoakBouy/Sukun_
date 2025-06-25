@@ -13,8 +13,20 @@ class _WeightScrollingWidgetState extends State<WeightScrollingWidget> {
     initialItem: 60,
   );
   int currentWeight = 60;
-  changeWeight(int index) {
-    currentWeight = index;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(() {});
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -61,7 +73,7 @@ class _WeightScrollingWidgetState extends State<WeightScrollingWidget> {
                 builder: (context, constraints) {
                   bool isDivisible = index % 5 == 0;
                   bool isMiddle = constraints.maxWidth > 25.5;
-                  isMiddle ? changeWeight(index) : null;
+                  isMiddle ? currentWeight = index : null;
                   return Stack(
                     clipBehavior: Clip.none,
                     alignment: Alignment.bottomCenter,
