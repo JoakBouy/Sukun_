@@ -17,7 +17,7 @@ class AssessmentMainScreen extends StatefulWidget {
 
 class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
   final PageController _pageController = PageController();
-  int _currentPage = 0;
+  int _currentPage = 1;
 
   @override
   void dispose() {
@@ -32,7 +32,7 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
       appBar: customAppBar(
         theme: theme,
         title: StringsManager.assessmentTitle,
-        actions: [CountCard(count: _currentPage + 1)],
+        actions: [CountCard(count: _currentPage)],
       ),
       body: PageView(
         key: Key(_currentPage.toString()),
@@ -46,7 +46,7 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (_currentPage == 1)
+              if (_currentPage == 2)
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: SizesManager.padding,
@@ -63,7 +63,7 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                             curve: Curves.easeIn,
                           ),
                           setState(() {
-                            _currentPage <= 12 ? _currentPage += 1 : null;
+                            _currentPage < 14 ? _currentPage += 1 : null;
                           }),
                         },
                   ),
@@ -78,7 +78,10 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                         curve: Curves.easeIn,
                       ),
                       setState(() {
-                        _currentPage <= 12 ? _currentPage += 1 : null;
+                        //_currentPage + 1 < 14 ? _currentPage += 1 : null;
+
+                        // limit to currently implemented pages (4)
+                        _currentPage < 4 ? _currentPage += 1 : null;
                       }),
                     },
               ),
