@@ -5,9 +5,7 @@ import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/widgets/custom_app_bar.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
-import 'package:freud_ai/features/health_assessment/presentation/screens/first_screen/assessment_first_screen.dart';
-import 'package:freud_ai/features/health_assessment/presentation/screens/second_screen/assessment_second_screen.dart';
-import 'package:freud_ai/features/health_assessment/presentation/screens/third_screen/assessment_third_screen.dart';
+import 'package:freud_ai/features/health_assessment/presentation/screens/page_view_screen/page_view_screen.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/count_card.dart';
 
 class AssessmentMainScreen extends StatefulWidget {
@@ -37,13 +35,10 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
         actions: [CountCard(count: _currentPage + 1)],
       ),
       body: PageView(
+        key: Key(_currentPage.toString()),
         physics: NeverScrollableScrollPhysics(),
         controller: _pageController,
-        children: [
-          AssessmentFirstScreen(),
-          AssessmentSecondScreen(),
-          AssessmentThirdScreen(),
-        ],
+        children: [PageViewScreen(index: _currentPage)],
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
