@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/weight_scrolling_widget.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/weight_switcher_widget.dart';
 
 class FourthPage extends StatefulWidget {
@@ -11,6 +12,12 @@ class FourthPage extends StatefulWidget {
 class _FourthPageState extends State<FourthPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [WeightSwitcherWidget()]);
+    return Column(
+      children: [
+        WeightSwitcherWidget(),
+        SizedBox(height: 60),
+        WeightScrollingWidget(),
+      ],
+    );
   }
 }
