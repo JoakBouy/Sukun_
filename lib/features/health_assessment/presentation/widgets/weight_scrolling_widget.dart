@@ -62,7 +62,7 @@ class _WeightScrollingWidgetState extends State<WeightScrollingWidget> {
           ),
         ),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 200, maxWidth: 600),
+          constraints: const BoxConstraints(maxHeight: 200, maxWidth: 400),
           child: CarouselView.weighted(
             controller: _scrollController,
             itemSnapping: true,
@@ -73,7 +73,7 @@ class _WeightScrollingWidgetState extends State<WeightScrollingWidget> {
               return LayoutBuilder(
                 builder: (context, constraints) {
                   bool isDivisible = index % 5 == 0;
-                  bool isMiddle = constraints.maxWidth > 25.5;
+                  bool isMiddle = constraints.maxWidth > 24;
                   isMiddle ? currentWeight = index : null;
                   return Stack(
                     clipBehavior: Clip.none,
@@ -122,17 +122,23 @@ class _WeightScrollingWidgetState extends State<WeightScrollingWidget> {
                         ),
                       ),
                       if (isDivisible && !isMiddle)
-                        OverflowBox(
-                          alignment: Alignment.bottomCenter,
-                          maxWidth: 30,
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 15.0),
-                            child: Text(
-                              "$index",
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                color: theme.colorScheme.primary.withAlpha(120),
-                                fontSize: 18,
-                                overflow: TextOverflow.visible,
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 15, left: 20),
+                          child: RotatedBox(
+                            quarterTurns: 3,
+                            child: OverflowBox(
+                              alignment: Alignment.bottomLeft,
+                              maxWidth: 60,
+                              maxHeight: 100,
+                              child: Text(
+                                "$index",
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: theme.colorScheme.primary.withAlpha(
+                                    120,
+                                  ),
+                                  fontSize: 18,
+                                  overflow: TextOverflow.visible,
+                                ),
                               ),
                             ),
                           ),
@@ -150,27 +156,7 @@ class _WeightScrollingWidgetState extends State<WeightScrollingWidget> {
 }
 
 final List<int> _flexWeights = [
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
+  ...List.filled(11, 1),
   2,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
+  ...List.filled(11, 1),
 ];
