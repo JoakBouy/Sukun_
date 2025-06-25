@@ -105,7 +105,7 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     female: 'assets/images/svgs/light/female.svg',
   );
   static const CustomAssets dark = CustomAssets(
-    icon: 'assets/images/svgs/light/dark.svg',
+    icon: 'assets/images/svgs/dark/icon.svg',
     onboarding0: 'assets/images/svgs/dark/onboarding_0.svg',
     onboarding1: 'assets/images/svgs/dark/onboarding_1.svg',
     onboarding2: 'assets/images/svgs/dark/onboarding_2.svg',

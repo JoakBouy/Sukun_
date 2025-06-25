@@ -8,7 +8,7 @@ class CustomBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color color = Theme.of(context).colorScheme.onSurface;
+    final ThemeData theme = Theme.of(context);
     return GestureDetector(
       onTap: () => Navigator.pop(context),
       child: Container(
@@ -18,12 +18,15 @@ class CustomBackButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             SizesManager.circularBorderRadius,
           ),
-          border: Border.all(color: color, width: 1.3),
+          border: Border.all(color: theme.colorScheme.onSurface, width: 1.3),
         ),
         child: SvgPicture.asset(
-          Theme.of(context).extension<CustomAssets>()!.back,
+          theme.extension<CustomAssets>()!.back,
           fit: BoxFit.scaleDown,
-          colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(
+            theme.colorScheme.onSurface,
+            BlendMode.srcIn,
+          ),
         ),
       ),
     );

@@ -29,9 +29,10 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: customAppBar(
-        context,
+        theme: theme,
         title: StringsManager.assessmentTitle,
         actions: [CountCard(count: _currentPage + 1)],
       ),
@@ -57,8 +58,8 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                   ),
                   child: CustomButton(
                     text: StringsManager.assessment2SkipButton,
-                    icon: Theme.of(context).extension<CustomAssets>()!.X,
-                    color: Theme.of(context).extension<CustomColors>()!.green,
+                    icon: theme.extension<CustomAssets>()!.X,
+                    color: theme.extension<CustomColors>()!.green,
                     onPressed:
                         () => {
                           _pageController.animateToPage(

@@ -10,7 +10,6 @@ class CustomTextField extends StatefulWidget {
   final String iconPath;
   final bool? isObscure;
   final String? leadingIcon;
-  final String isDarkMode;
   final String? Function(String?)? validator;
   const CustomTextField({
     super.key,
@@ -20,7 +19,6 @@ class CustomTextField extends StatefulWidget {
     required this.iconPath,
     this.isObscure,
     this.leadingIcon,
-    required this.isDarkMode,
     this.validator,
   });
 
@@ -38,15 +36,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return SizedBox(
       width: 600,
       child: TextFormField(
         onChanged: (value) => widget.controller.text = value,
-        cursorColor: Theme.of(context).extension<CustomColors>()!.green,
+        cursorColor: theme.extension<CustomColors>()!.green,
         cursorWidth: 3.0,
         cursorHeight: 16.0,
         cursorOpacityAnimates: true,
-        style: Theme.of(context).textTheme.labelLarge,
+        style: theme.textTheme.labelLarge,
         decoration: InputDecoration(
           suffixIcon:
               widget.leadingIcon != null
@@ -63,9 +62,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         widget.leadingIcon!,
                         fit: BoxFit.scaleDown,
                         colorFilter: ColorFilter.mode(
-                          Theme.of(
-                            context,
-                          ).extension<CustomColors>()!.iconColor,
+                          showPassword!
+                              ? theme.extension<CustomColors>()!.iconColor
+                              : theme.colorScheme.onSurface,
                           BlendMode.srcIn,
                         ),
                       ),
@@ -78,13 +77,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
               widget.iconPath,
               fit: BoxFit.scaleDown,
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.onSurface,
+                theme.colorScheme.onSurface,
                 BlendMode.srcIn,
               ),
             ),
           ),
           filled: true,
-          fillColor: Theme.of(context).colorScheme.primaryContainer,
+          fillColor: theme.colorScheme.primaryContainer,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
               SizesManager.circularBorderRadius,
@@ -92,14 +91,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
             borderSide: BorderSide.none,
           ),
           hintText: widget.hintText,
-          hintStyle: Theme.of(context).textTheme.labelLarge,
-          labelStyle: Theme.of(context).textTheme.labelLarge,
+          hintStyle: theme.textTheme.labelLarge,
+          labelStyle: theme.textTheme.labelLarge,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
               SizesManager.circularBorderRadius,
             ),
             borderSide: BorderSide(
-              color: Theme.of(context).extension<CustomColors>()!.greenAccent,
+              color: theme.extension<CustomColors>()!.greenAccent,
               width: 4.0,
             ),
           ),
@@ -108,7 +107,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               SizesManager.circularBorderRadius,
             ),
             borderSide: BorderSide(
-              color: Theme.of(context).extension<CustomColors>()!.orange,
+              color: theme.extension<CustomColors>()!.orange,
               width: 4.0,
             ),
           ),
@@ -117,7 +116,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               SizesManager.circularBorderRadius,
             ),
             borderSide: BorderSide(
-              color: Theme.of(context).extension<CustomColors>()!.orange,
+              color: theme.extension<CustomColors>()!.orange,
               width: 4.0,
             ),
           ),

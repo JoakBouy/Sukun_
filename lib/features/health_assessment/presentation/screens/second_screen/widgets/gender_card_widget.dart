@@ -15,17 +15,16 @@ class GenderCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String isDarkTheme =
-        Theme.of(context).brightness == Brightness.dark ? "dark" : "light";
+    final ThemeData theme = Theme.of(context);
     return Card(
-      color: Theme.of(context).colorScheme.primaryContainer,
+      color: theme.colorScheme.primaryContainer,
       shape: RoundedRectangleBorder(
         side: BorderSide(
           color:
               isSelected
-                  ? isDarkTheme == "dark"
+                  ? theme.brightness == Brightness.dark
                       ? Colors.white.withAlpha(120)
-                      : Theme.of(context).colorScheme.primary.withAlpha(60)
+                      : theme.colorScheme.primary.withAlpha(60)
                   : Colors.transparent,
           width: isSelected ? 4 : 0,
           strokeAlign: BorderSide.strokeAlignOutside,
@@ -51,9 +50,9 @@ class GenderCardWidget extends StatelessWidget {
                     children: [
                       Text(
                         isMale ? StringsManager.male : StringsManager.female,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        style: theme.textTheme.titleLarge?.copyWith(
                           fontSize: 18,
-                          color: Theme.of(context).colorScheme.onSurface,
+                          color: theme.colorScheme.onSurface,
                         ),
                       ),
                       SvgPicture.asset(
@@ -65,7 +64,7 @@ class GenderCardWidget extends StatelessWidget {
                               context,
                             ).extension<CustomAssets>()!.femaleIcon,
                         colorFilter: ColorFilter.mode(
-                          Theme.of(context).colorScheme.onSurface,
+                          theme.colorScheme.onSurface,
                           BlendMode.srcIn,
                         ),
                       ),
@@ -86,8 +85,8 @@ class GenderCardWidget extends StatelessWidget {
               height: 180,
               width: MediaQuery.sizeOf(context).width / 1.65,
               isMale
-                  ? Theme.of(context).extension<CustomAssets>()!.male
-                  : Theme.of(context).extension<CustomAssets>()!.female,
+                  ? theme.extension<CustomAssets>()!.male
+                  : theme.extension<CustomAssets>()!.female,
             ),
           ),
         ],

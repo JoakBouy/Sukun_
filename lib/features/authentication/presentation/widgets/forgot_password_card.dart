@@ -16,17 +16,18 @@ class ForgotPasswordCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final Size size = MediaQuery.sizeOf(context);
     return Card(
       elevation: !selected ? 0 : 6,
-      shadowColor: Theme.of(context).extension<CustomColors>()!.green,
-      color: Theme.of(context).colorScheme.primaryContainer,
+      shadowColor: theme.extension<CustomColors>()!.green,
+      color: theme.colorScheme.primaryContainer,
       shape: RoundedRectangleBorder(
         side:
             !selected
                 ? BorderSide.none
                 : BorderSide(
-                  color:
-                      Theme.of(context).extension<CustomColors>()!.greenAccent,
+                  color: theme.extension<CustomColors>()!.greenAccent,
                   width: 4,
                   strokeAlign: BorderSide.strokeAlignOutside,
                 ),
@@ -45,14 +46,8 @@ class ForgotPasswordCard extends StatelessWidget {
               child: SvgPicture.asset(iconPath, fit: BoxFit.fill),
             ),
             SizedBox(
-              width:
-                  MediaQuery.sizeOf(context).width * 0.4 > 400
-                      ? 400
-                      : MediaQuery.sizeOf(context).width * 0.4,
-              child: Text(
-                title,
-                style: Theme.of(context).textTheme.displayMedium,
-              ),
+              width: size.width * 0.4 > 400 ? 400 : size.width * 0.4,
+              child: Text(title, style: theme.textTheme.displayMedium),
             ),
           ],
         ),

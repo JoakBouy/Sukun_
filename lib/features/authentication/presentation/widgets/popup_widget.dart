@@ -10,6 +10,7 @@ class PopupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
@@ -27,22 +28,22 @@ class PopupWidget extends StatelessWidget {
               horizontal: SizesManager.padding,
               vertical: SizesManager.padding - 4,
             ),
-            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+            backgroundColor: theme.colorScheme.primaryContainer,
             title: SvgPicture.asset(
-              Theme.of(context).extension<CustomAssets>()!.forgotPassword,
+              theme.extension<CustomAssets>()!.forgotPassword,
             ),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
                   Text(
                     StringsManager.forgetPasswordPopup1,
-                    style: Theme.of(context).textTheme.titleSmall,
+                    style: theme.textTheme.titleSmall,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: SizesManager.padding),
                     child: Text(
                       StringsManager.forgetPasswordPopup2,
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: theme.textTheme.titleMedium,
                     ),
                   ),
                 ],
@@ -51,7 +52,7 @@ class PopupWidget extends StatelessWidget {
             actions: <Widget>[
               CustomButton(
                 text: StringsManager.resendPassword,
-                icon: Theme.of(context).extension<CustomAssets>()!.lock,
+                icon: theme.extension<CustomAssets>()!.lock,
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ],
@@ -69,7 +70,7 @@ class PopupWidget extends StatelessWidget {
             child: SizedBox(
               child: Icon(
                 Icons.close,
-                color: Theme.of(context).colorScheme.primary,
+                color: theme.colorScheme.primary,
                 size: 32,
               ),
             ),

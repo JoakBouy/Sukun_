@@ -19,6 +19,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return SizedBox(
       height: 60,
       width: 600,
@@ -26,7 +27,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         style: ThemeManager.elevatedButtonStyle.copyWith(
           backgroundColor: WidgetStatePropertyAll(
-            color?.withAlpha(60) ?? Theme.of(context).colorScheme.primary,
+            color?.withAlpha(60) ?? theme.colorScheme.primary,
           ),
           elevation: WidgetStatePropertyAll(0),
         ),
@@ -40,12 +41,12 @@ class CustomButton extends StatelessWidget {
               maxLines: 2,
               overflow: TextOverflow.fade,
               text,
-              style: Theme.of(
-                context,
-              ).textTheme.displaySmall?.copyWith(color: color ?? Colors.white),
+              style: theme.textTheme.displaySmall?.copyWith(
+                color: color ?? Colors.white,
+              ),
             ),
             SvgPicture.asset(
-              icon ?? Theme.of(context).extension<CustomAssets>()!.arrow,
+              icon ?? theme.extension<CustomAssets>()!.arrow,
               colorFilter: ColorFilter.mode(
                 color ?? Colors.white,
                 BlendMode.srcIn,

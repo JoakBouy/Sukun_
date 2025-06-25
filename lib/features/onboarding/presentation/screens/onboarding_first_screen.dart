@@ -8,25 +8,11 @@ import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 
-class OnboardingFirstScreen extends StatefulWidget {
+class OnboardingFirstScreen extends StatelessWidget {
   const OnboardingFirstScreen({super.key});
   @override
-  State<OnboardingFirstScreen> createState() => _OnboardingFirstScreenState();
-}
-
-class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
-  late String isDarkMode;
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    isDarkMode =
-        MediaQuery.of(context).platformBrightness == Brightness.dark
-            ? 'dark'
-            : 'light';
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
       body: Center(
         child: Padding(
@@ -37,9 +23,7 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(
-                  Theme.of(context).extension<CustomAssets>()!.icon,
-                ),
+                SvgPicture.asset(theme.extension<CustomAssets>()!.icon),
                 Center(
                   child: RichText(
                     maxLines: 3,
@@ -48,18 +32,16 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: theme.textTheme.titleLarge,
                           text: StringsManager.onBoardingFirstTitle1,
                           children: [
                             TextSpan(
                               text: StringsManager.onBoardingFirstTitle2,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleLarge!.copyWith(
+                              style: theme.textTheme.titleLarge!.copyWith(
                                 color:
-                                    Theme.of(
-                                      context,
-                                    ).extension<CustomColors>()!.lightPrimary,
+                                    theme
+                                        .extension<CustomColors>()!
+                                        .lightPrimary,
                               ),
                             ),
                             TextSpan(
@@ -79,13 +61,11 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       StringsManager.onBoardingFirstSubtitle,
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: theme.textTheme.titleMedium,
                     ),
                   ),
                 ),
-                SvgPicture.asset(
-                  Theme.of(context).extension<CustomAssets>()!.onboarding0,
-                ),
+                SvgPicture.asset(theme.extension<CustomAssets>()!.onboarding0),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 600),
                   child: FractionallySizedBox(
@@ -115,17 +95,13 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                         children: [
                           TextSpan(
                             text: StringsManager.alreadyHaveAnAccount,
-                            style: Theme.of(context).textTheme.bodySmall,
+                            style: theme.textTheme.bodySmall,
                             children: [
                               TextSpan(
                                 text: StringsManager.signIn,
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.bodySmall!.copyWith(
+                                style: theme.textTheme.bodySmall!.copyWith(
                                   color:
-                                      Theme.of(
-                                        context,
-                                      ).extension<CustomColors>()!.orange,
+                                      theme.extension<CustomColors>()!.orange,
                                   decoration: TextDecoration.underline,
                                 ),
                               ),

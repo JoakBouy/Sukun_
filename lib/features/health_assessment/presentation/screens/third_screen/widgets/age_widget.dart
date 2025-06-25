@@ -7,6 +7,7 @@ class AgeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return SizedBox(
       height: 450,
       width: 450,
@@ -29,15 +30,16 @@ class AgeWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(200),
                         side: BorderSide(
-                          color: Theme.of(
-                            context,
-                          ).extension<CustomColors>()!.green.withAlpha(80),
+                          color: theme
+                              .extension<CustomColors>()!
+                              .green
+                              .withAlpha(80),
                           width: 4,
                           strokeAlign: BorderSide.strokeAlignOutside,
                         ),
                       ),
                       elevation: 0,
-                      color: Theme.of(context).extension<CustomColors>()!.green,
+                      color: theme.extension<CustomColors>()!.green,
                       child: Center(
                         child: Text(
                           (index + 1).toString(),
@@ -62,14 +64,15 @@ class AgeWidget extends StatelessWidget {
                             ),
                             fontWeight: FontWeight.w900,
                             height: 0.8,
-                            color: Theme.of(
-                              context,
-                            ).extension<CustomColors>()!.iconColor.withAlpha(
-                              (constraints.maxHeight / 0.6).toInt().clamp(
-                                0,
-                                255,
-                              ),
-                            ),
+                            color: theme
+                                .extension<CustomColors>()!
+                                .iconColor
+                                .withAlpha(
+                                  (constraints.maxHeight / 0.6).toInt().clamp(
+                                    0,
+                                    255,
+                                  ),
+                                ),
                           ),
                         ),
                       ),

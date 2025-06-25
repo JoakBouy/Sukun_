@@ -9,6 +9,7 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return OverflowBox(
       alignment: Alignment.bottomCenter,
       maxWidth: 800,
@@ -19,12 +20,12 @@ class TopBar extends StatelessWidget {
         height: 800,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Theme.of(context).extension<CustomColors>()!.green,
+          color: theme.extension<CustomColors>()!.green,
         ),
         child: Padding(
           padding: const EdgeInsets.only(bottom: SizesManager.dhPadding),
           child: SvgPicture.asset(
-            Theme.of(context).extension<CustomAssets>()!.iconWhite,
+            theme.extension<CustomAssets>()!.iconWhite,
             fit: BoxFit.cover,
           ),
         ),

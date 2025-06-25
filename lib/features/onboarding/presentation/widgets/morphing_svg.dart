@@ -3,14 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 
 class MorphingSvg extends StatefulWidget {
-  final String isDarkMode;
   final int currentIndex;
 
-  const MorphingSvg({
-    super.key,
-    required this.isDarkMode,
-    required this.currentIndex,
-  });
+  const MorphingSvg({super.key, required this.currentIndex});
 
   @override
   MorphingSvgState createState() => MorphingSvgState();
@@ -45,6 +40,7 @@ class MorphingSvgState extends State<MorphingSvg> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 500),
       switchInCurve: Curves.easeIn,
@@ -54,7 +50,7 @@ class MorphingSvgState extends State<MorphingSvg> {
         maxWidth: size.width * 2,
         child: SvgPicture.asset(
           width: size.height * 0.9,
-          getSvg(widget.currentIndex, context),
+          getSvg(widget.currentIndex, theme),
           allowDrawingOutsideViewBox: false,
         ),
       ),
@@ -62,18 +58,18 @@ class MorphingSvgState extends State<MorphingSvg> {
   }
 }
 
-getSvg(int index, BuildContext context) {
+getSvg(int index, ThemeData theme) {
   switch (index) {
     case 1:
-      return Theme.of(context).extension<CustomAssets>()!.onboarding1;
+      return theme.extension<CustomAssets>()!.onboarding1;
     case 2:
-      return Theme.of(context).extension<CustomAssets>()!.onboarding2;
+      return theme.extension<CustomAssets>()!.onboarding2;
     case 3:
-      return Theme.of(context).extension<CustomAssets>()!.onboarding3;
+      return theme.extension<CustomAssets>()!.onboarding3;
     case 4:
-      return Theme.of(context).extension<CustomAssets>()!.onboarding4;
+      return theme.extension<CustomAssets>()!.onboarding4;
     case 5:
-      return Theme.of(context).extension<CustomAssets>()!.onboarding5;
+      return theme.extension<CustomAssets>()!.onboarding5;
     default:
       return '';
   }

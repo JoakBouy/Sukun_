@@ -19,18 +19,19 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     final List<Choice> items = [
       Choice(
         StringsManager.forgotPasswordListTitle1,
-        Theme.of(context).extension<CustomAssets>()!.p_2fa,
+        theme.extension<CustomAssets>()!.p_2fa,
       ),
       Choice(
         StringsManager.forgotPasswordListTitle2,
-        Theme.of(context).extension<CustomAssets>()!.password,
+        theme.extension<CustomAssets>()!.password,
       ),
       Choice(
         StringsManager.forgotPasswordListTitle3,
-        Theme.of(context).extension<CustomAssets>()!.googleAuth,
+        theme.extension<CustomAssets>()!.googleAuth,
       ),
     ];
     return Scaffold(
@@ -60,7 +61,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     width: 600,
                     child: Text(
                       StringsManager.forgotPassword,
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style: theme.textTheme.titleLarge,
                     ),
                   ),
                   SizedBox(
@@ -71,7 +72,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       ),
                       child: Text(
                         StringsManager.forgotPasswordSubtitle,
-                        style: Theme.of(context).textTheme.bodyLarge,
+                        style: theme.textTheme.bodyLarge,
                       ),
                     ),
                   ),
@@ -114,7 +115,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
           child: CustomButton(
             text: StringsManager.sendPassword,
-            icon: Theme.of(context).extension<CustomAssets>()!.lock,
+            icon: theme.extension<CustomAssets>()!.lock,
             onPressed:
                 () => showDialog<void>(
                   context: context,

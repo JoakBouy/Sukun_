@@ -16,6 +16,7 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Center(
       child: SingleChildScrollView(
         child: Padding(
@@ -26,7 +27,7 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
               Text(
                 textAlign: TextAlign.center,
                 StringsManager.assessmentTitle1,
-                style: Theme.of(context).textTheme.titleLarge,
+                style: theme.textTheme.titleLarge,
               ),
               SizedBox(height: SizesManager.dhPadding),
               ConstrainedBox(
@@ -36,10 +37,7 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
                     RadioCard(
                       value: 1,
                       title: StringsManager.assessmentTitle1Radio1,
-                      icon:
-                          Theme.of(
-                            context,
-                          ).extension<CustomAssets>()!.solidHeart,
+                      icon: theme.extension<CustomAssets>()!.solidHeart,
                       groupValue: _groupValue,
                       onChanged: (val) {
                         setState(() {
@@ -50,10 +48,7 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
                     RadioCard(
                       value: 2,
                       title: StringsManager.assessmentTitle1Radio2,
-                      icon:
-                          Theme.of(
-                            context,
-                          ).extension<CustomAssets>()!.solidRobot,
+                      icon: theme.extension<CustomAssets>()!.solidRobot,
                       groupValue: _groupValue,
                       onChanged: (val) {
                         setState(() {
@@ -64,10 +59,7 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
                     RadioCard(
                       value: 3,
                       title: StringsManager.assessmentTitle1Radio3,
-                      icon:
-                          Theme.of(
-                            context,
-                          ).extension<CustomAssets>()!.solidFlag,
+                      icon: theme.extension<CustomAssets>()!.solidFlag,
                       groupValue: _groupValue,
                       onChanged: (val) {
                         setState(() {
@@ -78,10 +70,7 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
                     RadioCard(
                       value: 4,
                       title: StringsManager.assessmentTitle1Radio4,
-                      icon:
-                          Theme.of(
-                            context,
-                          ).extension<CustomAssets>()!.solidHappy,
+                      icon: theme.extension<CustomAssets>()!.solidHappy,
                       groupValue: _groupValue,
                       onChanged: (val) {
                         setState(() {
@@ -92,10 +81,7 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
                     RadioCard(
                       value: 5,
                       title: StringsManager.assessmentTitle1Radio5,
-                      icon:
-                          Theme.of(
-                            context,
-                          ).extension<CustomAssets>()!.solidMobile,
+                      icon: theme.extension<CustomAssets>()!.solidMobile,
                       groupValue: _groupValue,
                       onChanged: (val) {
                         setState(() {

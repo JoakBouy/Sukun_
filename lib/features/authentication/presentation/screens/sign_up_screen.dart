@@ -19,19 +19,17 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  late String isDarkMode;
-  late final double height = MediaQuery.of(context).size.height;
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final passwordConformationController = TextEditingController();
+
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    isDarkMode =
-        MediaQuery.of(context).platformBrightness == Brightness.dark
-            ? 'dark'
-            : 'light';
+  dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    passwordConformationController.dispose();
+    super.dispose();
   }
 
   void submitForm() {
@@ -47,15 +45,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   @override
-  dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    passwordConformationController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
@@ -78,17 +69,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: Text(
                           StringsManager.authenticationTitle2,
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: theme.textTheme.titleLarge,
                         ),
                       ),
                     ),
                     TextFieldTitleWidget(title: StringsManager.email),
                     CustomTextField(
                       controller: emailController,
-                      iconPath:
-                          Theme.of(context).extension<CustomAssets>()!.email,
+                      iconPath: theme.extension<CustomAssets>()!.email,
                       hintText: StringsManager.email2,
-                      isDarkMode: isDarkMode,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Email is required';
@@ -102,12 +91,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     CustomTextField(
                       controller: passwordController,
                       hintText: StringsManager.password2,
-                      iconPath:
-                          Theme.of(context).extension<CustomAssets>()!.lock,
-                      isDarkMode: isDarkMode,
+                      iconPath: theme.extension<CustomAssets>()!.lock,
                       isObscure: true,
-                      leadingIcon:
-                          Theme.of(context).extension<CustomAssets>()!.eye,
+                      leadingIcon: theme.extension<CustomAssets>()!.eye,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Password is required';
@@ -121,12 +107,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     CustomTextField(
                       controller: passwordConformationController,
                       hintText: StringsManager.confirmPassword2,
-                      iconPath:
-                          Theme.of(context).extension<CustomAssets>()!.lock,
-                      isDarkMode: isDarkMode,
+                      iconPath: theme.extension<CustomAssets>()!.lock,
                       isObscure: true,
-                      leadingIcon:
-                          Theme.of(context).extension<CustomAssets>()!.eye,
+                      leadingIcon: theme.extension<CustomAssets>()!.eye,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Password Conformation is required';
@@ -158,11 +141,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onPressed: () {},
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
-                              Theme.of(
-                                context,
-                              ).extension<CustomAssets>()!.facebook,
+                              theme.extension<CustomAssets>()!.facebook,
                               colorFilter: ColorFilter.mode(
-                                Theme.of(context).colorScheme.onSurface,
+                                theme.colorScheme.onSurface,
                                 BlendMode.srcIn,
                               ),
                             ),
@@ -171,11 +152,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onPressed: () {},
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
-                              Theme.of(
-                                context,
-                              ).extension<CustomAssets>()!.google,
+                              theme.extension<CustomAssets>()!.google,
                               colorFilter: ColorFilter.mode(
-                                Theme.of(context).colorScheme.onSurface,
+                                theme.colorScheme.onSurface,
                                 BlendMode.srcIn,
                               ),
                             ),
@@ -184,11 +163,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onPressed: () {},
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
-                              Theme.of(
-                                context,
-                              ).extension<CustomAssets>()!.instagram,
+                              theme.extension<CustomAssets>()!.instagram,
                               colorFilter: ColorFilter.mode(
-                                Theme.of(context).colorScheme.onSurface,
+                                theme.colorScheme.onSurface,
                                 BlendMode.srcIn,
                               ),
                             ),
@@ -209,7 +186,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               children: [
                                 TextSpan(
                                   text: StringsManager.alreadyHaveAnAccount,
-                                  style: Theme.of(context).textTheme.bodySmall,
+                                  style: theme.textTheme.bodySmall,
                                   children: [
                                     TextSpan(
                                       text: StringsManager.signIn,

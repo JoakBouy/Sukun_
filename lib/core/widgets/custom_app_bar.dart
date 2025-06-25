@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/widgets/back_button.dart';
 
-PreferredSizeWidget customAppBar(
-  BuildContext context, {
+PreferredSizeWidget customAppBar({
+  required ThemeData theme,
   required String title,
   List<Widget>? actions,
   double height = SizesManager.defaultAppBarHeight,
@@ -17,9 +17,9 @@ PreferredSizeWidget customAppBar(
           padding: const EdgeInsets.all(SizesManager.padding),
           child: Text(
             title,
-            style: Theme.of(
-              context,
-            ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w800),
+            style: theme.textTheme.displayMedium?.copyWith(
+              fontWeight: FontWeight.w800,
+            ),
           ),
         ),
       ],

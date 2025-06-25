@@ -16,18 +16,10 @@ class OnboardingCarouselScreen extends StatefulWidget {
 
 class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
   int currentIndex = 1;
-  late String isDarkMode;
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    isDarkMode =
-        MediaQuery.of(context).platformBrightness == Brightness.dark
-            ? 'dark'
-            : 'light';
-  }
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     // instead of handling it as multiple pages use index to change data
     return PopScope(
       canPop: currentIndex == 1 ? true : false,
@@ -43,21 +35,21 @@ class _OnboardingCarouselScreenState extends State<OnboardingCarouselScreen> {
       child: Scaffold(
         backgroundColor: AccentColorHelper.getAccentColor(
           currentIndex - 1,
-          context,
+          theme,
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: SizesManager.padding),
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
-              MorphingSvg(currentIndex: currentIndex, isDarkMode: isDarkMode),
+              MorphingSvg(currentIndex: currentIndex),
               SafeArea(
                 child: OutlinedButton(
                   onPressed: null,
                   style: ThemeManager.outlinedButtonStyle,
                   child: Text(
                     StringsManager.onBoardingTopButton(currentIndex),
-                    style: Theme.of(context).textTheme.labelMedium,
+                    style: theme.textTheme.labelMedium,
                   ),
                 ),
               ),

@@ -27,20 +27,20 @@ class _RadioCardState extends State<RadioCard> {
   @override
   Widget build(BuildContext context) {
     final bool selected = widget.groupValue == widget.value;
-
+    final ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: SizesManager.tinyPadding),
       child: Card(
         color:
             selected
-                ? Theme.of(context).extension<CustomColors>()!.green
-                : Theme.of(context).colorScheme.primaryContainer,
+                ? theme.extension<CustomColors>()!.green
+                : theme.colorScheme.primaryContainer,
         shape: RoundedRectangleBorder(
           side: BorderSide(
             color:
                 selected
-                    ? Theme.of(context).colorScheme.secondary.withAlpha(60)
-                    : Theme.of(context).colorScheme.primaryContainer,
+                    ? theme.colorScheme.secondary.withAlpha(60)
+                    : theme.colorScheme.primaryContainer,
             width: selected ? 4 : 0,
             strokeAlign: BorderSide.strokeAlignOutside,
           ),
@@ -89,12 +89,12 @@ class _RadioCardState extends State<RadioCard> {
                     children: [
                       Text(
                         widget.title,
-                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        style: theme.textTheme.titleSmall?.copyWith(
                           fontSize: SizesManager.smallText2,
                           color:
                               selected
                                   ? Colors.white
-                                  : Theme.of(context).colorScheme.onSurface,
+                                  : theme.colorScheme.onSurface,
                         ),
                       ),
                     ],

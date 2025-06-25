@@ -8,6 +8,7 @@ class CountCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.all(SizesManager.hPadding),
       child: Card(
@@ -17,9 +18,7 @@ class CountCard extends StatelessWidget {
           ),
         ),
         elevation: 0,
-        color: Theme.of(
-          context,
-        ).extension<CustomColors>()!.lightPrimary.withAlpha(60),
+        color: theme.extension<CustomColors>()!.lightPrimary.withAlpha(60),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: SizesManager.vPadding - 2,
@@ -27,8 +26,8 @@ class CountCard extends StatelessWidget {
           ),
           child: Text(
             '$count of 14',
-            style: Theme.of(context).textTheme.displaySmall?.copyWith(
-              color: Theme.of(context).extension<CustomColors>()!.lightPrimary,
+            style: theme.textTheme.displaySmall?.copyWith(
+              color: theme.extension<CustomColors>()!.lightPrimary,
               fontSize: SizesManager.font14,
               fontWeight: FontWeight.w800,
             ),

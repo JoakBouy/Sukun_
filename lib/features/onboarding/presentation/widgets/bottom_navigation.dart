@@ -29,9 +29,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     final Color accentColor = AccentColorHelper.getColor(
       widget.currentIndex - 1,
-      context,
+      theme,
     );
     return Stack(
       alignment: Alignment.bottomCenter,
@@ -47,7 +48,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 width: size.width * 2,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Theme.of(context).colorScheme.primaryContainer,
+                  color: theme.colorScheme.primaryContainer,
                 ),
               ),
             ),
@@ -67,9 +68,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 children: [
                   ProgressBar(
                     progress: (0 + widget.currentIndex * 0.2),
-                    backgroundColor: Theme.of(
-                      context,
-                    ).colorScheme.primary.withAlpha(60),
+                    backgroundColor: theme.colorScheme.primary.withAlpha(60),
                     progressColor: accentColor,
                   ),
                   RichText(
@@ -79,7 +78,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: theme.textTheme.titleLarge,
                           text: StringsManager.onBoardingTitle1(
                             widget.currentIndex,
                           ),
@@ -88,8 +87,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
                               text: StringsManager.onBoardingTitle2(
                                 widget.currentIndex,
                               ),
-                              style: Theme.of(context).textTheme.titleLarge!
-                                  .copyWith(color: accentColor),
+                              style: theme.textTheme.titleLarge!.copyWith(
+                                color: accentColor,
+                              ),
                             ),
                             TextSpan(
                               text: StringsManager.onBoardingTitle3(
@@ -105,7 +105,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     onPressed: widget.onTap,
                     style: ThemeManager.circularElevatedButtonStyle,
                     child: SvgPicture.asset(
-                      Theme.of(context).extension<CustomAssets>()!.arrow2,
+                      theme.extension<CustomAssets>()!.arrow2,
                     ),
                   ),
                 ],

@@ -21,9 +21,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode =
-        MediaQuery.of(context).platformBrightness == Brightness.dark;
-    final oppositeBrightness = isDarkMode ? Brightness.light : Brightness.dark;
+    final oppositeBrightness =
+        MediaQuery.platformBrightnessOf(context) == Brightness.dark
+            ? Brightness.light
+            : Brightness.dark;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -45,7 +46,8 @@ class MyApp extends StatelessWidget {
         builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
         title: 'freud UI Kit',
-        theme: isDarkMode ? ThemeManager.darkTheme : ThemeManager.lightTheme,
+        theme: ThemeManager.lightTheme,
+        darkTheme: ThemeManager.darkTheme,
         themeAnimationCurve: Curves.bounceInOut,
         initialRoute: NavigationManager.onboardingScreen,
         routes: NavigationManager.routes,
