@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 
@@ -58,8 +58,12 @@ class GenderCardWidget extends StatelessWidget {
                       ),
                       SvgPicture.asset(
                         isMale
-                            ? AssetsManager.maleIcon
-                            : AssetsManager.femaleIcon,
+                            ? Theme.of(
+                              context,
+                            ).extension<CustomAssets>()!.maleIcon
+                            : Theme.of(
+                              context,
+                            ).extension<CustomAssets>()!.femaleIcon,
                         colorFilter: ColorFilter.mode(
                           Theme.of(context).colorScheme.onSurface,
                           BlendMode.srcIn,
@@ -82,8 +86,8 @@ class GenderCardWidget extends StatelessWidget {
               height: 180,
               width: MediaQuery.sizeOf(context).width / 1.65,
               isMale
-                  ? AssetsManager.getMale(isDarkTheme)
-                  : AssetsManager.getFemale(isDarkTheme),
+                  ? Theme.of(context).extension<CustomAssets>()!.male
+                  : Theme.of(context).extension<CustomAssets>()!.female,
             ),
           ),
         ],

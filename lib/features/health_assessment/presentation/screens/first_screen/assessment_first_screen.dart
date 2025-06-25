@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/radio_card.dart';
@@ -36,7 +36,10 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
                     RadioCard(
                       value: 1,
                       title: StringsManager.assessmentTitle1Radio1,
-                      icon: AssetsManager.solidHeart,
+                      icon:
+                          Theme.of(
+                            context,
+                          ).extension<CustomAssets>()!.solidHeart,
                       groupValue: _groupValue,
                       onChanged: (val) {
                         setState(() {
@@ -47,7 +50,10 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
                     RadioCard(
                       value: 2,
                       title: StringsManager.assessmentTitle1Radio2,
-                      icon: AssetsManager.solidRobot,
+                      icon:
+                          Theme.of(
+                            context,
+                          ).extension<CustomAssets>()!.solidRobot,
                       groupValue: _groupValue,
                       onChanged: (val) {
                         setState(() {
@@ -58,7 +64,10 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
                     RadioCard(
                       value: 3,
                       title: StringsManager.assessmentTitle1Radio3,
-                      icon: AssetsManager.solidFlag,
+                      icon:
+                          Theme.of(
+                            context,
+                          ).extension<CustomAssets>()!.solidFlag,
                       groupValue: _groupValue,
                       onChanged: (val) {
                         setState(() {
@@ -69,7 +78,10 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
                     RadioCard(
                       value: 4,
                       title: StringsManager.assessmentTitle1Radio4,
-                      icon: AssetsManager.solidHappy,
+                      icon:
+                          Theme.of(
+                            context,
+                          ).extension<CustomAssets>()!.solidHappy,
                       groupValue: _groupValue,
                       onChanged: (val) {
                         setState(() {
@@ -80,7 +92,10 @@ class _AssessmentFirstScreenState extends State<AssessmentFirstScreen> {
                     RadioCard(
                       value: 5,
                       title: StringsManager.assessmentTitle1Radio5,
-                      icon: AssetsManager.solidMobile,
+                      icon:
+                          Theme.of(
+                            context,
+                          ).extension<CustomAssets>()!.solidMobile,
                       groupValue: _groupValue,
                       onChanged: (val) {
                         setState(() {

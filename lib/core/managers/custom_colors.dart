@@ -99,7 +99,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     );
   }
 
-  static CustomColors light() => const CustomColors(
+  static CustomColors light = const CustomColors(
     primary: Color(0xFF4F3422),
     lightPrimary: Color(0xFF926247),
     primaryContainer: Color(0xFFFFFFFF),
@@ -116,7 +116,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     violetAccent: Color(0xFFDDD1FF),
   );
 
-  static CustomColors dark() => const CustomColors(
+  static CustomColors dark = const CustomColors(
     primary: Color(0xFF926247),
     lightPrimary: Color(0xFFC0A091),
     primaryContainer: Color(0xFF372315),

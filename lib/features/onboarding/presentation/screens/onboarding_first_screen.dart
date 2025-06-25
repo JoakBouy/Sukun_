@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
@@ -37,7 +37,9 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(AssetsManager.getIcon(isDarkMode)),
+                SvgPicture.asset(
+                  Theme.of(context).extension<CustomAssets>()!.icon,
+                ),
                 Center(
                   child: RichText(
                     maxLines: 3,
@@ -81,7 +83,9 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
                     ),
                   ),
                 ),
-                SvgPicture.asset(AssetsManager.getOnboarding(isDarkMode, 0)),
+                SvgPicture.asset(
+                  Theme.of(context).extension<CustomAssets>()!.onboarding0,
+                ),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 600),
                   child: FractionallySizedBox(

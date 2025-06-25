@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/widgets/back_button.dart';
@@ -15,15 +15,24 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
-  final List<Choice> items = const [
-    Choice(StringsManager.forgotPasswordListTitle1, AssetsManager.p_2fa),
-    Choice(StringsManager.forgotPasswordListTitle2, AssetsManager.password),
-    Choice(StringsManager.forgotPasswordListTitle3, AssetsManager.googleAuth),
-  ];
   int selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
+    final List<Choice> items = [
+      Choice(
+        StringsManager.forgotPasswordListTitle1,
+        Theme.of(context).extension<CustomAssets>()!.p_2fa,
+      ),
+      Choice(
+        StringsManager.forgotPasswordListTitle2,
+        Theme.of(context).extension<CustomAssets>()!.password,
+      ),
+      Choice(
+        StringsManager.forgotPasswordListTitle3,
+        Theme.of(context).extension<CustomAssets>()!.googleAuth,
+      ),
+    ];
     return Scaffold(
       body: Center(
         child: Padding(
@@ -105,7 +114,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
           child: CustomButton(
             text: StringsManager.sendPassword,
-            icon: AssetsManager.lock,
+            icon: Theme.of(context).extension<CustomAssets>()!.lock,
             onPressed:
                 () => showDialog<void>(
                   context: context,

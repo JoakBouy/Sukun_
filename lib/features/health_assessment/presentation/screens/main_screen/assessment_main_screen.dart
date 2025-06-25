@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
@@ -57,7 +57,7 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                   ),
                   child: CustomButton(
                     text: StringsManager.assessment2SkipButton,
-                    icon: AssetsManager.X,
+                    icon: Theme.of(context).extension<CustomAssets>()!.X,
                     color: Theme.of(context).extension<CustomColors>()!.green,
                     onPressed:
                         () => {

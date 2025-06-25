@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 
 class MorphingSvg extends StatefulWidget {
   final String isDarkMode;
@@ -54,10 +54,27 @@ class MorphingSvgState extends State<MorphingSvg> {
         maxWidth: size.width * 2,
         child: SvgPicture.asset(
           width: size.height * 0.9,
-          AssetsManager.getOnboarding(widget.isDarkMode, widget.currentIndex),
+          getSvg(widget.currentIndex, context),
           allowDrawingOutsideViewBox: false,
         ),
       ),
     );
+  }
+}
+
+getSvg(int index, BuildContext context) {
+  switch (index) {
+    case 1:
+      return Theme.of(context).extension<CustomAssets>()!.onboarding1;
+    case 2:
+      return Theme.of(context).extension<CustomAssets>()!.onboarding2;
+    case 3:
+      return Theme.of(context).extension<CustomAssets>()!.onboarding3;
+    case 4:
+      return Theme.of(context).extension<CustomAssets>()!.onboarding4;
+    case 5:
+      return Theme.of(context).extension<CustomAssets>()!.onboarding5;
+    default:
+      return '';
   }
 }

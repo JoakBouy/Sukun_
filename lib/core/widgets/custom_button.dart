@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final String text;
-  final String icon;
+  final String? icon;
   final Color? color;
   const CustomButton({
     super.key,
     this.onPressed,
     required this.text,
-    this.icon = AssetsManager.arrow,
+    this.icon,
     this.color,
   });
 
@@ -45,7 +45,7 @@ class CustomButton extends StatelessWidget {
               ).textTheme.displaySmall?.copyWith(color: color ?? Colors.white),
             ),
             SvgPicture.asset(
-              icon,
+              icon ?? Theme.of(context).extension<CustomAssets>()!.arrow,
               colorFilter: ColorFilter.mode(
                 color ?? Colors.white,
                 BlendMode.srcIn,

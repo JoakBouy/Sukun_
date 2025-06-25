@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
@@ -10,8 +10,6 @@ class PopupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String isDarkMode =
-        Theme.of(context).brightness == Brightness.dark ? 'dark' : 'light';
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
@@ -30,7 +28,9 @@ class PopupWidget extends StatelessWidget {
               vertical: SizesManager.padding - 4,
             ),
             backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-            title: SvgPicture.asset(AssetsManager.forgotPassword(isDarkMode)),
+            title: SvgPicture.asset(
+              Theme.of(context).extension<CustomAssets>()!.forgotPassword,
+            ),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
@@ -51,7 +51,7 @@ class PopupWidget extends StatelessWidget {
             actions: <Widget>[
               CustomButton(
                 text: StringsManager.resendPassword,
-                icon: AssetsManager.lock,
+                icon: Theme.of(context).extension<CustomAssets>()!.lock,
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ],

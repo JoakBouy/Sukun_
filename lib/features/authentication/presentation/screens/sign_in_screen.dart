@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
@@ -86,7 +86,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     TextFieldTitleWidget(title: StringsManager.email),
                     CustomTextField(
                       controller: emailController,
-                      iconPath: AssetsManager.email,
+                      iconPath:
+                          Theme.of(context).extension<CustomAssets>()!.email,
                       hintText: StringsManager.email2,
                       isDarkMode: isDarkMode,
                       validator: (value) {
@@ -102,10 +103,12 @@ class _SignInScreenState extends State<SignInScreen> {
                     CustomTextField(
                       controller: passwordController,
                       hintText: StringsManager.password2,
-                      iconPath: AssetsManager.lock,
+                      iconPath:
+                          Theme.of(context).extension<CustomAssets>()!.lock,
                       isDarkMode: isDarkMode,
                       isObscure: true,
-                      leadingIcon: AssetsManager.eye,
+                      leadingIcon:
+                          Theme.of(context).extension<CustomAssets>()!.eye,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Password is required';
@@ -139,7 +142,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
-                              AssetsManager.facebook,
+                              Theme.of(
+                                context,
+                              ).extension<CustomAssets>()!.facebook,
                               colorFilter: ColorFilter.mode(
                                 Theme.of(context).colorScheme.onSurface,
                                 BlendMode.srcIn,
@@ -153,7 +158,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
-                              AssetsManager.google,
+                              Theme.of(
+                                context,
+                              ).extension<CustomAssets>()!.google,
                               colorFilter: ColorFilter.mode(
                                 Theme.of(context).colorScheme.onSurface,
                                 BlendMode.srcIn,
@@ -167,7 +174,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                             style: ThemeManager.circularOutlinedButtonStyle,
                             child: SvgPicture.asset(
-                              AssetsManager.instagram,
+                              Theme.of(
+                                context,
+                              ).extension<CustomAssets>()!.instagram,
                               colorFilter: ColorFilter.mode(
                                 Theme.of(context).colorScheme.onSurface,
                                 BlendMode.srcIn,

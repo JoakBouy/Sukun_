@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/helpers/accent_color_helper.dart';
 import 'package:freud_ai/core/helpers/scale_helper.dart';
-import 'package:freud_ai/core/managers/assets_manager.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
 import 'package:freud_ai/features/onboarding/presentation/widgets/progressbar.dart';
@@ -104,7 +104,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   ElevatedButton(
                     onPressed: widget.onTap,
                     style: ThemeManager.circularElevatedButtonStyle,
-                    child: SvgPicture.asset(AssetsManager.arrow2),
+                    child: SvgPicture.asset(
+                      Theme.of(context).extension<CustomAssets>()!.arrow2,
+                    ),
                   ),
                 ],
               ),
