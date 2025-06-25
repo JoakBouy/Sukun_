@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freud_ai/core/helpers/page_view_helper.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
-import 'package:freud_ai/core/managers/strings_manager.dart';
 
 class PageViewScreen extends StatefulWidget {
   const PageViewScreen({super.key, required this.index});
