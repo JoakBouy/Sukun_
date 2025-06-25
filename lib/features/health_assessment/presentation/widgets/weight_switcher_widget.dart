@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 
 class WeightSwitcherWidget extends StatefulWidget {
-  const WeightSwitcherWidget({super.key});
+  const WeightSwitcherWidget({
+    super.key,
+    required this.isLbs,
+    required this.setKg,
+    required this.setLbs,
+  });
+  final bool isLbs;
+  final void Function() setKg;
+  final void Function() setLbs;
 
   @override
   State<WeightSwitcherWidget> createState() => _WeightSwitcherWidgetState();
@@ -11,7 +19,6 @@ class WeightSwitcherWidget extends StatefulWidget {
 class _WeightSwitcherWidgetState extends State<WeightSwitcherWidget> {
   late ThemeData theme;
   late Size size;
-  bool isLbs = false;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -53,12 +60,13 @@ class _WeightSwitcherWidgetState extends State<WeightSwitcherWidget> {
             child: SizedBox(
               height: double.infinity,
               child: ElevatedButton(
-                onPressed: () => setState(() => isLbs = false),
-                style: !isLbs ? selectedButtonTheme : unselectedButtonTheme,
+                onPressed: () => widget.setKg(),
+                style:
+                    !widget.isLbs ? selectedButtonTheme : unselectedButtonTheme,
                 child: Text(
                   'kg',
                   style:
-                      !isLbs
+                      !widget.isLbs
                           ? TextStyle(color: Colors.white)
                           : TextStyle(color: theme.colorScheme.onSurface),
                 ),
@@ -69,12 +77,13 @@ class _WeightSwitcherWidgetState extends State<WeightSwitcherWidget> {
             child: SizedBox(
               height: double.infinity,
               child: ElevatedButton(
-                onPressed: () => setState(() => isLbs = true),
-                style: isLbs ? selectedButtonTheme : unselectedButtonTheme,
+                onPressed: () => widget.setLbs(),
+                style:
+                    widget.isLbs ? selectedButtonTheme : unselectedButtonTheme,
                 child: Text(
                   'lbs',
                   style:
-                      isLbs
+                      widget.isLbs
                           ? TextStyle(color: Colors.white)
                           : TextStyle(color: theme.colorScheme.onSurface),
                 ),

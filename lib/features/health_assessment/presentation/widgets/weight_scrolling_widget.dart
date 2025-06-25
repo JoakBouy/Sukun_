@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 
 class WeightScrollingWidget extends StatefulWidget {
-  const WeightScrollingWidget({super.key});
+  const WeightScrollingWidget({super.key, required this.isLbs});
+  final bool isLbs;
 
   @override
   State<WeightScrollingWidget> createState() => _WeightScrollingWidgetState();
@@ -50,7 +51,7 @@ class _WeightScrollingWidgetState extends State<WeightScrollingWidget> {
                 ).textTheme.titleLarge?.copyWith(fontSize: 110, height: 0.83),
               ),
               Text(
-                "kg",
+                widget.isLbs ? "lbs" : "kg",
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w600,
@@ -68,7 +69,7 @@ class _WeightScrollingWidgetState extends State<WeightScrollingWidget> {
             enableSplash: false,
             padding: const EdgeInsets.all(0),
             flexWeights: _flexWeights,
-            children: List.generate(301, (index) {
+            children: List.generate(widget.isLbs ? 661 : 301, (index) {
               return LayoutBuilder(
                 builder: (context, constraints) {
                   bool isDivisible = index % 5 == 0;

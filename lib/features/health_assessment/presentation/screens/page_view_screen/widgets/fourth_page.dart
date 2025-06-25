@@ -10,13 +10,18 @@ class FourthPage extends StatefulWidget {
 }
 
 class _FourthPageState extends State<FourthPage> {
+  bool isLbs = false;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        WeightSwitcherWidget(),
+        WeightSwitcherWidget(
+          isLbs: isLbs,
+          setKg: () => setState(() => isLbs = false),
+          setLbs: () => setState(() => isLbs = true),
+        ),
         SizedBox(height: 60),
-        WeightScrollingWidget(),
+        WeightScrollingWidget(isLbs: isLbs),
       ],
     );
   }
