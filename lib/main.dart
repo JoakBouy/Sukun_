@@ -10,7 +10,7 @@ void main() {
   runApp(
     DevicePreview(
       defaultDevice: Devices.ios.iPhone16Pro,
-      enabled: !kReleaseMode,
+      enabled: kIsWeb,
       builder: (context) => const MyApp(),
     ),
   );
