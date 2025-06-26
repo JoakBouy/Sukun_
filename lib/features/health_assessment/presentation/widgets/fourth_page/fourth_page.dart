@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/features/health_assessment/presentation/widgets/weight_scrolling_widget.dart';
-import 'package:freud_ai/features/health_assessment/presentation/widgets/weight_switcher_widget.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/fourth_page/weight_scrolling_widget.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/fourth_page/weight_switcher_widget.dart';
 
 class FourthPage extends StatefulWidget {
   const FourthPage({super.key});

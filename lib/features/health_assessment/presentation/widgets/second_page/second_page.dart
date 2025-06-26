@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
-import 'package:freud_ai/features/health_assessment/presentation/widgets/gender_card_widget.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/second_page/gender_card_widget.dart';
 
 class SecondPage extends StatefulWidget {
   const SecondPage({super.key});

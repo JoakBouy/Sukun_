@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
-import 'package:freud_ai/features/health_assessment/presentation/widgets/radio_card.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/first_page/radio_card.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});

@@ -1,9 +1,9 @@
 import 'package:freud_ai/core/managers/strings_manager.dart';
-import 'package:freud_ai/features/health_assessment/presentation/screens/page_view_screen/widgets/fifth_page.dart';
-import 'package:freud_ai/features/health_assessment/presentation/screens/page_view_screen/widgets/first_page.dart';
-import 'package:freud_ai/features/health_assessment/presentation/screens/page_view_screen/widgets/fourth_page.dart';
-import 'package:freud_ai/features/health_assessment/presentation/screens/page_view_screen/widgets/second_page.dart';
-import 'package:freud_ai/features/health_assessment/presentation/screens/page_view_screen/widgets/third_page.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/fifth_page/fifth_page.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/first_page/first_page.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/fourth_page/fourth_page.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/second_page/second_page.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/third_page/third_page.dart';
 
 class PageViewHelper {
   static getPage(final int index) {

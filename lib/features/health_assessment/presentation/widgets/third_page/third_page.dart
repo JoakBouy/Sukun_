@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/features/health_assessment/presentation/widgets/age_widget.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/third_page/age_widget.dart';
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({super.key});
