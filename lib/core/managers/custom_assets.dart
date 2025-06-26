@@ -22,6 +22,12 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
   final String maleIcon = 'assets/images/svgs/male_icon.svg';
   final String femaleIcon = 'assets/images/svgs/female_icon.svg';
   final String X = 'assets/images/svgs/X.svg';
+  final String wheelSelector = 'assets/images/svgs/wheel_selector.svg';
+  final String emoji1 = 'assets/images/svgs/emoji1.svg';
+  final String emoji2 = 'assets/images/svgs/emoji2.svg';
+  final String emoji3 = 'assets/images/svgs/emoji3.svg';
+  final String emoji4 = 'assets/images/svgs/emoji4.svg';
+  final String emoji5 = 'assets/images/svgs/emoji5.svg';
   final String icon;
   final String onboarding0;
   final String onboarding1;
