@@ -46,6 +46,7 @@ class CustomButton extends StatelessWidget {
               ),
             ),
             SvgPicture.asset(
+              width: 24,
               icon ?? theme.extension<CustomAssets>()!.arrow,
               colorFilter: ColorFilter.mode(
                 color ?? Colors.white,
