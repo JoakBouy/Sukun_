@@ -11,6 +11,6 @@ class FifthPage extends StatefulWidget {
 class _FifthPageState extends State<FifthPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [EmojiWheelWidget()]);
+    return EmojiWheelWidget();
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freud_ai/core/helpers/widgets_helper.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 
 class WeightSwitcherWidget extends StatefulWidget {
@@ -28,24 +29,6 @@ class _WeightSwitcherWidgetState extends State<WeightSwitcherWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle selectedButtonTheme = ElevatedButton.styleFrom(
-      elevation: 0,
-      backgroundColor: theme.extension<CustomColors>()!.orange,
-      shadowColor: Colors.transparent,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(200),
-        side: BorderSide(
-          color: theme.extension<CustomColors>()!.orangeAccent,
-          width: 4,
-        ),
-      ),
-    );
-    final ButtonStyle unselectedButtonTheme = ElevatedButton.styleFrom(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      surfaceTintColor: theme.extension<CustomColors>()!.orange,
-      shadowColor: Colors.transparent,
-    );
     return Container(
       height: size.height * 0.065,
       width: size.width * 0.9,
@@ -62,7 +45,9 @@ class _WeightSwitcherWidgetState extends State<WeightSwitcherWidget> {
               child: ElevatedButton(
                 onPressed: () => widget.setKg(),
                 style:
-                    !widget.isLbs ? selectedButtonTheme : unselectedButtonTheme,
+                    !widget.isLbs
+                        ? WidgetsHelper.getPressedButtonTheme(theme)
+                        : WidgetsHelper.getUnselectedButtonTheme(theme),
                 child: Text(
                   'kg',
                   style:
@@ -79,7 +64,9 @@ class _WeightSwitcherWidgetState extends State<WeightSwitcherWidget> {
               child: ElevatedButton(
                 onPressed: () => widget.setLbs(),
                 style:
-                    widget.isLbs ? selectedButtonTheme : unselectedButtonTheme,
+                    widget.isLbs
+                        ? WidgetsHelper.getPressedButtonTheme(theme)
+                        : WidgetsHelper.getUnselectedButtonTheme(theme),
                 child: Text(
                   'lbs',
                   style:

@@ -28,6 +28,7 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
   final String emoji3 = 'assets/images/svgs/emoji3.svg';
   final String emoji4 = 'assets/images/svgs/emoji4.svg';
   final String emoji5 = 'assets/images/svgs/emoji5.svg';
+  final String pointer = 'assets/images/svgs/pointer.svg';
   final String icon;
   final String onboarding0;
   final String onboarding1;

@@ -80,8 +80,8 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                       setState(() {
                         //_currentPage + 1 < 14 ? _currentPage += 1 : null;
 
-                        // limit to currently implemented pages (4)
-                        _currentPage < 4 ? _currentPage += 1 : null;
+                        // limit to currently implemented pages (5)
+                        _currentPage < 5 ? _currentPage += 1 : null;
                       }),
                     },
               ),
