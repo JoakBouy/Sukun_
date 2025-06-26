@@ -12,11 +12,15 @@ class EmojiWheelWidget extends StatefulWidget {
 
 class _EmojiWheelWidgetState extends State<EmojiWheelWidget> {
   final ScrollController _controller = ScrollController(
-    initialScrollOffset: 440,
+    // center the wheel to the middle, 220 is the width of an item and 100 is the number of repeated items
+    // (220 * 2) is the offset to center the 5 items
+    initialScrollOffset: (220 * 2) + (220 * 100),
   );
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    // background colors
     final List<Color> colors = [
       theme.extension<CustomColors>()!.green,
       Color.fromRGBO(252, 208, 100, 1),
@@ -24,6 +28,7 @@ class _EmojiWheelWidgetState extends State<EmojiWheelWidget> {
       theme.extension<CustomColors>()!.orange,
       theme.extension<CustomColors>()!.violet,
     ];
+    // the faces of the wheel
     final List<String> assets = [
       theme.extension<CustomAssets>()!.emoji1,
       theme.extension<CustomAssets>()!.emoji2,
@@ -31,6 +36,33 @@ class _EmojiWheelWidgetState extends State<EmojiWheelWidget> {
       theme.extension<CustomAssets>()!.emoji4,
       theme.extension<CustomAssets>()!.emoji5,
     ];
+    // repeat the 5 widgets to simulate a wheel
+    List<Widget> repeatWidgets(int times) {
+      final base = List.generate(5, (index) {
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            SizedBox(
+              height: 300,
+              width: 200,
+              child: CustomPaint(
+                key: Key(index.toString()),
+                painter: SideArchedPainter(color: colors[index]),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 25.0),
+              child: RotatedBox(
+                quarterTurns: -1,
+                child: SvgPicture.asset(width: 120, height: 120, assets[index]),
+              ),
+            ),
+          ],
+        );
+      });
+      return List.generate(times, (_) => base).expand((e) => e).toList();
+    }
+
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
@@ -46,33 +78,8 @@ class _EmojiWheelWidgetState extends State<EmojiWheelWidget> {
                 squeeze: 1.054,
                 itemExtent: 220,
                 children: [
-                  ...List.generate(5, (index) {
-                    return Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SizedBox(
-                          height: 300,
-                          width: 200,
-                          child: CustomPaint(
-                            key: Key(index.toString()),
-                            painter: SideArchedPainter(color: colors[index]),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 25.0),
-                          child: RotatedBox(
-                            quarterTurns: -1,
-                            child: SvgPicture.asset(
-                              width: 120,
-                              height: 120,
-                              assets[index],
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
-                  }),
-                ],
+                  ...repeatWidgets(100),
+                ], // repeat the widgets to simulate a wheel
               ),
             ),
           ),
