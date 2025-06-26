@@ -30,6 +30,8 @@ class PopupWidget extends StatelessWidget {
             ),
             backgroundColor: theme.colorScheme.primaryContainer,
             title: SvgPicture.asset(
+              width: 308,
+              height: 248,
               theme.extension<CustomAssets>()!.forgotPassword,
             ),
             content: SingleChildScrollView(

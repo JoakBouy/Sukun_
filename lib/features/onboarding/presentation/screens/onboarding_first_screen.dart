@@ -23,7 +23,11 @@ class OnboardingFirstScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(theme.extension<CustomAssets>()!.icon),
+                SvgPicture.asset(
+                  width: 64,
+                  height: 64,
+                  theme.extension<CustomAssets>()!.icon,
+                ),
                 Center(
                   child: RichText(
                     maxLines: 3,
@@ -65,7 +69,11 @@ class OnboardingFirstScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SvgPicture.asset(theme.extension<CustomAssets>()!.onboarding0),
+                SvgPicture.asset(
+                  width: 300,
+                  height: 300,
+                  theme.extension<CustomAssets>()!.onboarding0,
+                ),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 600),
                   child: FractionallySizedBox(

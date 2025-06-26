@@ -43,7 +43,12 @@ class ForgotPasswordCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: SizesManager.padding,
               ),
-              child: SvgPicture.asset(iconPath, fit: BoxFit.fill),
+              child: SvgPicture.asset(
+                width: 96,
+                height: 96,
+                iconPath,
+                fit: BoxFit.fill,
+              ),
             ),
             SizedBox(
               width: size.width * 0.4 > 400 ? 400 : size.width * 0.4,

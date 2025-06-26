@@ -67,6 +67,8 @@ class _RadioCardState extends State<RadioCard> {
             child: Row(
               children: [
                 SvgPicture.asset(
+                  width: 24,
+                  height: 24,
                   widget.icon,
                   colorFilter: ColorFilter.mode(
                     selected
