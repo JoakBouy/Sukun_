@@ -13,10 +13,10 @@ class EmojiWheelWidget extends StatefulWidget {
 
 class _EmojiWheelWidgetState extends State<EmojiWheelWidget> {
   int _selectedIndex = 2;
-  final ScrollController _controller = ScrollController(
+  final FixedExtentScrollController _controller = FixedExtentScrollController(
     // center the wheel to the middle, 220 is the width of an item and 100 is the number of repeated items
     // (220 * 2) is the offset to center the 5 items
-    initialScrollOffset: (220 * 2) + (220 * 100),
+    initialItem: 52,
   );
 
   @override
@@ -62,6 +62,7 @@ class _EmojiWheelWidgetState extends State<EmojiWheelWidget> {
                 child: RotatedBox(
                   quarterTurns: 1,
                   child: ListWheelScrollView(
+                    physics: FixedExtentScrollPhysics(),
                     renderChildrenOutsideViewport: true,
                     clipBehavior: Clip.none,
                     controller: _controller,
