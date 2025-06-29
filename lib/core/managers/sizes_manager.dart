@@ -12,6 +12,7 @@ class SizesManager {
   static const double displayMedium = 22.0;
   static const double buttonText = 20.0;
   static const double font14 = 14.0;
+  static const double font16 = 16.0;
   static const double smallText = 15.0;
   static const double smallText2 = 17.0;
   static const double circularBorderRadius = 40.0;

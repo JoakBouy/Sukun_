@@ -59,6 +59,12 @@ class StringsManager {
       'How would you rate your stress level?';
   static const String assessmentTitle13 = 'AI Sound Analysis';
   static const String assessmentTitle14 = 'Expression Analysis';
+  static const String yesCardTitle = 'Yes, one or multiple';
+  static const String yesCardSubtitle =
+      'I’m experiencing physical pain in different place over my body.';
+  static const String noCardTitle = 'No Physical Pain At All';
+  static const String noCardSubtitle =
+      'I’m not experiencing any physical pain in my body at all :)';
 
   static String onBoardingTopButton(int index) {
     switch (index) {
