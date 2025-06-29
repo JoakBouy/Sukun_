@@ -39,6 +39,7 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
   final String forgotPassword;
   final String male;
   final String female;
+  final String page6;
   const CustomAssets({
     required this.icon,
     required this.onboarding0,
@@ -50,6 +51,7 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     required this.forgotPassword,
     required this.male,
     required this.female,
+    required this.page6,
   });
 
   @override
@@ -64,6 +66,7 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     String? forgotPassword,
     String? male,
     String? female,
+    String? page6,
   }) {
     return CustomAssets(
       icon: icon ?? this.icon,
@@ -76,6 +79,7 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
       forgotPassword: forgotPassword ?? this.forgotPassword,
       male: male ?? this.male,
       female: female ?? this.female,
+      page6: page6 ?? this.page6,
     );
   }
 
@@ -96,6 +100,7 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
       forgotPassword: other.forgotPassword,
       male: other.male,
       female: other.female,
+      page6: other.page6,
     );
   }
 
@@ -110,6 +115,7 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     forgotPassword: 'assets/images/svgs/light/forgot_password.svg',
     male: 'assets/images/svgs/light/male.svg',
     female: 'assets/images/svgs/light/female.svg',
+    page6: 'assets/images/svgs/light/page6.svg',
   );
   static const CustomAssets dark = CustomAssets(
     icon: 'assets/images/svgs/dark/icon.svg',
@@ -122,5 +128,6 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     forgotPassword: 'assets/images/svgs/dark/forgot_password.svg',
     male: 'assets/images/svgs/dark/male.svg',
     female: 'assets/images/svgs/dark/female.svg',
+    page6: 'assets/images/svgs/dark/page6.svg',
   );
 }

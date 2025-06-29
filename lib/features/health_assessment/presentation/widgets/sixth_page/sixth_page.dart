@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/features/health_assessment/presentation/widgets/fifth_page/emoji_wheel_widget.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
 
-class SixthPage extends StatefulWidget {
+class SixthPage extends StatelessWidget {
   const SixthPage({super.key});
 
   @override
-  State<SixthPage> createState() => _SixthPageState();
-}
-
-class _SixthPageState extends State<SixthPage> {
-  @override
   Widget build(BuildContext context) {
-    return Center();
+    return Center(
+      child: SvgPicture.asset(
+        width: 286,
+        height: 286,
+        Theme.of(context).extension<CustomAssets>()!.page6,
+      ),
+    );
   }
 }
