@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:freud_ai/core/managers/custom_assets.dart';
-import 'package:freud_ai/core/managers/custom_colors.dart';
 
 class CustomSlider extends StatefulWidget {
   final double min;

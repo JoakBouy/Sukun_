@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:freud_ai/core/managers/custom_assets.dart';
-import 'package:freud_ai/core/managers/custom_colors.dart';
-import 'package:freud_ai/features/health_assessment/presentation/widgets/eighth_page/widgets/custom_slider.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/eighth_page/widgets/custom_vertical_slider.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/eighth_page/widgets/emoji_column.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/eighth_page/widgets/sleep_time_column.dart';

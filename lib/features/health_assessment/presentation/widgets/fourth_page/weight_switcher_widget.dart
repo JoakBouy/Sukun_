@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:freud_ai/core/helpers/widgets_helper.dart';
-import 'package:freud_ai/core/managers/custom_colors.dart';
 
 class WeightSwitcherWidget extends StatefulWidget {
   const WeightSwitcherWidget({
