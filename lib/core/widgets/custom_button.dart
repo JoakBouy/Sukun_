@@ -9,12 +9,14 @@ class CustomButton extends StatelessWidget {
   final String text;
   final String? icon;
   final Color? color;
+  final Color? textColor;
   const CustomButton({
     super.key,
     this.onPressed,
     required this.text,
     this.icon,
     this.color,
+    this.textColor,
   });
 
   @override
@@ -27,7 +29,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         style: ThemeManager.elevatedButtonStyle.copyWith(
           backgroundColor: WidgetStatePropertyAll(
-            color?.withAlpha(60) ?? theme.colorScheme.primary,
+            color ?? theme.colorScheme.primary,
           ),
           elevation: WidgetStatePropertyAll(0),
         ),
@@ -42,17 +44,19 @@ class CustomButton extends StatelessWidget {
               overflow: TextOverflow.fade,
               text,
               style: theme.textTheme.displaySmall?.copyWith(
-                color: color ?? Colors.white,
+                color: textColor ?? color ?? Colors.white,
               ),
             ),
-            SvgPicture.asset(
-              width: 24,
-              icon ?? theme.extension<CustomAssets>()!.arrow,
-              colorFilter: ColorFilter.mode(
-                color ?? Colors.white,
-                BlendMode.srcIn,
-              ),
-            ),
+            icon == ""
+                ? const SizedBox.shrink()
+                : SvgPicture.asset(
+                  width: 24,
+                  icon ?? theme.extension<CustomAssets>()!.arrow,
+                  colorFilter: ColorFilter.mode(
+                    textColor ?? color ?? Colors.white,
+                    BlendMode.srcIn,
+                  ),
+                ),
           ],
         ),
       ),
