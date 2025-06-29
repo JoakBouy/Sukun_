@@ -22,6 +22,7 @@ class YesNoCard extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return SizedBox(
       height: 180,
+      width: 600,
       child: Card(
         color:
             selected

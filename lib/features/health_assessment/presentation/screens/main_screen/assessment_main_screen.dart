@@ -51,63 +51,69 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                   padding: const EdgeInsets.symmetric(
                     vertical: SizesManager.padding,
                   ),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: theme.extension<CustomColors>()!.greenAccent,
-                            borderRadius: BorderRadius.circular(
-                              SizesManager.circularBorderRadius,
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(maxWidth: 600),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color:
+                                  theme.extension<CustomColors>()!.greenAccent,
+                              borderRadius: BorderRadius.circular(
+                                SizesManager.circularBorderRadius,
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: CustomButton(
-                              text: "Yes",
-                              icon: "",
-                              color: theme.extension<CustomColors>()!.green,
-                              textColor: Colors.white,
-                              onPressed:
-                                  () => {
-                                    _pageController.animateToPage(
-                                      _currentPage + 1,
-                                      duration: Duration(milliseconds: 200),
-                                      curve: Curves.easeIn,
-                                    ),
-                                    setState(() {
-                                      _currentPage < 14
-                                          ? _currentPage += 1
-                                          : null;
-                                    }),
-                                  },
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: CustomButton(
+                                text: "Yes",
+                                icon: "",
+                                color: theme.extension<CustomColors>()!.green,
+                                textColor: Colors.white,
+                                onPressed:
+                                    () => {
+                                      _pageController.animateToPage(
+                                        _currentPage + 1,
+                                        duration: Duration(milliseconds: 200),
+                                        curve: Curves.easeIn,
+                                      ),
+                                      setState(() {
+                                        _currentPage < 14
+                                            ? _currentPage += 1
+                                            : null;
+                                      }),
+                                    },
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(width: SizesManager.hPadding),
-                      Flexible(
-                        flex: 1,
-                        child: CustomButton(
-                          text: "No",
-                          icon: "",
-                          color: theme.colorScheme.primaryContainer,
-                          textColor: theme.colorScheme.onSurface,
-                          onPressed:
-                              () => {
-                                _pageController.animateToPage(
-                                  _currentPage + 1,
-                                  duration: Duration(milliseconds: 200),
-                                  curve: Curves.easeIn,
-                                ),
-                                setState(() {
-                                  _currentPage < 14 ? _currentPage += 1 : null;
-                                }),
-                              },
+                        SizedBox(width: SizesManager.hPadding),
+                        Flexible(
+                          flex: 1,
+                          child: CustomButton(
+                            text: "No",
+                            icon: "",
+                            color: theme.colorScheme.primaryContainer,
+                            textColor: theme.colorScheme.onSurface,
+                            onPressed:
+                                () => {
+                                  _pageController.animateToPage(
+                                    _currentPage + 1,
+                                    duration: Duration(milliseconds: 200),
+                                    curve: Curves.easeIn,
+                                  ),
+                                  setState(() {
+                                    _currentPage < 14
+                                        ? _currentPage += 1
+                                        : null;
+                                  }),
+                                },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               if (_currentPage == 2)

@@ -20,10 +20,13 @@ class _PageViewScreenState extends State<PageViewScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                textAlign: TextAlign.center,
-                PageViewHelper.getTitle(widget.index),
-                style: theme.textTheme.titleLarge,
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 600),
+                child: Text(
+                  textAlign: TextAlign.center,
+                  PageViewHelper.getTitle(widget.index),
+                  style: theme.textTheme.titleLarge,
+                ),
               ),
               SizedBox(height: SizesManager.dhPadding),
               PageViewHelper.getPage(widget.index),
