@@ -31,6 +31,7 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
   final String pointer = 'assets/images/svgs/pointer.svg';
   final String yes = 'assets/images/svgs/yes.svg';
   final String no = 'assets/images/svgs/no.svg';
+  final String sliderCenter = 'assets/images/svgs/slider_center.svg';
   final String icon;
   final String onboarding0;
   final String onboarding1;
