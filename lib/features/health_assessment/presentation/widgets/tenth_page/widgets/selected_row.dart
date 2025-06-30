@@ -28,9 +28,8 @@ class SelectedRow extends StatelessWidget {
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
         alignment: WrapAlignment.center,
-        spacing: 12,
         children: [
-          Text('Selected: ', style: TextStyle(fontWeight: FontWeight.w600)),
+          Text('Selected: ', style: TextStyle(fontWeight: FontWeight.w700)),
           ...List.generate(
             currentlySelected.length,
             (index) => InkWell(

@@ -31,69 +31,75 @@ class _MedicationsListState extends State<MedicationsList> {
       children: [
         SizedBox(
           height: 320,
-          child: ListView.builder(
+          child: Scrollbar(
+            radius: const Radius.circular(10),
+            thickness: 6,
             controller: widget.scrollController,
-            itemCount: widget.alphabetWords.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(
-                color:
-                    selected[index]
-                        ? widget.theme.colorScheme.secondary
-                        : widget.theme.colorScheme.primaryContainer,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    SizesManager.circularBorderRadius,
-                  ),
-                  side: BorderSide(
-                    color:
-                        selected[index]
-                            ? widget.theme.colorScheme.secondary.withAlpha(120)
-                            : widget.theme.colorScheme.primaryContainer,
-                    width: selected[index] ? 3 : 0,
-                    strokeAlign: BorderSide.strokeAlignOutside,
-                  ),
-                ),
-                child: RadioListTile(
+            thumbVisibility: true,
+            child: ListView.builder(
+              controller: widget.scrollController,
+              itemCount: widget.alphabetWords.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  color:
+                      selected[index]
+                          ? widget.theme.colorScheme.secondary
+                          : widget.theme.colorScheme.primaryContainer,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
                       SizesManager.circularBorderRadius,
                     ),
-                  ),
-                  activeColor: Colors.white,
-                  controlAffinity: ListTileControlAffinity.trailing,
-                  title: Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text(
-                      widget.alphabetWords[index],
-                      style: widget.theme.textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color:
-                            selected[index]
-                                ? Colors.white
-                                : widget.theme.colorScheme.onSurface,
+                    side: BorderSide(
+                      color: widget.theme.colorScheme.secondary.withAlpha(
+                        selected[index] ? 120 : 0,
                       ),
+                      width: selected[index] ? 3 : 0,
+                      strokeAlign: BorderSide.strokeAlignOutside,
                     ),
                   ),
-                  value: true,
-                  groupValue: selected[index],
-                  toggleable: true,
-                  onChanged:
-                      (_) => setState(() {
-                        selected[index] = !selected[index];
-                      }),
-                ),
-              );
-            },
+                  child: RadioListTile(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        SizesManager.circularBorderRadius,
+                      ),
+                    ),
+                    activeColor: Colors.white,
+                    controlAffinity: ListTileControlAffinity.trailing,
+                    title: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        widget.alphabetWords[index],
+                        style: widget.theme.textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color:
+                              selected[index]
+                                  ? Colors.white
+                                  : widget.theme.colorScheme.onSurface,
+                        ),
+                      ),
+                    ),
+                    value: true,
+                    groupValue: selected[index],
+                    toggleable: true,
+                    onChanged:
+                        (_) => setState(() {
+                          selected[index] = !selected[index];
+                        }),
+                  ),
+                );
+              },
+            ),
           ),
         ),
-        if (selected.contains(true))
-          SelectedRow(
-            theme: widget.theme,
-            alphabetWords: widget.alphabetWords,
-            selected: selected,
-            onTap: onTap,
-          ),
+        selected.contains(true)
+            ? SelectedRow(
+              theme: widget.theme,
+              alphabetWords: widget.alphabetWords,
+              selected: selected,
+              onTap: onTap,
+            )
+            : const SizedBox(height: 55),
       ],
     );
   }

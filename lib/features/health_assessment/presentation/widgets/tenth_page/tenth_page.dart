@@ -24,6 +24,7 @@ class _TenthPageState extends State<TenthPage> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Column(
+      spacing: 10,
       children: [
         AlphabeticalBar(theme: theme, scroll: scrollToLetter),
         MedicationsList(
