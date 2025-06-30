@@ -2,7 +2,7 @@ name: freud_ai
 description: "A Flutter UI Challenge."
 publish_to: 'none'
 
-version: 0.4.6+1
+version: 0.5.0+1
 
 environment:
   sdk: ^3.7.2
