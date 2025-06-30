@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class MorphingSvg extends StatefulWidget {
   final int currentIndex;
@@ -48,10 +49,10 @@ class MorphingSvgState extends State<MorphingSvg> {
       child: OverflowBox(
         alignment: Alignment.topCenter,
         maxWidth: size.width * 2,
-        child: SvgPicture.asset(
+        child: SvgPicture(
           width: size.height * 0.9,
-          getSvg(widget.currentIndex, theme),
-          allowDrawingOutsideViewBox: false,
+          allowDrawingOutsideViewBox: true,
+          AssetBytesLoader(getSvg(widget.currentIndex, theme)),
         ),
       ),
     );

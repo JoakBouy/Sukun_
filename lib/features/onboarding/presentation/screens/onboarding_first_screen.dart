@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
@@ -23,10 +24,10 @@ class OnboardingFirstScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(
+                SvgPicture(
                   width: 64,
                   height: 64,
-                  theme.extension<CustomAssets>()!.icon,
+                  AssetBytesLoader(theme.extension<CustomAssets>()!.icon),
                 ),
                 Center(
                   child: RichText(
@@ -69,10 +70,12 @@ class OnboardingFirstScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SvgPicture.asset(
+                SvgPicture(
                   width: 300,
                   height: 300,
-                  theme.extension<CustomAssets>()!.onboarding0,
+                  AssetBytesLoader(
+                    theme.extension<CustomAssets>()!.onboarding0,
+                  ),
                 ),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 600),
