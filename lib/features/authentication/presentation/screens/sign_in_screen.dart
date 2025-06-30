@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
-import 'package:freud_ai/core/managers/theme_manager.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
+import 'package:freud_ai/features/authentication/presentation/widgets/custom_outlined_button.dart';
 import 'package:freud_ai/features/authentication/presentation/widgets/custom_text_field.dart';
 import 'package:freud_ai/features/authentication/presentation/widgets/text_field_title_widget.dart';
 import 'package:freud_ai/features/authentication/presentation/widgets/top_bar_widget.dart';
@@ -121,53 +120,17 @@ class _SignInScreenState extends State<SignInScreen> {
                         spacing: SizesManager.padding,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          OutlinedButton(
-                            onPressed:
-                                () => Navigator.of(context).pushNamed(
-                                  NavigationManager.assessmentMainScreen,
-                                ),
-                            style: ThemeManager.circularOutlinedButtonStyle,
-                            child: SvgPicture.asset(
-                              Theme.of(
-                                context,
-                              ).extension<CustomAssets>()!.facebook,
-                              colorFilter: ColorFilter.mode(
-                                theme.colorScheme.onSurface,
-                                BlendMode.srcIn,
-                              ),
-                            ),
+                          CustomOutlinedButton(
+                            icon: theme.extension<CustomAssets>()!.facebook,
+                            theme: theme,
                           ),
-                          OutlinedButton(
-                            onPressed:
-                                () => Navigator.of(context).pushNamed(
-                                  NavigationManager.assessmentMainScreen,
-                                ),
-                            style: ThemeManager.circularOutlinedButtonStyle,
-                            child: SvgPicture.asset(
-                              Theme.of(
-                                context,
-                              ).extension<CustomAssets>()!.google,
-                              colorFilter: ColorFilter.mode(
-                                theme.colorScheme.onSurface,
-                                BlendMode.srcIn,
-                              ),
-                            ),
+                          CustomOutlinedButton(
+                            icon: theme.extension<CustomAssets>()!.google,
+                            theme: theme,
                           ),
-                          OutlinedButton(
-                            onPressed:
-                                () => Navigator.of(context).pushNamed(
-                                  NavigationManager.assessmentMainScreen,
-                                ),
-                            style: ThemeManager.circularOutlinedButtonStyle,
-                            child: SvgPicture.asset(
-                              Theme.of(
-                                context,
-                              ).extension<CustomAssets>()!.instagram,
-                              colorFilter: ColorFilter.mode(
-                                theme.colorScheme.onSurface,
-                                BlendMode.srcIn,
-                              ),
-                            ),
+                          CustomOutlinedButton(
+                            icon: theme.extension<CustomAssets>()!.instagram,
+                            theme: theme,
                           ),
                         ],
                       ),
