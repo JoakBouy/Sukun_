@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class GridItem extends StatelessWidget {
   const GridItem({
@@ -49,8 +50,8 @@ class GridItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(
-                icon,
+              SvgPicture(
+                AssetBytesLoader(icon),
                 colorFilter: ColorFilter.mode(
                   isSelected ? Colors.white : theme.colorScheme.onSurface,
                   BlendMode.srcIn,

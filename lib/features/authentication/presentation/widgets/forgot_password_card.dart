@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class ForgotPasswordCard extends StatelessWidget {
   final String iconPath;
@@ -43,10 +44,10 @@ class ForgotPasswordCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: SizesManager.padding,
               ),
-              child: SvgPicture.asset(
+              child: SvgPicture(
+                AssetBytesLoader(iconPath),
                 width: 96,
                 height: 96,
-                iconPath,
                 fit: BoxFit.fill,
               ),
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -58,8 +59,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           () => setState(() {
                             showPassword = !showPassword!;
                           }),
-                      icon: SvgPicture.asset(
-                        widget.leadingIcon!,
+                      icon: SvgPicture(
+                        AssetBytesLoader(widget.leadingIcon!),
                         fit: BoxFit.scaleDown,
                         colorFilter: ColorFilter.mode(
                           showPassword!
@@ -73,8 +74,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   : null,
           prefixIcon: Padding(
             padding: const EdgeInsets.only(left: SizesManager.hPadding),
-            child: SvgPicture.asset(
-              widget.iconPath,
+            child: SvgPicture(
+              AssetBytesLoader(widget.iconPath),
               fit: BoxFit.scaleDown,
               colorFilter: ColorFilter.mode(
                 theme.colorScheme.onSurface,

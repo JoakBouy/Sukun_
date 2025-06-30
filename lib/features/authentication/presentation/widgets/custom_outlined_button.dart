@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
   const CustomOutlinedButton({
@@ -20,10 +21,10 @@ class CustomOutlinedButton extends StatelessWidget {
             context,
           ).pushNamed(NavigationManager.assessmentMainScreen),
       style: ThemeManager.circularOutlinedButtonStyle,
-      child: SvgPicture.asset(
+      child: SvgPicture(
+        AssetBytesLoader(icon),
         width: 24,
         height: 24,
-        icon,
         colorFilter: ColorFilter.mode(
           theme.colorScheme.onSurface,
           BlendMode.srcIn,

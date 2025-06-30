@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/helpers/widgets_helper.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class EmojiColumn extends StatelessWidget {
   const EmojiColumn({super.key});
@@ -16,7 +17,11 @@ class EmojiColumn extends StatelessWidget {
         children: [
           ...List.generate(
             5,
-            (index) => SvgPicture.asset(height: 48, width: 48, emojis[index]),
+            (index) => SvgPicture(
+              AssetBytesLoader(emojis[index]),
+              height: 48,
+              width: 48,
+            ),
           ),
         ],
       ),

@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({super.key});
@@ -24,8 +25,8 @@ class TopBar extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.only(bottom: SizesManager.dhPadding),
-          child: SvgPicture.asset(
-            theme.extension<CustomAssets>()!.iconWhite,
+          child: SvgPicture(
+            AssetBytesLoader(theme.extension<CustomAssets>()!.iconWhite),
             fit: BoxFit.cover,
           ),
         ),

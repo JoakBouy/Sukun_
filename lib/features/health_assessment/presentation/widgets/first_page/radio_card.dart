@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class RadioCard extends StatefulWidget {
   final int value;
@@ -66,10 +67,10 @@ class _RadioCardState extends State<RadioCard> {
             ),
             child: Row(
               children: [
-                SvgPicture.asset(
+                SvgPicture(
                   width: 24,
                   height: 24,
-                  widget.icon,
+                  AssetBytesLoader(widget.icon),
                   colorFilter: ColorFilter.mode(
                     selected
                         ? Theme.of(

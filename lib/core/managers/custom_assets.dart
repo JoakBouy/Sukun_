@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
 
 class CustomAssets extends ThemeExtension<CustomAssets> {
-  final String arrow = 'assets/images/svgs/arrow.svg';
-  final String arrow2 = 'assets/images/svgs/arrow2.svg';
-  final String iconWhite = 'assets/images/svgs/Icon_white.svg';
-  final String email = 'assets/images/svgs/email.svg';
-  final String lock = 'assets/images/svgs/lock.svg';
-  final String eye = 'assets/images/svgs/eye.svg';
-  final String facebook = 'assets/images/svgs/facebook.svg';
-  final String google = 'assets/images/svgs/google.svg';
-  final String instagram = 'assets/images/svgs/instagram.svg';
-  final String back = 'assets/images/svgs/back.svg';
-  final String p_2fa = 'assets/images/svgs/2fa.svg';
-  final String password = 'assets/images/svgs/password.svg';
-  final String googleAuth = 'assets/images/svgs/google_auth.svg';
-  final String solidHeart = 'assets/images/svgs/solid_heart.svg';
-  final String solidRobot = 'assets/images/svgs/solid_robot.svg';
-  final String solidFlag = 'assets/images/svgs/solid_flag.svg';
-  final String solidHappy = 'assets/images/svgs/solid_happy.svg';
-  final String solidMobile = 'assets/images/svgs/solid_mobile.svg';
-  final String maleIcon = 'assets/images/svgs/male_icon.svg';
-  final String femaleIcon = 'assets/images/svgs/female_icon.svg';
-  final String X = 'assets/images/svgs/X.svg';
-  final String wheelSelector = 'assets/images/svgs/wheel_selector.svg';
-  final String emoji1 = 'assets/images/svgs/emoji1.svg';
-  final String emoji2 = 'assets/images/svgs/emoji2.svg';
-  final String emoji3 = 'assets/images/svgs/emoji3.svg';
-  final String emoji4 = 'assets/images/svgs/emoji4.svg';
-  final String emoji5 = 'assets/images/svgs/emoji5.svg';
-  final String pointer = 'assets/images/svgs/pointer.svg';
-  final String yes = 'assets/images/svgs/yes.svg';
-  final String no = 'assets/images/svgs/no.svg';
-  final String sliderCenter = 'assets/images/svgs/slider_center.svg';
-  final String gridIcon1 = 'assets/images/svgs/grid_icon1.svg';
-  final String gridIcon2 = 'assets/images/svgs/grid_icon2.svg';
-  final String gridIcon3 = 'assets/images/svgs/grid_icon3.svg';
-  final String gridIcon4 = 'assets/images/svgs/grid_icon4.svg';
+  final String arrow = 'assets/images/svgs/arrow.svg.vec';
+  final String arrow2 = 'assets/images/svgs/arrow2.svg.vec';
+  final String iconWhite = 'assets/images/svgs/Icon_white.svg.vec';
+  final String email = 'assets/images/svgs/email.svg.vec';
+  final String lock = 'assets/images/svgs/lock.svg.vec';
+  final String eye = 'assets/images/svgs/eye.svg.vec';
+  final String facebook = 'assets/images/svgs/facebook.svg.vec';
+  final String google = 'assets/images/svgs/google.svg.vec';
+  final String instagram = 'assets/images/svgs/instagram.svg.vec';
+  final String back = 'assets/images/svgs/back.svg.vec';
+  final String p_2fa = 'assets/images/svgs/2fa.svg.vec';
+  final String password = 'assets/images/svgs/password.svg.vec';
+  final String googleAuth = 'assets/images/svgs/google_auth.svg.vec';
+  final String solidHeart = 'assets/images/svgs/solid_heart.svg.vec';
+  final String solidRobot = 'assets/images/svgs/solid_robot.svg.vec';
+  final String solidFlag = 'assets/images/svgs/solid_flag.svg.vec';
+  final String solidHappy = 'assets/images/svgs/solid_happy.svg.vec';
+  final String solidMobile = 'assets/images/svgs/solid_mobile.svg.vec';
+  final String maleIcon = 'assets/images/svgs/male_icon.svg.vec';
+  final String femaleIcon = 'assets/images/svgs/female_icon.svg.vec';
+  final String X = 'assets/images/svgs/X.svg.vec';
+  final String wheelSelector = 'assets/images/svgs/wheel_selector.svg.vec';
+  final String emoji1 = 'assets/images/svgs/emoji1.svg.vec';
+  final String emoji2 = 'assets/images/svgs/emoji2.svg.vec';
+  final String emoji3 = 'assets/images/svgs/emoji3.svg.vec';
+  final String emoji4 = 'assets/images/svgs/emoji4.svg.vec';
+  final String emoji5 = 'assets/images/svgs/emoji5.svg.vec';
+  final String pointer = 'assets/images/svgs/pointer.svg.vec';
+  final String yes = 'assets/images/svgs/yes.svg.vec';
+  final String no = 'assets/images/svgs/no.svg.vec';
+  final String sliderCenter = 'assets/images/svgs/slider_center.svg.vec';
+  final String gridIcon1 = 'assets/images/svgs/grid_icon1.svg.vec';
+  final String gridIcon2 = 'assets/images/svgs/grid_icon2.svg.vec';
+  final String gridIcon3 = 'assets/images/svgs/grid_icon3.svg.vec';
+  final String gridIcon4 = 'assets/images/svgs/grid_icon4.svg.vec';
   final String icon;
   final String onboarding0;
   final String onboarding1;
@@ -119,10 +119,10 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     onboarding3: 'assets/images/svgs/light/onboarding_3.svg.vec',
     onboarding4: 'assets/images/svgs/light/onboarding_4.svg.vec',
     onboarding5: 'assets/images/svgs/light/onboarding_5.svg.vec',
-    forgotPassword: 'assets/images/svgs/light/forgot_password.svg',
-    male: 'assets/images/svgs/light/male.svg',
-    female: 'assets/images/svgs/light/female.svg',
-    page6: 'assets/images/svgs/light/page6.svg',
+    forgotPassword: 'assets/images/svgs/light/forgot_password.svg.vec',
+    male: 'assets/images/svgs/light/male.svg.vec',
+    female: 'assets/images/svgs/light/female.svg.vec',
+    page6: 'assets/images/svgs/light/page6.svg.vec',
   );
   static const CustomAssets dark = CustomAssets(
     icon: 'assets/images/svgs/dark/icon.svg.vec',
@@ -132,9 +132,9 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     onboarding3: 'assets/images/svgs/dark/onboarding_3.svg.vec',
     onboarding4: 'assets/images/svgs/dark/onboarding_4.svg.vec',
     onboarding5: 'assets/images/svgs/dark/onboarding_5.svg.vec',
-    forgotPassword: 'assets/images/svgs/dark/forgot_password.svg',
-    male: 'assets/images/svgs/dark/male.svg',
-    female: 'assets/images/svgs/dark/female.svg',
-    page6: 'assets/images/svgs/dark/page6.svg',
+    forgotPassword: 'assets/images/svgs/dark/forgot_password.svg.vec',
+    male: 'assets/images/svgs/dark/male.svg.vec',
+    female: 'assets/images/svgs/dark/female.svg.vec',
+    page6: 'assets/images/svgs/dark/page6.svg.vec',
   );
 }

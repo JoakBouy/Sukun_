@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class GenderCardWidget extends StatelessWidget {
   const GenderCardWidget({
@@ -55,14 +56,16 @@ class GenderCardWidget extends StatelessWidget {
                           color: theme.colorScheme.onSurface,
                         ),
                       ),
-                      SvgPicture.asset(
-                        isMale
-                            ? Theme.of(
-                              context,
-                            ).extension<CustomAssets>()!.maleIcon
-                            : Theme.of(
-                              context,
-                            ).extension<CustomAssets>()!.femaleIcon,
+                      SvgPicture(
+                        AssetBytesLoader(
+                          isMale
+                              ? Theme.of(
+                                context,
+                              ).extension<CustomAssets>()!.maleIcon
+                              : Theme.of(
+                                context,
+                              ).extension<CustomAssets>()!.femaleIcon,
+                        ),
                         colorFilter: ColorFilter.mode(
                           theme.colorScheme.onSurface,
                           BlendMode.srcIn,
@@ -81,12 +84,14 @@ class GenderCardWidget extends StatelessWidget {
                 SizesManager.cardCircularBorderRadius,
               ),
             ),
-            child: SvgPicture.asset(
+            child: SvgPicture(
+              AssetBytesLoader(
+                isMale
+                    ? theme.extension<CustomAssets>()!.male
+                    : theme.extension<CustomAssets>()!.female,
+              ),
               height: 180,
               width: MediaQuery.sizeOf(context).width / 1.65,
-              isMale
-                  ? theme.extension<CustomAssets>()!.male
-                  : theme.extension<CustomAssets>()!.female,
             ),
           ),
         ],

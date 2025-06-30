@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/eighth_page/widgets/custom_slider.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class CustomVerticalSlider extends StatelessWidget {
   final ThemeData theme;
@@ -43,11 +44,11 @@ class CustomVerticalSlider extends StatelessWidget {
                 width: 4,
               ),
             ),
-            child: SvgPicture.asset(
+            child: SvgPicture(
+              AssetBytesLoader(theme.extension<CustomAssets>()!.sliderCenter),
               fit: BoxFit.scaleDown,
               width: 24,
               height: 24,
-              theme.extension<CustomAssets>()!.sliderCenter,
             ),
           ),
         ),

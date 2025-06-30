@@ -4,6 +4,7 @@ import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class PopupWidget extends StatelessWidget {
   const PopupWidget({super.key});
@@ -29,10 +30,10 @@ class PopupWidget extends StatelessWidget {
               vertical: SizesManager.padding - 4,
             ),
             backgroundColor: theme.colorScheme.primaryContainer,
-            title: SvgPicture.asset(
+            title: SvgPicture(
+              AssetBytesLoader(theme.extension<CustomAssets>()!.forgotPassword),
               width: 308,
               height: 248,
-              theme.extension<CustomAssets>()!.forgotPassword,
             ),
             content: SingleChildScrollView(
               child: ListBody(

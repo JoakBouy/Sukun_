@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/helpers/widgets_helper.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/fifth_page/side_arched_painter.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class EmojiWheelWidget extends StatefulWidget {
   const EmojiWheelWidget({super.key});
@@ -45,12 +46,16 @@ class _EmojiWheelWidgetState extends State<EmojiWheelWidget> {
           ),
         ),
         SizedBox(height: 20),
-        SvgPicture.asset(width: 120, height: 120, assets[_selectedIndex]),
+        SvgPicture(
+          AssetBytesLoader(assets[_selectedIndex]),
+          width: 120,
+          height: 120,
+        ),
         SizedBox(height: 20),
-        SvgPicture.asset(
+        SvgPicture(
+          AssetBytesLoader(theme.extension<CustomAssets>()!.pointer),
           height: 48,
           width: 48,
-          theme.extension<CustomAssets>()!.pointer,
         ),
         Stack(
           alignment: Alignment.bottomCenter,
@@ -82,8 +87,10 @@ class _EmojiWheelWidgetState extends State<EmojiWheelWidget> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 20.0),
-              child: SvgPicture.asset(
-                theme.extension<CustomAssets>()!.wheelSelector,
+              child: SvgPicture(
+                AssetBytesLoader(
+                  theme.extension<CustomAssets>()!.wheelSelector,
+                ),
                 colorFilter: ColorFilter.mode(
                   theme.colorScheme.primary,
                   BlendMode.srcIn,
@@ -119,7 +126,11 @@ List<Widget> repeatWidgets({
           padding: const EdgeInsets.only(right: 25.0),
           child: RotatedBox(
             quarterTurns: -1,
-            child: SvgPicture.asset(width: 120, height: 120, assets[index]),
+            child: SvgPicture(
+              AssetBytesLoader(assets[index]),
+              width: 120,
+              height: 120,
+            ),
           ),
         ),
       ],

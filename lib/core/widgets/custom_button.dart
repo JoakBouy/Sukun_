@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -49,9 +50,11 @@ class CustomButton extends StatelessWidget {
             ),
             icon == ""
                 ? const SizedBox.shrink()
-                : SvgPicture.asset(
+                : SvgPicture(
+                  AssetBytesLoader(
+                    icon ?? theme.extension<CustomAssets>()!.arrow,
+                  ),
                   width: 24,
-                  icon ?? theme.extension<CustomAssets>()!.arrow,
                   colorFilter: ColorFilter.mode(
                     textColor ?? color ?? Colors.white,
                     BlendMode.srcIn,

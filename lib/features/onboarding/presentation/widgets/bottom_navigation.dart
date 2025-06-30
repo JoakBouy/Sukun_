@@ -6,6 +6,7 @@ import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
 import 'package:freud_ai/features/onboarding/presentation/widgets/progressbar.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({
@@ -104,8 +105,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   ElevatedButton(
                     onPressed: widget.onTap,
                     style: ThemeManager.circularElevatedButtonStyle,
-                    child: SvgPicture.asset(
-                      theme.extension<CustomAssets>()!.arrow2,
+                    child: SvgPicture(
+                      AssetBytesLoader(theme.extension<CustomAssets>()!.arrow2),
                     ),
                   ),
                 ],

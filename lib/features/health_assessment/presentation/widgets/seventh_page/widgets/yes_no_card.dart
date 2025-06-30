@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class YesNoCard extends StatelessWidget {
   const YesNoCard({
@@ -50,10 +51,10 @@ class YesNoCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: SizesManager.hPadding + 2,
               children: [
-                SvgPicture.asset(
+                SvgPicture(
+                  AssetBytesLoader(icon),
                   width: 48,
                   height: 48,
-                  icon,
                   colorFilter: ColorFilter.mode(
                     selected ? Colors.white : theme.colorScheme.onSurface,
                     BlendMode.srcIn,
