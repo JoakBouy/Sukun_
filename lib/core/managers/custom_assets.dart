@@ -32,6 +32,10 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
   final String yes = 'assets/images/svgs/yes.svg';
   final String no = 'assets/images/svgs/no.svg';
   final String sliderCenter = 'assets/images/svgs/slider_center.svg';
+  final String gridIcon1 = 'assets/images/svgs/grid_icon1.svg';
+  final String gridIcon2 = 'assets/images/svgs/grid_icon2.svg';
+  final String gridIcon3 = 'assets/images/svgs/grid_icon3.svg';
+  final String gridIcon4 = 'assets/images/svgs/grid_icon4.svg';
   final String icon;
   final String onboarding0;
   final String onboarding1;

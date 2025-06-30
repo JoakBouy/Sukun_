@@ -65,6 +65,10 @@ class StringsManager {
   static const String noCardTitle = 'No Physical Pain At All';
   static const String noCardSubtitle =
       'I’m not experiencing any physical pain in my body at all :)';
+  static const String gridItem1 = 'Prescribed Medications';
+  static const String gridItem2 = 'Over the Counter Supplements';
+  static const String gridItem3 = 'I’m not taking any';
+  static const String gridItem4 = 'Prefer not to say';
 
   static String onBoardingTopButton(int index) {
     switch (index) {
