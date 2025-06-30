@@ -106,3 +106,37 @@ jobs:
         with:
           name: v${{ env.app_ver }}
           path: ${{ env.ARTIFACTS_PATH }}/*.apk
+
+    build_web:
+    runs-on: ubuntu-latest
+    needs: build-release # this ensures Android build runs first
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.32.5"
+          channel: stable
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Flutter Web
+        run: flutter build web --release --base-href /Flutter_freud_UI_Kit/ --wasm
+
+      - name: Deploy to hosted_web_version branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          cd build/web
+          git init
+          git remote add origin https://github.com/${{ github.repository }}.git
+          git checkout -b hosted_web_version
+
+          touch .nojekyll
+          git add .
+          git commit -m "Deploy Flutter Web to hosted_web_version"
+          git push --force origin hosted_web_version
