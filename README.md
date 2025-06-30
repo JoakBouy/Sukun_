@@ -31,7 +31,7 @@ While the design is primarily mobile-focused, I’m working to make the layout *
 - 🎨 **Stunning design** based on Freud UI Kit (Figma)
 - 🔧 **Custom hand-crafted widgets** and animations
 - 📏 **Responsive UI** that adapts to different screen sizes
-- 🌍 **Device preview support** when running the web version (A hosted version will be uploaded later)
+- 🌍 **Device preview support** when running the [web version](https://moazsalem.github.io/Flutter_freud_UI_Kit/)
 - 🚀 **Precompiled APKs** in [Releases](#-releases) for quick access
 
 ---
@@ -82,11 +82,15 @@ This lets you simulate multiple screen types inside the browser.
 
 <h3 align="center"> To Be Added Later</h3>
 
+<p align="center"> For now you can try the  <a href="https://moazsalem.github.io/Flutter_freud_UI_Kit/" target="_blank">Web version</a> directly in your browser </p>
+
 ---
 
 ## 📦 Releases
 
-You can download the latest APK builds from the [Releases](https://github.com/MoazSalem/Flutter_freud_UI_Kit/releases) section.
+You can try the [Web version here](https://moazsalem.github.io/Flutter_freud_UI_Kit/) 
+
+or You can download the latest APK builds from the [Releases](https://github.com/MoazSalem/Flutter_freud_UI_Kit/releases) section.
 
 This makes it easy for others to test the app without building it locally.
 
@@ -144,7 +148,7 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 Here are some of the things I'm still working on or planning to improve:
 
 - ❇️ Implement **more screens and widgets**
-- 🌐 Host the **web version** of the app for easier previews and demos
+- ~~🌐 Host the **web version** of the app for easier previews and demos~~
 - 📱 Improve **responsive behavior** on tablets and wide screens
 - 🔄 Refactor and clean up state management
 - 📷 Add **more screenshots and demo GIFs** to this README
