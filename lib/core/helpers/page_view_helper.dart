@@ -7,6 +7,7 @@ import 'package:freud_ai/features/health_assessment/presentation/widgets/ninth_p
 import 'package:freud_ai/features/health_assessment/presentation/widgets/second_page/second_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/seventh_page/seventh_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/sixth_page/sixth_page.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/tenth_page/tenth_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/third_page/third_page.dart';
 
 class PageViewHelper {
@@ -30,8 +31,8 @@ class PageViewHelper {
         return EighthPage();
       case 9:
         return NinthPage();
-      // case 10:
-      //   return Page();
+      case 10:
+        return TenthPage();
       // case 11:
       //   return Page();
       // case 12:
