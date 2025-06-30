@@ -107,8 +107,8 @@ jobs:
           name: v${{ env.app_ver }}
           path: ${{ env.ARTIFACTS_PATH }}/*.apk
 
-    build_web:
-    runs-on: ubuntu-latest
+  build_web:
+    runs-on: ubuntu-22.04
     needs: build-release # this ensures Android build runs first
 
     steps:
@@ -133,7 +133,7 @@ jobs:
 
           cd build/web
           git init
-          git remote add origin https://github.com/${{ github.repository }}.git
+          git remote add origin https://x-access-token:${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git
           git checkout -b hosted_web_version
 
           touch .nojekyll
