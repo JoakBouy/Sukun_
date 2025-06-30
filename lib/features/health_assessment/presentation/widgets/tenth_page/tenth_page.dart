@@ -13,12 +13,19 @@ class TenthPage extends StatefulWidget {
 class _TenthPageState extends State<TenthPage> {
   final ScrollController _scrollController = ScrollController();
   final alphabetWords = generateAlphabeticalWords();
+  void scrollToLetter(int i) => setState(() {
+    _scrollController.animateTo(
+      (i * 320),
+      duration: const Duration(seconds: 1),
+      curve: Curves.linear,
+    );
+  });
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Column(
       children: [
-        AlphabeticalBar(theme: theme),
+        AlphabeticalBar(theme: theme, scroll: scrollToLetter),
         MedicationsList(
           theme: theme,
           alphabetWords: alphabetWords,

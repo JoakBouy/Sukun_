@@ -3,8 +3,9 @@ import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 
 class AlphabeticalBar extends StatelessWidget {
-  const AlphabeticalBar({super.key, required this.theme});
+  const AlphabeticalBar({super.key, required this.theme, required this.scroll});
   final ThemeData theme;
+  final void Function(int) scroll;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +31,37 @@ class AlphabeticalBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          AlphabeticalButton(letter: 'A', style: style),
-          AlphabeticalButton(letter: 'B', style: style),
-          AlphabeticalButton(letter: 'C', style: style),
-          AlphabeticalButton(letter: '...', style: style),
-          AlphabeticalButton(letter: 'X', style: style),
-          AlphabeticalButton(letter: 'Y', style: style),
-          AlphabeticalButton(letter: 'Z', style: style),
+          AlphabeticalButton(
+            letter: 'A',
+            style: style,
+            scroll: () => scroll(0),
+          ),
+          AlphabeticalButton(
+            letter: 'B',
+            style: style,
+            scroll: () => scroll(1),
+          ),
+          AlphabeticalButton(
+            letter: 'C',
+            style: style,
+            scroll: () => scroll(2),
+          ),
+          AlphabeticalButton(letter: '...', style: style, scroll: () {}),
+          AlphabeticalButton(
+            letter: 'X',
+            style: style,
+            scroll: () => scroll(22),
+          ),
+          AlphabeticalButton(
+            letter: 'Y',
+            style: style,
+            scroll: () => scroll(23),
+          ),
+          AlphabeticalButton(
+            letter: 'Z',
+            style: style,
+            scroll: () => scroll(24),
+          ),
           IconButton(
             onPressed: () {},
             icon: Icon(
@@ -56,9 +81,11 @@ class AlphabeticalButton extends StatelessWidget {
     super.key,
     required this.style,
     required this.letter,
+    required this.scroll,
   });
   final TextStyle style;
   final String letter;
+  final void Function() scroll;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +93,7 @@ class AlphabeticalButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(
         SizesManager.cardCircularBorderRadius,
       ),
-      onTap: () {},
+      onTap: scroll,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(
