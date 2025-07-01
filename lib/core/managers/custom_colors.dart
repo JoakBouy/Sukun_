@@ -126,7 +126,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     background: Color(0xFF251404),
     iconColor: Color(0xFF736B66),
     activeIconColor: Color(0xFFFFFFFF),
-    greenAccent: Color(0xFF3D4A26),
+    greenAccent: Color(0xFF423b1e),
     orangeAccent: Color(0xFF663600),
     greyAccent: Color(0xFF3F3C36),
     yellowAccent: Color(0xFF705600),
