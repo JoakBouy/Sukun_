@@ -28,7 +28,8 @@ class _PageViewScreenState extends State<PageViewScreen> {
                   style: theme.textTheme.titleLarge,
                 ),
               ),
-              SizedBox(height: SizesManager.dhPadding),
+              if (![13, 14].contains(widget.index))
+                SizedBox(height: SizesManager.dhPadding),
               PageViewHelper.getPage(widget.index),
             ],
           ),

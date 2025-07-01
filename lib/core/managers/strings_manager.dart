@@ -58,7 +58,11 @@ class StringsManager {
   static const String assessmentTitle12 =
       'How would you rate your stress level?';
   static const String assessmentTitle13 = 'AI Sound Analysis';
+  static const String assessmentSubtitle13 =
+      'Please say the following words below. Don’t worry, we don’t steal your voice data.';
   static const String assessmentTitle14 = 'Expression Analysis';
+  static const String assessmentSubtitle14 =
+      'Freely write down anything that\'s on your mind. Dr Freud.ai is here to listen...';
   static const String yesCardTitle = 'Yes, one or multiple';
   static const String yesCardSubtitle =
       'I’m experiencing physical pain in different place over my body.';
