@@ -3,6 +3,7 @@ import 'package:freud_ai/features/health_assessment/presentation/widgets/eighth_
 import 'package:freud_ai/features/health_assessment/presentation/widgets/eleventh_page/eleventh_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/fifth_page/fifth_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/first_page/first_page.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/fourteenth_page/fourteenth_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/fourth_page/fourth_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/ninth_page/ninth_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/second_page/second_page.dart';
@@ -10,6 +11,8 @@ import 'package:freud_ai/features/health_assessment/presentation/widgets/seventh
 import 'package:freud_ai/features/health_assessment/presentation/widgets/sixth_page/sixth_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/tenth_page/tenth_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/third_page/third_page.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/thirteenth_page/thirteenth_page.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/twelfth_page/twelfth_page.dart';
 
 class PageViewHelper {
   static getPage(final int index) {
@@ -36,12 +39,12 @@ class PageViewHelper {
         return TenthPage();
       case 11:
         return EleventhPage();
-      // case 12:
-      //   return Page();
-      // case 13:
-      //   return Page();
-      // case 14:
-      //   return Page();
+      case 12:
+        return TwelfthPage();
+      case 13:
+        return ThirteenthPage();
+      case 14:
+        return FourteenthPage();
       default:
         return FirstPage();
     }
