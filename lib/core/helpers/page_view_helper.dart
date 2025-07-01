@@ -1,5 +1,6 @@
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/eighth_page/eighth_page.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/eleventh_page/eleventh_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/fifth_page/fifth_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/first_page/first_page.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/fourth_page/fourth_page.dart';
@@ -33,8 +34,8 @@ class PageViewHelper {
         return NinthPage();
       case 10:
         return TenthPage();
-      // case 11:
-      //   return Page();
+      case 11:
+        return EleventhPage();
       // case 12:
       //   return Page();
       // case 13:

@@ -47,6 +47,8 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
   final String male;
   final String female;
   final String page6;
+  final String page11;
+  final String page13;
   const CustomAssets({
     required this.icon,
     required this.onboarding0,
@@ -59,6 +61,8 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     required this.male,
     required this.female,
     required this.page6,
+    required this.page11,
+    required this.page13,
   });
 
   @override
@@ -74,6 +78,8 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     String? male,
     String? female,
     String? page6,
+    String? page11,
+    String? page13,
   }) {
     return CustomAssets(
       icon: icon ?? this.icon,
@@ -87,6 +93,8 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
       male: male ?? this.male,
       female: female ?? this.female,
       page6: page6 ?? this.page6,
+      page11: page11 ?? this.page11,
+      page13: page13 ?? this.page13,
     );
   }
 
@@ -108,6 +116,8 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
       male: other.male,
       female: other.female,
       page6: other.page6,
+      page11: other.page11,
+      page13: other.page13,
     );
   }
 
@@ -123,6 +133,8 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     male: 'assets/images/svgs/light/male.svg.vec',
     female: 'assets/images/svgs/light/female.svg.vec',
     page6: 'assets/images/svgs/light/page6.svg.vec',
+    page11: 'assets/images/svgs/light/page11.svg.vec',
+    page13: 'assets/images/svgs/light/page13.svg.vec',
   );
   static const CustomAssets dark = CustomAssets(
     icon: 'assets/images/svgs/dark/icon.svg.vec',
@@ -136,5 +148,7 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
     male: 'assets/images/svgs/dark/male.svg.vec',
     female: 'assets/images/svgs/dark/female.svg.vec',
     page6: 'assets/images/svgs/dark/page6.svg.vec',
+    page11: 'assets/images/svgs/dark/page11.svg.vec',
+    page13: 'assets/images/svgs/dark/page13.svg.vec',
   );
 }

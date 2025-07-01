@@ -20,6 +20,13 @@ class _TenthPageState extends State<TenthPage> {
       curve: Curves.linear,
     );
   });
+
+  @override
+  dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
