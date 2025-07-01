@@ -149,8 +149,7 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                         curve: Curves.easeIn,
                       ),
                       setState(() {
-                        // limit to currently implemented pages (10)
-                        _currentPage < 10 ? _currentPage += 1 : null;
+                        _currentPage < 14 ? _currentPage += 1 : null;
                       }),
                     },
               ),
