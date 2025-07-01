@@ -26,12 +26,12 @@ class CircleButton extends StatelessWidget {
           color:
               isSelected
                   ? theme.extension<CustomColors>()!.orange
-                  : Colors.white,
+                  : theme.colorScheme.primaryContainer,
           border: Border.all(
             color:
                 isSelected
                     ? theme.extension<CustomColors>()!.orangeAccent
-                    : Colors.white,
+                    : theme.colorScheme.primaryContainer,
             width: 4,
           ),
         ),
