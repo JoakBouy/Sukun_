@@ -49,7 +49,7 @@ class _FourteenthPageState extends State<FourteenthPage> {
           controller: _controller,
           focusNode: _focusNode,
           hintText:
-              'I don’t want to be         alive anymore. Just        f****** kill me, doc.',
+              'I don’t want to be \n alive anymore. Just \n f****** kill me, doc.',
         ),
         UseVoiceButton(theme: theme),
       ],

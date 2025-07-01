@@ -19,8 +19,8 @@ class CircleButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(40),
       onTap: onTap,
       child: Container(
-        width: 70,
-        height: 70,
+        width: 65,
+        height: 65,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color:

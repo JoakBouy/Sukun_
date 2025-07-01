@@ -15,27 +15,32 @@ class NumberRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      color: theme.colorScheme.primaryContainer,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(SizesManager.circularBorderRadius),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ...List.generate(
-              5,
-              (index) => CircleButton(
-                theme: theme,
-                text: '${index + 1}',
-                isSelected: index == selectedIndex,
-                onTap: () => onTap(index),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 600),
+      child: Card(
+        elevation: 0,
+        color: theme.colorScheme.primaryContainer,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            SizesManager.circularBorderRadius,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ...List.generate(
+                5,
+                (index) => CircleButton(
+                  theme: theme,
+                  text: '${index + 1}',
+                  isSelected: index == selectedIndex,
+                  onTap: () => onTap(index),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
