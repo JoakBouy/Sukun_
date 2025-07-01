@@ -36,6 +36,8 @@ class CustomAssets extends ThemeExtension<CustomAssets> {
   final String gridIcon2 = 'assets/images/svgs/grid_icon2.svg.vec';
   final String gridIcon3 = 'assets/images/svgs/grid_icon3.svg.vec';
   final String gridIcon4 = 'assets/images/svgs/grid_icon4.svg.vec';
+  final String icon14_1 = 'assets/images/svgs/icon_14_1.svg.vec';
+  final String icon14_2 = 'assets/images/svgs/icon_14_2.svg.vec';
   final String icon;
   final String onboarding0;
   final String onboarding1;
