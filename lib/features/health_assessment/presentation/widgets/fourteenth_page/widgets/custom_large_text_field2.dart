@@ -90,8 +90,10 @@ class _CustomLargeTextField2State extends State<CustomLargeTextField2> {
             spacing: 10,
             mainAxisSize: MainAxisSize.min,
             children: [
-              SvgPicture(
-                AssetBytesLoader(theme.extension<CustomAssets>()!.icon14_1),
+              SvgPicture.asset(
+                theme.extension<CustomAssets>()!.icon14_1,
+                width: 24,
+                height: 24,
                 colorFilter: ColorFilter.mode(
                   theme.colorScheme.onPrimaryContainer.withAlpha(100),
                   BlendMode.srcIn,
