@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freud_ai/features/health_assessment/presentation/widgets/tenth_page/data/english_words.dart';
+import 'package:freud_ai/core/helpers/widgets_helper.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/tenth_page/widgets/alphabetical_bar.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/tenth_page/widgets/medications_list.dart';
 
@@ -12,7 +12,7 @@ class TenthPage extends StatefulWidget {
 
 class _TenthPageState extends State<TenthPage> {
   final ScrollController _scrollController = ScrollController();
-  final alphabetWords = generateAlphabeticalWords();
+  final alphabetWords = WidgetsHelper.fakeMedications;
   void scrollToLetter(int i) => setState(() {
     _scrollController.animateTo(
       (i * 320),
