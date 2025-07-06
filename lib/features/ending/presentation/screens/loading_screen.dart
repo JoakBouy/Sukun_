@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
+import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -29,7 +29,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
           _timer?.cancel();
           // go to next screen
           Future.delayed(Duration(milliseconds: 300), () {
-            if (mounted) {}
+            if (mounted) {
+              Navigator.pushReplacementNamed(
+                context,
+                NavigationManager.endingScreen,
+              );
+            }
           });
         }
       });

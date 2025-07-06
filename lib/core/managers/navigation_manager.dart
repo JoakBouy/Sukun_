@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freud_ai/features/authentication/presentation/screens/authentication_view.dart';
 import 'package:freud_ai/features/authentication/presentation/screens/forgot_password_screen.dart';
 import 'package:freud_ai/features/authentication/presentation/screens/sign_up_screen.dart';
+import 'package:freud_ai/features/ending/presentation/screens/ending_screen.dart';
 import 'package:freud_ai/features/ending/presentation/screens/loading_screen.dart';
 import 'package:freud_ai/features/health_assessment/presentation/screens/main_screen/assessment_main_screen.dart';
 import 'package:freud_ai/features/onboarding/presentation/screens/onboarding_carousel_screen.dart';
@@ -15,6 +16,7 @@ class NavigationManager {
   static const String forgotPasswordScreen = '/forgotPasswordScreen';
   static const String assessmentMainScreen = '/assessmentMainScreen';
   static const String loadingScreen = '/loadingScreen';
+  static const String endingScreen = '/endingScreen';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     onboardingScreen: (context) => const OnboardingView(),
@@ -24,5 +26,6 @@ class NavigationManager {
     forgotPasswordScreen: (context) => const ForgotPasswordScreen(),
     assessmentMainScreen: (context) => const AssessmentMainScreen(),
     loadingScreen: (context) => const LoadingScreen(),
+    endingScreen: (context) => const EndingScreen(),
   };
 }
