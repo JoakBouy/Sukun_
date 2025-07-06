@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
+import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/widgets/custom_app_bar.dart';
@@ -166,7 +167,11 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                           curve: Curves.easeIn,
                         ),
                         setState(() {
-                          _currentPage < 14 ? _currentPage += 1 : null;
+                          _currentPage < 14
+                              ? _currentPage += 1
+                              : Navigator.of(
+                                context,
+                              ).pushNamed(NavigationManager.loadingScreen);
                         }),
                       },
                 ),
