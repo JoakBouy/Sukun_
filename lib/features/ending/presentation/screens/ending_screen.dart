@@ -54,16 +54,21 @@ class EndingScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(SizesManager.padding),
-        child: CustomButton(
-          text: "Go Back To Start",
-          color: theme.extension<CustomColors>()!.orangeAccent,
-          textColor: theme.colorScheme.onSurface,
-          icon: "",
-          onPressed:
-              () => Navigator.popUntil(
-                context,
-                ModalRoute.withName(NavigationManager.onboardingScreen),
-              ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomButton(
+              text: "Go Back To Start",
+              color: theme.extension<CustomColors>()!.orangeAccent,
+              textColor: theme.colorScheme.onSurface,
+              icon: "",
+              onPressed:
+                  () => Navigator.popUntil(
+                    context,
+                    ModalRoute.withName(NavigationManager.onboardingScreen),
+                  ),
+            ),
+          ],
         ),
       ),
     );

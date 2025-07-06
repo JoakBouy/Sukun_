@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:freud_ai/core/helpers/widgets_helper.dart';
 import 'package:freud_ai/core/managers/custom_assets.dart';
-import 'package:freud_ai/features/health_assessment/presentation/widgets/fifth_page/side_arched_painter.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/fifth_page/widgets/side_arched_painter.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class EmojiWheelWidget extends StatefulWidget {

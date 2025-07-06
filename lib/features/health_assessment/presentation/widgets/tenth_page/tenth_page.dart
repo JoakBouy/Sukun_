@@ -33,11 +33,17 @@ class _TenthPageState extends State<TenthPage> {
     return Column(
       spacing: 10,
       children: [
-        AlphabeticalBar(theme: theme, scroll: scrollToLetter),
-        MedicationsList(
-          theme: theme,
-          alphabetWords: alphabetWords,
-          scrollController: _scrollController,
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 600),
+          child: AlphabeticalBar(theme: theme, scroll: scrollToLetter),
+        ),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 600),
+          child: MedicationsList(
+            theme: theme,
+            alphabetWords: alphabetWords,
+            scrollController: _scrollController,
+          ),
         ),
       ],
     );
