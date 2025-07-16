@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class SizesManager {
   static const double tinyPadding = 4.0;
   static const double hPadding = 8.0;
@@ -18,4 +20,10 @@ class SizesManager {
   static const double circularBorderRadius = 40.0;
   static const double cardCircularBorderRadius = 30.0;
   static const double defaultAppBarHeight = 60.0;
+  static const EdgeInsets bottomSheetButtonPadding = EdgeInsets.only(
+    bottom: 4.0,
+    left: 16.0,
+    right: 16.0,
+    top: 4.0,
+  );
 }

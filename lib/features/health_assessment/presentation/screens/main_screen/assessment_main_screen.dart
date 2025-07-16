@@ -42,6 +42,7 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
       },
       child: Scaffold(
         appBar: customAppBar(
+          height: 80,
           theme: theme,
           title: StringsManager.assessmentTitle,
           actions: [CountCard(count: _currentPage)],
@@ -54,17 +55,13 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
         ),
         bottomNavigationBar: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: SizesManager.padding,
-            ),
+            padding: SizesManager.bottomSheetButtonPadding,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (_currentPage == 6)
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: SizesManager.padding,
-                    ),
+                    padding: const EdgeInsets.only(bottom: 8),
                     child: ConstrainedBox(
                       constraints: BoxConstraints(maxWidth: 600),
                       child: Row(
@@ -134,9 +131,7 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                   ),
                 if (_currentPage == 2)
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: SizesManager.padding,
-                    ),
+                    padding: const EdgeInsets.only(bottom: 8),
                     child: CustomButton(
                       text: StringsManager.assessment2SkipButton,
                       icon: theme.extension<CustomAssets>()!.X,

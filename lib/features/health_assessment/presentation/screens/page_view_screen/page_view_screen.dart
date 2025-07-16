@@ -16,9 +16,8 @@ class _PageViewScreenState extends State<PageViewScreen> {
     return Center(
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(SizesManager.padding),
+          padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 600),
@@ -29,8 +28,9 @@ class _PageViewScreenState extends State<PageViewScreen> {
                 ),
               ),
               if (![13, 14].contains(widget.index))
-                SizedBox(height: SizesManager.dhPadding),
+                SizedBox(height: SizesManager.dPadding),
               PageViewHelper.getPage(widget.index),
+              SizedBox(height: SizesManager.dPadding),
             ],
           ),
         ),

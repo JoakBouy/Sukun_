@@ -112,7 +112,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
+          padding: SizesManager.bottomSheetButtonPadding,
           child: CustomButton(
             text: StringsManager.sendPassword,
             icon: theme.extension<CustomAssets>()!.lock,
