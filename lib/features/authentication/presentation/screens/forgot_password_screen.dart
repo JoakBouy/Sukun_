@@ -35,76 +35,80 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       ),
     ];
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
-          child: SizedBox(
-            width: 600,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 600,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: SizesManager.padding,
+            ),
+            child: SizedBox(
+              width: 600,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 600,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: SizesManager.padding,
+                          ),
+                          child: CustomBackButton(),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 600,
+                      child: Text(
+                        StringsManager.forgotPassword,
+                        style: theme.textTheme.titleLarge,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 600,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                           vertical: SizesManager.padding,
                         ),
-                        child: CustomBackButton(),
+                        child: Text(
+                          StringsManager.forgotPasswordSubtitle,
+                          style: theme.textTheme.bodyLarge,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 600,
-                    child: Text(
-                      StringsManager.forgotPassword,
-                      style: theme.textTheme.titleLarge,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 600,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: SizesManager.padding,
-                      ),
-                      child: Text(
-                        StringsManager.forgotPasswordSubtitle,
-                        style: theme.textTheme.bodyLarge,
-                      ),
-                    ),
-                  ),
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 600),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      padding: EdgeInsets.all(0),
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: items.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: SizesManager.tinyPadding,
-                          ),
-                          child: GestureDetector(
-                            onTap:
-                                () => setState(() {
-                                  selectedIndex = index;
-                                }),
-                            child: ForgotPasswordCard(
-                              iconPath: items[index].icon,
-                              title: items[index].title,
-                              selected: selectedIndex == index,
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 600),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        padding: EdgeInsets.all(0),
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: items.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: SizesManager.tinyPadding,
                             ),
-                          ),
-                        );
-                      },
+                            child: GestureDetector(
+                              onTap:
+                                  () => setState(() {
+                                    selectedIndex = index;
+                                  }),
+                              child: ForgotPasswordCard(
+                                iconPath: items[index].icon,
+                                title: items[index].title,
+                                selected: selectedIndex == index,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 20),
-                ],
+                    SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
           ),

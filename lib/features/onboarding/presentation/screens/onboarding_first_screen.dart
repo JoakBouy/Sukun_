@@ -15,106 +15,45 @@ class OnboardingFirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
-          child: SingleChildScrollView(
-            child: Column(
-              spacing: SizesManager.padding,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture(
-                  width: 64,
-                  height: 64,
-                  AssetBytesLoader(theme.extension<CustomAssets>()!.icon),
-                ),
-                Center(
-                  child: RichText(
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          style: theme.textTheme.titleLarge,
-                          text: StringsManager.onBoardingFirstTitle1,
-                          children: [
-                            TextSpan(
-                              text: StringsManager.onBoardingFirstTitle2,
-                              style: theme.textTheme.titleLarge!.copyWith(
-                                color:
-                                    theme
-                                        .extension<CustomColors>()!
-                                        .lightPrimary,
-                              ),
-                            ),
-                            TextSpan(
-                              text: StringsManager.onBoardingFirstTitle3,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: SizesManager.padding,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                spacing: SizesManager.padding,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture(
+                    width: 64,
+                    height: 64,
+                    AssetBytesLoader(theme.extension<CustomAssets>()!.icon),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: SizesManager.padding),
-                  child: Center(
-                    child: Text(
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      StringsManager.onBoardingFirstSubtitle,
-                      style: theme.textTheme.titleMedium,
-                    ),
-                  ),
-                ),
-                SvgPicture(
-                  width: 300,
-                  height: 300,
-                  AssetBytesLoader(
-                    theme.extension<CustomAssets>()!.onboarding0,
-                  ),
-                ),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 600),
-                  child: FractionallySizedBox(
-                    widthFactor: 0.65,
-                    child: CustomButton(
-                      text: StringsManager.getStarted,
-                      onPressed:
-                          () => context.pushNamedTransition(
-                            routeName:
-                                NavigationManager.onboardingCarouselScreen,
-                            type: PageTransitionType.sharedAxisHorizontal,
-                          ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: SizesManager.padding),
-                  child: GestureDetector(
-                    onTap:
-                        () => Navigator.of(
-                          context,
-                        ).pushNamed(NavigationManager.authenticationScreen),
+                  Center(
                     child: RichText(
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: StringsManager.alreadyHaveAnAccount,
-                            style: theme.textTheme.bodySmall,
+                            style: theme.textTheme.titleLarge,
+                            text: StringsManager.onBoardingFirstTitle1,
                             children: [
                               TextSpan(
-                                text: StringsManager.signIn,
-                                style: theme.textTheme.bodySmall!.copyWith(
+                                text: StringsManager.onBoardingFirstTitle2,
+                                style: theme.textTheme.titleLarge!.copyWith(
                                   color:
-                                      theme.extension<CustomColors>()!.orange,
-                                  decoration: TextDecoration.underline,
+                                      theme
+                                          .extension<CustomColors>()!
+                                          .lightPrimary,
                                 ),
+                              ),
+                              TextSpan(
+                                text: StringsManager.onBoardingFirstTitle3,
                               ),
                             ],
                           ),
@@ -122,8 +61,75 @@ class OnboardingFirstScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      bottom: SizesManager.padding,
+                    ),
+                    child: Center(
+                      child: Text(
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                        StringsManager.onBoardingFirstSubtitle,
+                        style: theme.textTheme.titleMedium,
+                      ),
+                    ),
+                  ),
+                  SvgPicture(
+                    width: 300,
+                    height: 300,
+                    AssetBytesLoader(
+                      theme.extension<CustomAssets>()!.onboarding0,
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 600),
+                    child: FractionallySizedBox(
+                      widthFactor: 0.65,
+                      child: CustomButton(
+                        text: StringsManager.getStarted,
+                        onPressed:
+                            () => context.pushNamedTransition(
+                              routeName:
+                                  NavigationManager.onboardingCarouselScreen,
+                              type: PageTransitionType.sharedAxisHorizontal,
+                            ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: SizesManager.padding),
+                    child: GestureDetector(
+                      onTap:
+                          () => Navigator.of(
+                            context,
+                          ).pushNamed(NavigationManager.authenticationScreen),
+                      child: RichText(
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: StringsManager.alreadyHaveAnAccount,
+                              style: theme.textTheme.bodySmall,
+                              children: [
+                                TextSpan(
+                                  text: StringsManager.signIn,
+                                  style: theme.textTheme.bodySmall!.copyWith(
+                                    color:
+                                        theme.extension<CustomColors>()!.orange,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
