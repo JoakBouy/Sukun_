@@ -55,6 +55,7 @@ class MostCommon extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
+                          color: Colors.white,
                         ),
                       ),
                       Icon(Icons.close, color: Color(0xFFFFC89E), size: 18),
