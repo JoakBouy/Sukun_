@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
 
+import 'core/managers/custom_colors.dart';
+
 void main() {
   runApp(
     DevicePreview(
@@ -28,7 +30,10 @@ class MyApp extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarColor:
+            oppositeBrightness == Brightness.dark
+                ? CustomColors.light.background
+                : CustomColors.dark.background,
         systemNavigationBarIconBrightness: oppositeBrightness,
         statusBarIconBrightness: oppositeBrightness,
       ),
