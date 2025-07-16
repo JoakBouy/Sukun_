@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomAssets extends ThemeExtension<CustomAssets> {
   final String arrow = 'assets/images/svgs/arrow.svg.vec';
   final String arrow2 = 'assets/images/svgs/arrow2.svg.vec';
-  final String iconWhite = 'assets/images/svgs/Icon_white.svg.vec';
+  final String iconWhite = 'assets/images/svgs/icon_white.svg.vec';
   final String email = 'assets/images/svgs/email.svg.vec';
   final String lock = 'assets/images/svgs/lock.svg.vec';
   final String eye = 'assets/images/svgs/eye.svg.vec';
