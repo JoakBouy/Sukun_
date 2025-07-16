@@ -78,11 +78,14 @@ This lets you simulate multiple screen types inside the browser.
 
 ---
 
-## ▶️ 📸 Screenshots & Demo
+## ▶️ 📸 Preview 
+<div align="center">
 
-<h3 align="center"> To Be Added Later</h3>
+| Light Mode                                                                                                           | Dark Mode                                                                                                        |
+|:---------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/user-attachments/assets/bfd52f16-88d3-4b03-b276-91d93f384f39" width="300">               | <img src="https://github.com/user-attachments/assets/c5e7ed26-a1f9-48cf-8e50-3fdeecc36717" width="300">               |
 
-<p align="center"> For now you can try the  <a href="https://moazsalem.github.io/Flutter_freud_UI_Kit/" target="_blank">Web version</a> directly in your browser </p>
+</div>
 
 ---
 
