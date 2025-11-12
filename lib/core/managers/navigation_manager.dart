@@ -9,11 +9,26 @@ import 'package:freud_ai/features/health_assessment/presentation/screens/main_sc
 import 'package:freud_ai/features/home/presentation/screens/home_screen.dart';
 import 'package:freud_ai/features/messaging/presentation/screens/messaging_screen.dart';
 import 'package:freud_ai/features/mood_tracking/presentation/screens/mood_tracking_screen.dart';
+import 'package:freud_ai/features/navigation/presentation/screens/main_navigation_screen.dart';
 import 'package:freud_ai/features/onboarding/presentation/screens/onboarding_carousel_screen.dart';
 import 'package:freud_ai/features/onboarding/presentation/screens/onboarding_view.dart';
 import 'package:freud_ai/features/sessions/presentation/screens/sessions_screen.dart';
 import 'package:freud_ai/features/therapist/presentation/screens/find_therapist_screen.dart';
 import 'package:freud_ai/features/voice_journaling/presentation/screens/voice_journaling_screen.dart';
+import 'package:freud_ai/features/exercises/presentation/screens/exercises_screen.dart';
+import 'package:freud_ai/features/health_assessment/presentation/screens/assessment_consent_screen.dart';
+import 'package:freud_ai/features/journal/presentation/screens/journal_screen.dart';
+import 'package:freud_ai/features/profile/presentation/screens/profile_screen.dart';
+import 'package:freud_ai/features/health_assessment/presentation/screens/phq9_assessment_screen.dart';
+import 'package:freud_ai/features/health_assessment/presentation/screens/dass21_assessment_screen.dart';
+import 'package:freud_ai/features/health_assessment/presentation/screens/asq_assessment_screen.dart';
+import 'package:freud_ai/features/home/presentation/screens/metric_detail_screen.dart';
+import 'package:freud_ai/features/exercises/presentation/screens/breathing_exercise_screen.dart';
+import 'package:freud_ai/features/exercises/presentation/screens/relaxation_exercise_screen.dart';
+import 'package:freud_ai/features/home/presentation/screens/notifications_screen.dart';
+import 'package:freud_ai/features/home/presentation/screens/mood_selector.dart';
+import 'package:freud_ai/features/profile/presentation/screens/habits_screen.dart';
+import 'package:freud_ai/features/exercises/presentation/widgets/breathing_exercise_card.dart';
 
 class NavigationManager {
   static const String onboardingScreen = '/onboarding';
@@ -24,14 +39,28 @@ class NavigationManager {
   static const String assessmentMainScreen = '/assessmentMainScreen';
   static const String loadingScreen = '/loadingScreen';
   static const String endingScreen = '/endingScreen';
+  static const String assessmentConsentScreen = '/assessmentConsent';
+  static const String phq9AssessmentScreen = '/phq9Assessment';
+  static const String dass21AssessmentScreen = '/dass21Assessment';
+  static const String asqAssessmentScreen = '/asqAssessment';
   
   // Sukun App Routes
+  static const String mainNavigationScreen = '/main';
   static const String homeScreen = '/home';
+  static const String exercisesScreen = '/exercises';
+  static const String journalScreen = '/journal';
+  static const String profileScreen = '/profile';
   static const String voiceJournalingScreen = '/voiceJournaling';
   static const String findTherapistScreen = '/findTherapist';
   static const String sessionsScreen = '/sessions';
   static const String messagingScreen = '/messaging';
   static const String moodTrackingScreen = '/moodTracking';
+  static const String metricDetailScreen = '/metricDetail';
+  static const String breathingExerciseScreen = '/breathingExercise';
+  static const String relaxationExerciseScreen = '/relaxationExercise';
+  static const String notificationsScreen = '/notifications';
+  static const String moodSelectorScreen = '/moodSelector';
+  static const String habitsScreen = '/habits';
   static const String crisisSupportScreen = '/crisisSupport';
 
   static Map<String, Widget Function(BuildContext)> routes = {
@@ -41,16 +70,70 @@ class NavigationManager {
     signUpScreen: (context) => const SignUpScreen(),
     forgotPasswordScreen: (context) => const ForgotPasswordScreen(),
     assessmentMainScreen: (context) => const AssessmentMainScreen(),
+    assessmentConsentScreen: (context) {
+      final args = ModalRoute.of(context)?.settings.arguments as String?;
+      return AssessmentConsentScreen(assessmentType: args ?? 'phq9');
+    },
     loadingScreen: (context) => const LoadingScreen(),
     endingScreen: (context) => const EndingScreen(),
+    phq9AssessmentScreen: (context) => const PHQ9AssessmentScreen(),
+    dass21AssessmentScreen: (context) => const DASS21AssessmentScreen(),
+    asqAssessmentScreen: (context) => const ASQAssessmentScreen(),
     
     // Sukun App Routes
+    mainNavigationScreen: (context) => const MainNavigationScreen(),
     homeScreen: (context) => const HomeScreen(),
+    exercisesScreen: (context) => const ExercisesScreen(),
+    journalScreen: (context) => const JournalScreen(),
+    profileScreen: (context) => const ProfileScreen(),
     voiceJournalingScreen: (context) => const VoiceJournalingScreen(),
     findTherapistScreen: (context) => const FindTherapistScreen(),
     sessionsScreen: (context) => const SessionsScreen(),
     messagingScreen: (context) => const MessagingScreen(),
     moodTrackingScreen: (context) => const MoodTrackingScreen(),
+    metricDetailScreen: (context) {
+      final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+      if (args == null) return const SizedBox(); // Handle null args gracefully
+      return MetricDetailScreen(
+        metricType: args['metricType'] ?? 'unknown',
+        title: args['title'] ?? 'Metric',
+        accentColor: args['accentColor'] ?? Colors.blue,
+        currentValue: args['currentValue'] ?? '0',
+        status: args['status'] ?? 'Unknown',
+        message: args['message'] ?? 'No message',
+      );
+    },
+    breathingExerciseScreen: (context) {
+      final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+      if (args == null) return const SizedBox(); // Handle null args gracefully
+      return BreathingExerciseScreen(
+        title: args['title'] ?? 'Breathing Exercise',
+        subtitle: args['subtitle'] ?? 'Relaxation technique',
+        pattern: args['pattern'] ?? const BreathingPattern(
+          inhaleDuration: 4,
+          holdDuration: 4,
+          exhaleDuration: 4,
+          holdAfterExhaleDuration: 4,
+          cycles: 4,
+        ),
+        accentColor: args['accentColor'] ?? Colors.blue,
+      );
+    },
+    relaxationExerciseScreen: (context) {
+      final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+      if (args == null) return const SizedBox(); // Handle null args gracefully
+      return RelaxationExerciseScreen(
+        title: args['title'] ?? 'Relaxation Exercise',
+        subtitle: args['subtitle'] ?? 'Mindfulness technique',
+        description: args['description'] ?? 'A guided relaxation exercise',
+        accentColor: args['accentColor'] ?? Colors.blue,
+        duration: args['duration'] ?? 10,
+        instructions: args['instructions'] ?? ['Follow the guided instructions'],
+      );
+    },
+    notificationsScreen: (context) => const NotificationsScreen(),
+    moodSelectorScreen: (context) => const MoodSelectorScreen(),
+    habitsScreen: (context) => const HabitsScreen(),
     crisisSupportScreen: (context) => const CrisisSupportScreen(),
   };
 }
