@@ -93,9 +93,13 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                                           curve: Curves.easeIn,
                                         ),
                                         setState(() {
-                                          _currentPage < 14
-                                              ? _currentPage += 1
-                                              : null;
+                                          if (_currentPage < 14) {
+                                            _currentPage += 1;
+                                          } else {
+                                            Navigator.of(context).pushReplacementNamed(
+                                              NavigationManager.homeScreen,
+                                            );
+                                          }
                                         }),
                                       },
                                 ),
@@ -118,9 +122,13 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                                       curve: Curves.easeIn,
                                     ),
                                     setState(() {
-                                      _currentPage < 14
-                                          ? _currentPage += 1
-                                          : null;
+                                      if (_currentPage < 14) {
+                                        _currentPage += 1;
+                                      } else {
+                                        Navigator.of(context).pushReplacementNamed(
+                                          NavigationManager.homeScreen,
+                                        );
+                                      }
                                     }),
                                   },
                             ),
@@ -147,7 +155,13 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                               curve: Curves.easeIn,
                             ),
                             setState(() {
-                              _currentPage < 14 ? _currentPage += 1 : null;
+                              if (_currentPage < 14) {
+                                _currentPage += 1;
+                              } else {
+                                Navigator.of(context).pushReplacementNamed(
+                                  NavigationManager.homeScreen,
+                                );
+                              }
                             }),
                           },
                     ),
@@ -162,11 +176,14 @@ class _AssessmentMainScreenState extends State<AssessmentMainScreen> {
                           curve: Curves.easeIn,
                         ),
                         setState(() {
-                          _currentPage < 14
-                              ? _currentPage += 1
-                              : Navigator.of(
-                                context,
-                              ).pushNamed(NavigationManager.loadingScreen);
+                          if (_currentPage < 14) {
+                            _currentPage += 1;
+                          } else {
+                            // Assessment completed, navigate to home screen
+                            Navigator.of(context).pushReplacementNamed(
+                              NavigationManager.homeScreen,
+                            );
+                          }
                         }),
                       },
                 ),

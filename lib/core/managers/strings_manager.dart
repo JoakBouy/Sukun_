@@ -1,17 +1,17 @@
 class StringsManager {
   static const String fontFamily = 'urbanist';
-  static const String onBoardingFirstTitle1 = 'Welcome to the ultimate';
-  static const String onBoardingFirstTitle2 = ' freud ';
-  static const String onBoardingFirstTitle3 = 'UI Kit!';
+  static const String onBoardingFirstTitle1 = 'Welcome to';
+  static const String onBoardingFirstTitle2 = ' Sukun ';
+  static const String onBoardingFirstTitle3 = '🌙';
   static const String onBoardingFirstSubtitle =
-      'Your mindful mental health AI companion for everyone, anywhere 🍃';
+      'Arabic for "Calm" - Your Mental Health & Therapy Companion';
   static const String getStarted = 'Get Started';
   static const String continueButton = 'Continue';
   static const String alreadyHaveAnAccount = 'Already have an account? ';
   static const String noAccount = 'Don\'t have an account? ';
   static const String signIn = 'Sign In';
   static const String signUp = 'Sign Up';
-  static const String authenticationTitle = 'Sign In To freud.ai';
+  static const String authenticationTitle = 'Sign In To Sukun';
   static const String authenticationTitle2 = 'Sign Up For Free';
   static const String forgotPassword = 'Forgot Password';
   static const String email = 'Email Address';
@@ -141,4 +141,80 @@ class StringsManager {
         return '';
     }
   }
+
+  // Sukun App Feature Strings
+  static const String home = 'Home';
+  static const String voiceJournaling = 'Voice Journaling';
+  static const String findTherapist = 'Find Therapist';
+  static const String sessions = 'Sessions';
+  static const String messaging = 'Messages';
+  static const String moodTracking = 'Mood Tracking';
+  static const String crisisSupport = 'Crisis Support';
+
+  // Voice Journaling
+  static const String journalTitle = 'Voice Journaling';
+  static const String journalSubtitle = 'Express your thoughts through voice-to-text';
+  static const String startRecording = 'Start Recording';
+  static const String stopRecording = 'Stop Recording';
+  static const String saveJournal = 'Save Journal Entry';
+  static const String journalEntry = 'Journal Entry';
+  static const String aiInsights = 'AI Insights';
+  static const String recording = 'Recording...';
+  static const String tapToStart = 'Tap to start recording your thoughts';
+
+  // Find Therapist
+  static const String therapistTitle = 'Find Your Therapist';
+  static const String therapistSubtitle = 'Connect with licensed mental health professionals';
+  static const String searchTherapists = 'Search therapists...';
+  static const String specialties = 'Specialties';
+  static const String availableNow = 'Available Now';
+  static const String viewProfile = 'View Profile';
+  static const String bookSession = 'Book Session';
+  static const String rating = 'Rating';
+  static const String experience = 'Experience';
+
+  // Sessions
+  static const String sessionsTitle = 'My Sessions';
+  static const String upcomingSessions = 'Upcoming';
+  static const String pastSessions = 'Past Sessions';
+  static const String bookNewSession = 'Book New Session';
+  static const String sessionDetails = 'Session Details';
+  static const String virtualSession = 'Virtual';
+  static const String inPersonSession = 'In-Person';
+  static const String cancelSession = 'Cancel Session';
+  static const String rescheduleSession = 'Reschedule';
+
+  // Messaging
+  static const String messagesTitle = 'Messages';
+  static const String newMessage = 'New Message';
+  static const String typeMessage = 'Type a message...';
+  static const String send = 'Send';
+  static const String online = 'Online';
+  static const String offline = 'Offline';
+  static const String typing = 'Typing...';
+  static const String encrypted = 'End-to-end encrypted';
+
+  // Mood Tracking
+  static const String moodTitle = 'Mood Tracking';
+  static const String moodSubtitle = 'Track your emotional wellbeing';
+  static const String howAreYouFeeling = 'How are you feeling?';
+  static const String selectMood = 'Select your mood';
+  static const String addNote = 'Add a note (optional)';
+  static const String saveMood = 'Save Mood';
+  static const String moodHistory = 'Mood History';
+  static const String weeklyView = 'Weekly';
+  static const String monthlyView = 'Monthly';
+  static const String patterns = 'Patterns & Insights';
+
+  // Crisis Support
+  static const String crisisTitle = 'Crisis Support';
+  static const String crisisSubtitle = 'Immediate help when you need it most';
+  static const String emergencyContact = 'Emergency Contact';
+  static const String crisisHotline = 'Crisis Hotline';
+  static const String resources = 'Resources';
+  static const String callNow = 'Call Now';
+  static const String textSupport = 'Text Support';
+  static const String safetyPlan = 'Safety Plan';
+  static const String getHelp = 'Get Help Now';
+  static const String youAreNotAlone = 'You are not alone. Help is available.';
 }

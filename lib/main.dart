@@ -6,8 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
 
-import 'core/managers/custom_colors.dart';
-
 void main() {
   runApp(
     DevicePreview(
@@ -23,19 +21,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final oppositeBrightness =
-        MediaQuery.platformBrightnessOf(context) == Brightness.dark
-            ? Brightness.light
-            : Brightness.dark;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor:
-            oppositeBrightness == Brightness.dark
-                ? CustomColors.light.background
-                : CustomColors.dark.background,
-        systemNavigationBarIconBrightness: oppositeBrightness,
-        statusBarIconBrightness: oppositeBrightness,
+        systemNavigationBarColor: Colors.transparent,
       ),
       child: MaterialApp(
         scrollBehavior: const MaterialScrollBehavior().copyWith(
@@ -50,12 +39,44 @@ class MyApp extends StatelessWidget {
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
-        title: 'freud UI Kit',
+        title: 'Sukun',
         theme: ThemeManager.lightTheme,
         darkTheme: ThemeManager.darkTheme,
-        themeAnimationCurve: Curves.bounceInOut,
+        themeMode: ThemeMode.system,
+        themeAnimationCurve: Curves.easeInOut,
+        themeAnimationDuration: const Duration(milliseconds: 200),
         initialRoute: NavigationManager.onboardingScreen,
         routes: NavigationManager.routes,
+        onUnknownRoute: (settings) {
+          return MaterialPageRoute(
+            builder: (context) => Scaffold(
+              appBar: AppBar(
+                title: const Text('Page Not Found'),
+              ),
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.error_outline, size: 64),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Route not found: ${settings.name ?? 'unknown'}',
+                      style: Theme.of(context).textTheme.titleMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 24),
+                    ElevatedButton(
+                      onPressed: () => Navigator.of(context).pushReplacementNamed(
+                        NavigationManager.onboardingScreen,
+                      ),
+                      child: const Text('Go to Home'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
