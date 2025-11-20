@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freud_ai/features/booking/presentation/screens/booking_screen.dart';
 import 'package:freud_ai/features/exercises/presentation/screens/exercises_screen.dart';
 import 'package:freud_ai/features/home/presentation/screens/home_screen.dart';
 import 'package:freud_ai/features/journal/presentation/screens/journal_screen.dart';
@@ -20,7 +21,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     const HomeScreen(),
     const ExercisesScreen(),
     const JournalScreen(),
-    const PlaceholderScreen(title: 'Book'), // Will be replaced with actual BookScreen (therapist booking)
+    const BookingScreen(),
     const ProfileScreen(),
   ];
 

@@ -425,7 +425,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 NavigationManager.voiceJournalingScreen,
               );
             },
-          ).animateCardTap(),
+          ).animateCardEntrance(
+            delay: const Duration(milliseconds: 1000),
+            index: 0,
+          ),
         ),
         const SizedBox(width: 12),
         Expanded(
@@ -440,7 +443,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 NavigationManager.habitsScreen,
               );
             },
-          ).animateCardTap(),
+          ).animateCardEntrance(
+            delay: const Duration(milliseconds: 1000),
+            index: 1,
+          ),
         ),
       ],
     );
@@ -450,34 +456,46 @@ class _HomeScreenState extends State<HomeScreen> {
 
   /// Crisis Support Banner
   Widget _buildCrisisSupportBanner(BuildContext context, CustomColors colors) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: ShapeDecoration(
-        color: Colors.red.shade50,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: BorderSide(
-            color: Colors.red.shade200,
-            width: 1,
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          NavigationManager.crisisSupportScreen,
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: ShapeDecoration(
+          color: Colors.red.shade50,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+            side: BorderSide(
+              color: Colors.red.shade200,
+              width: 1,
+            ),
           ),
         ),
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.red,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.emergency,
-              color: Colors.white,
-              size: 20,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.red,
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.emergency,
+                color: Colors.white,
+                size: 20,
+              ),
+            ).animate(onPlay: (controller) => controller.repeat(reverse: true))
+              .scale(
+                duration: const Duration(milliseconds: 1500),
+                begin: const Offset(1.0, 1.0),
+                end: const Offset(1.1, 1.1),
+              ),
+            const SizedBox(width: 12),
+            Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -520,6 +538,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ],
+      ),
       ),
     );
   }

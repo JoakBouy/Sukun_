@@ -3,8 +3,10 @@ import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
+import 'package:freud_ai/features/therapist/presentation/screens/therapist_profile_screen.dart';
 
 class TherapistCard extends StatelessWidget {
+  final String therapistId;
   final String name;
   final String specialty;
   final double rating;
@@ -14,6 +16,7 @@ class TherapistCard extends StatelessWidget {
 
   const TherapistCard({
     super.key,
+    required this.therapistId,
     required this.name,
     required this.specialty,
     required this.rating,
@@ -34,7 +37,14 @@ class TherapistCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(SizesManager.cardCircularBorderRadius),
       ),
       child: InkWell(
-        onTap: onTap,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TherapistProfileScreen(therapistId: therapistId),
+            ),
+          );
+        },
         borderRadius: BorderRadius.circular(SizesManager.cardCircularBorderRadius),
         child: Padding(
           padding: const EdgeInsets.all(SizesManager.padding),
@@ -140,4 +150,3 @@ class TherapistCard extends StatelessWidget {
     );
   }
 }
-

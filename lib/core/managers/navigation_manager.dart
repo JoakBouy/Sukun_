@@ -18,6 +18,7 @@ import 'package:freud_ai/features/voice_journaling/presentation/screens/voice_jo
 import 'package:freud_ai/features/exercises/presentation/screens/exercises_screen.dart';
 import 'package:freud_ai/features/health_assessment/presentation/screens/assessment_consent_screen.dart';
 import 'package:freud_ai/features/journal/presentation/screens/journal_screen.dart';
+import 'package:freud_ai/features/journal/presentation/screens/text_journal_editor_screen.dart';
 import 'package:freud_ai/features/profile/presentation/screens/profile_screen.dart';
 import 'package:freud_ai/features/health_assessment/presentation/screens/phq9_assessment_screen.dart';
 import 'package:freud_ai/features/health_assessment/presentation/screens/dass21_assessment_screen.dart';
@@ -62,6 +63,7 @@ class NavigationManager {
   static const String moodSelectorScreen = '/moodSelector';
   static const String habitsScreen = '/habits';
   static const String crisisSupportScreen = '/crisisSupport';
+  static const String textJournalEditorScreen = '/textJournalEditor';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     onboardingScreen: (context) => const OnboardingView(),
@@ -135,5 +137,13 @@ class NavigationManager {
     moodSelectorScreen: (context) => const MoodSelectorScreen(),
     habitsScreen: (context) => const HabitsScreen(),
     crisisSupportScreen: (context) => const CrisisSupportScreen(),
+    textJournalEditorScreen: (context) {
+      final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+      return TextJournalEditorScreen(
+        initialPrompt: args?['initialPrompt'] as String?,
+        existingTitle: args?['existingTitle'] as String?,
+        existingContent: args?['existingContent'] as String?,
+      );
+    },
   };
 }

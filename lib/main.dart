@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
               themeMode: themeProvider.themeMode,
               themeAnimationCurve: Curves.easeInOut,
               themeAnimationDuration: const Duration(milliseconds: 300),
-        initialRoute: NavigationManager.onboardingScreen,
+              initialRoute: NavigationManager.mainNavigationScreen,
               routes: NavigationManager.routes,
               onUnknownRoute: (settings) {
                 return MaterialPageRoute(
@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
                           const SizedBox(height: 24),
                           ElevatedButton(
                             onPressed: () => Navigator.of(context).pushReplacementNamed(
-                              NavigationManager.onboardingScreen,
+                              NavigationManager.mainNavigationScreen,
                             ),
                             child: const Text('Go to Home'),
                           ),

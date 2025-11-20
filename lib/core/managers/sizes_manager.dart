@@ -15,8 +15,8 @@ class SizesManager {
   static const double buttonText = 20.0;
   static const double font14 = 14.0;
   static const double font16 = 16.0;
-  static const double smallText = 15.0;
-  static const double smallText2 = 17.0;
+  static const double smallText = 14.0;
+  static const double smallText2 = 16.0;
   static const double circularBorderRadius = 40.0;
   static const double cardCircularBorderRadius = 30.0;
   static const double defaultAppBarHeight = 60.0;

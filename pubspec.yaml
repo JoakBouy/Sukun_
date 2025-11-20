@@ -17,6 +17,8 @@ dependencies:
   device_preview: ^1.2.0
   vector_graphics: ^1.1.19
   confetti: ^0.7.0
+  vibration: ^2.0.0
+  flutter_quill: ^11.5.0
 
 dev_dependencies:
   flutter_test:
