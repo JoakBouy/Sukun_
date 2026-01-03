@@ -157,6 +157,8 @@ class _RelaxationExerciseScreenState extends State<RelaxationExerciseScreen>
       context: context,
       barrierDismissible: false,
       builder: (context) => ConfettiCelebration(
+        backgroundColor: widget.accentColor,
+        iconColor: Colors.white,
         onComplete: () {
           Navigator.pop(context); // Close confetti overlay
           _showFinalCompletionDialog(); // Show final dialog

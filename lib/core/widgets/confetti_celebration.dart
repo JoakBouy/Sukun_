@@ -6,10 +6,16 @@ import 'package:confetti/confetti.dart';
 /// Similar to ending_screen.dart but with flowing confetti from multiple directions
 class ConfettiCelebration extends StatefulWidget {
   final VoidCallback? onComplete;
+  final Color? backgroundColor;
+  final List<Color>? confettiColors;
+  final Color? iconColor;
 
   const ConfettiCelebration({
     super.key,
     this.onComplete,
+    this.backgroundColor,
+    this.confettiColors,
+    this.iconColor,
   });
 
   @override
@@ -75,8 +81,25 @@ class _ConfettiCelebrationState extends State<ConfettiCelebration> {
 
   @override
   Widget build(BuildContext context) {
+    // Get theme colors
+    final defaultColors = [
+      const Color(0xFFFE804B), // Orange
+      const Color(0xFFA18EFF), // Purple
+      const Color(0xFFFFCE5B), // Yellow
+      const Color(0xFFED7E1C), // Dark orange
+      const Color(0xFF9BB068), // Green
+      Colors.white,
+      Colors.pink,
+      Colors.blue,
+      Colors.cyan,
+    ];
+
+    final bgColor = widget.backgroundColor ?? const Color(0xFF9BB068);
+    final confColors = widget.confettiColors ?? defaultColors;
+    final icColor = widget.iconColor ?? bgColor;
+
     return Scaffold(
-      backgroundColor: const Color(0xFF9BB068), // Same green as celebration icon
+      backgroundColor: bgColor,
       body: Stack(
         children: [
           // Top center confetti - dropping straight down
@@ -90,14 +113,7 @@ class _ConfettiCelebrationState extends State<ConfettiCelebration> {
               maxBlastForce: 25,
               minBlastForce: 15,
               gravity: 0.15,
-              colors: const [
-                Color(0xFFFE804B), // Orange
-                Color(0xFFA18EFF), // Purple
-                Color(0xFFFFCE5B), // Yellow
-                Color(0xFFED7E1C), // Dark orange
-                Colors.white,
-                Colors.pink,
-              ],
+              colors: confColors,
             ),
           ),
 
@@ -112,13 +128,7 @@ class _ConfettiCelebrationState extends State<ConfettiCelebration> {
               maxBlastForce: 20,
               minBlastForce: 12,
               gravity: 0.12,
-              colors: const [
-                Color(0xFF9BB068), // Green
-                Color(0xFFFE804B), // Orange
-                Color(0xFFA18EFF), // Purple
-                Colors.white,
-                Colors.blue,
-              ],
+              colors: confColors,
             ),
           ),
 
@@ -133,13 +143,7 @@ class _ConfettiCelebrationState extends State<ConfettiCelebration> {
               maxBlastForce: 20,
               minBlastForce: 12,
               gravity: 0.12,
-              colors: const [
-                Color(0xFF9BB068), // Green
-                Color(0xFFFE804B), // Orange
-                Color(0xFFA18EFF), // Purple
-                Colors.white,
-                Colors.blue,
-              ],
+              colors: confColors,
             ),
           ),
 
@@ -154,13 +158,7 @@ class _ConfettiCelebrationState extends State<ConfettiCelebration> {
               maxBlastForce: 18,
               minBlastForce: 10,
               gravity: 0.1,
-              colors: const [
-                Color(0xFFFFCE5B), // Yellow
-                Color(0xFFED7E1C), // Dark orange
-                Colors.white,
-                Colors.pink,
-                Colors.cyan,
-              ],
+              colors: confColors,
             ),
           ),
 
@@ -175,13 +173,7 @@ class _ConfettiCelebrationState extends State<ConfettiCelebration> {
               maxBlastForce: 18,
               minBlastForce: 10,
               gravity: 0.1,
-              colors: const [
-                Color(0xFFFFCE5B), // Yellow
-                Color(0xFFED7E1C), // Dark orange
-                Colors.white,
-                Colors.pink,
-                Colors.cyan,
-              ],
+              colors: confColors,
             ),
           ),
 
@@ -196,12 +188,7 @@ class _ConfettiCelebrationState extends State<ConfettiCelebration> {
               maxBlastForce: 15,
               minBlastForce: 8,
               gravity: 0.08,
-              colors: const [
-                Color(0xFF9BB068), // Green
-                Color(0xFFA18EFF), // Purple
-                Colors.white,
-                Colors.yellow,
-              ],
+              colors: confColors,
             ),
           ),
 
@@ -216,12 +203,7 @@ class _ConfettiCelebrationState extends State<ConfettiCelebration> {
               maxBlastForce: 15,
               minBlastForce: 8,
               gravity: 0.08,
-              colors: const [
-                Color(0xFF9BB068), // Green
-                Color(0xFFA18EFF), // Purple
-                Colors.white,
-                Colors.yellow,
-              ],
+              colors: confColors,
             ),
           ),
 
@@ -241,9 +223,9 @@ class _ConfettiCelebrationState extends State<ConfettiCelebration> {
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.celebration,
-                        color: Color(0xFF9BB068),
+                        color: icColor,
                         size: 60,
                       ),
                     ),

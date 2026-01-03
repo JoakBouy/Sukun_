@@ -117,10 +117,13 @@ class _JournalEntryCardState extends State<JournalEntryCard>
                           color: widget.moodColor.withOpacity(0.1),
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(
-                          widget.type == JournalType.voice ? Icons.mic : Icons.edit,
-                          color: widget.moodColor,
-                          size: 20,
+                        child: Hero(
+                          tag: 'mood_icon_${widget.title}',
+                          child: Icon(
+                            widget.type == JournalType.voice ? Icons.mic : Icons.edit,
+                            color: widget.moodColor,
+                            size: 20,
+                          ),
                         ),
                       ),
                       const SizedBox(width: 12),
@@ -128,15 +131,21 @@ class _JournalEntryCardState extends State<JournalEntryCard>
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              widget.title,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF4B3425),
+                            Hero(
+                              tag: 'title_${widget.title}',
+                              child: Material(
+                                color: Colors.transparent,
+                                child: Text(
+                                  widget.title,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF4B3425),
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
                             ),
                             const SizedBox(height: 4),
                             Row(

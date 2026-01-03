@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/utils/animation_utils.dart';
 import 'package:freud_ai/core/widgets/custom_app_bar.dart';
+import 'package:freud_ai/core/data/local/database_helper.dart';
+import 'package:freud_ai/core/providers/connectivity_provider.dart';
+import 'package:freud_ai/core/utils/validators.dart';
+import 'package:freud_ai/core/widgets/error_banner.dart';
+import 'package:freud_ai/core/widgets/confirmation_dialog.dart';
+import 'package:provider/provider.dart';
 
 class TextJournalEditorScreen extends StatefulWidget {
   final String? initialPrompt;
@@ -100,49 +107,133 @@ class _TextJournalEditorScreenState extends State<TextJournalEditorScreen> {
       return; // Don't auto-save empty entries
     }
 
-    // Simulate auto-save (in real app, this would save to database/storage)
-    await Future.delayed(const Duration(milliseconds: 500));
+    try {
+      if (kIsWeb) return; // Skip local save on web
 
-    if (mounted) {
-      setState(() {
-        _hasUnsavedChanges = false;
-        _lastAutoSave = DateTime.now();
+      // Save to local database
+      final dbHelper = DatabaseHelper.instance;
+      final now = DateTime.now();
+      
+      await dbHelper.insertJournalEntry({
+        'id': 'journal_${now.millisecondsSinceEpoch}',
+        'title': _titleController.text.trim(),
+        'content': _quillController.document.toPlainText(),
+        'mood': _selectedMood ?? '',
+        'created_at': now.millisecondsSinceEpoch,
+        'updated_at': now.millisecondsSinceEpoch,
+        'is_synced': 0, // Will be synced when online
+        'word_count': _wordCount,
       });
 
-      // Show subtle auto-save indicator
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Auto-saved'),
-          duration: const Duration(seconds: 1),
-          backgroundColor: Theme.of(context).extension<CustomColors>()!.green.withOpacity(0.8),
-        ),
-      );
+      if (mounted) {
+        setState(() {
+          _hasUnsavedChanges = false;
+          _lastAutoSave = DateTime.now();
+        });
+
+        // Show subtle auto-save indicator
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Auto-saved locally'),
+            duration: const Duration(seconds: 1),
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.green.withOpacity(0.8),
+          ),
+        );
+      }
+    } catch (e) {
+      // Handle error silently for auto-save
     }
   }
 
   Future<void> _saveEntry() async {
-    if (_titleController.text.trim().isEmpty && _quillController.document.toPlainText().trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please add some content before saving')),
+    // Validate title
+    final titleError = Validators.validateRequired(
+      _titleController.text,
+      fieldName: 'Title',
+    );
+
+    // Validate content
+    final contentText = _quillController.document.toPlainText().trim();
+    final contentError = Validators.validateMinLength(
+      contentText,
+      10,
+      fieldName: 'Content',
+    );
+
+    // Show validation errors
+    if (titleError != null) {
+      ErrorBanner.show(
+        context: context,
+        type: ErrorType.validation,
+        message: titleError,
+      );
+      return;
+    }
+
+    if (contentError != null) {
+      ErrorBanner.show(
+        context: context,
+        type: ErrorType.validation,
+        message: contentError,
       );
       return;
     }
 
     setState(() => _isSaving = true);
 
-    // Simulate save delay
-    await Future.delayed(const Duration(milliseconds: 1500));
+    try {
+      if (kIsWeb) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Local saving is not supported on Web demo')),
+          );
+          Navigator.pop(context);
+        }
+        setState(() => _isSaving = false);
+        return;
+      }
 
-    setState(() => _isSaving = false);
+      // Save to local database
+      final dbHelper = DatabaseHelper.instance;
+      final now = DateTime.now();
+      
+      await dbHelper.insertJournalEntry({
+        'id': 'journal_${now.millisecondsSinceEpoch}',
+        'title': _titleController.text.trim(),
+        'content': _quillController.document.toPlainText(),
+        'mood': _selectedMood ?? '',
+        'created_at': now.millisecondsSinceEpoch,
+        'updated_at': now.millisecondsSinceEpoch,
+        'is_synced': 0, // Will be synced when online
+        'word_count': _wordCount,
+      });
 
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Journal entry saved successfully!'),
-          backgroundColor: Theme.of(context).extension<CustomColors>()!.green,
-        ),
-      );
-      Navigator.pop(context);
+      setState(() => _isSaving = false);
+
+      if (mounted) {
+        final isOnline = context.read<ConnectivityProvider>().isOnline;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              isOnline 
+                ? 'Journal entry saved successfully!' 
+                : 'Saved locally. Will sync when online.',
+            ),
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.green,
+          ),
+        );
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      setState(() => _isSaving = false);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error saving entry: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
@@ -150,12 +241,43 @@ class _TextJournalEditorScreenState extends State<TextJournalEditorScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.extension<CustomColors>()!;
+    final isOnline = context.watch<ConnectivityProvider>().isOnline;
 
     return Scaffold(
       appBar: customAppBar(
         theme: theme,
         title: widget.existingTitle != null ? 'Edit Entry' : 'New Entry',
         actions: [
+          // Offline indicator
+          if (!isOnline)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Center(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Colors.orange.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.orange, width: 1),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.cloud_off, size: 14, color: Colors.orange),
+                      const SizedBox(width: 4),
+                      Text(
+                        'Offline',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.orange,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           if (_isSaving)
             const Padding(
               padding: EdgeInsets.all(16.0),
@@ -375,17 +497,24 @@ class _TextJournalEditorScreenState extends State<TextJournalEditorScreen> {
         const SizedBox(height: 8),
 
         // Quill Editor
-        Container(
-          constraints: const BoxConstraints(minHeight: 200),
-          child: QuillEditor(
-            controller: _quillController,
-            scrollController: ScrollController(),
-            focusNode: FocusNode(),
+        GestureDetector(
+          onTap: () {
+            // Request focus when tapped
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 300),
             padding: const EdgeInsets.all(16),
-            autoFocus: false,
-            readOnly: false,
-            expands: false,
-            showCursor: true,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: colors.onPrimaryContainer.withOpacity(0.2),
+                width: 1,
+              ),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: QuillEditor.basic(
+              controller: _quillController,
+            ),
           ),
         ),
       ],

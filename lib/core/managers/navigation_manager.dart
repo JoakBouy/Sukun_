@@ -30,6 +30,12 @@ import 'package:freud_ai/features/home/presentation/screens/notifications_screen
 import 'package:freud_ai/features/home/presentation/screens/mood_selector.dart';
 import 'package:freud_ai/features/profile/presentation/screens/habits_screen.dart';
 import 'package:freud_ai/features/exercises/presentation/widgets/breathing_exercise_card.dart';
+import 'package:freud_ai/features/chatbot/presentation/screens/ai_chatbot_screen.dart';
+import 'package:freud_ai/features/community/presentation/screens/community_screen.dart';
+// Removed: onboarding_screen.dart (duplicate onboarding)
+import 'package:freud_ai/features/navigation/presentation/screens/doctor_navigation_screen.dart';
+import 'package:freud_ai/features/navigation/presentation/screens/admin_navigation_screen.dart';
+import 'package:freud_ai/features/resources/presentation/screens/resources_screen.dart';
 
 class NavigationManager {
   static const String onboardingScreen = '/onboarding';
@@ -46,6 +52,8 @@ class NavigationManager {
   static const String asqAssessmentScreen = '/asqAssessment';
   
   // Sukun App Routes
+  static const String mainNavigation = '/mainNavigation';
+  // Removed: newOnboarding route (duplicate onboarding)
   static const String mainNavigationScreen = '/main';
   static const String homeScreen = '/home';
   static const String exercisesScreen = '/exercises';
@@ -64,6 +72,13 @@ class NavigationManager {
   static const String habitsScreen = '/habits';
   static const String crisisSupportScreen = '/crisisSupport';
   static const String textJournalEditorScreen = '/textJournalEditor';
+  static const String aiChatbotScreen = '/aiChatbot';
+  static const String communityScreen = '/community';
+  static const String resourcesScreen = '/resources';
+  
+  // Doctor Portal Routes (TEMPORARY FOR TESTING)
+  static const String doctorNavigationScreen = '/doctorNavigation';
+  static const String adminNavigationScreen = '/adminNavigation';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     onboardingScreen: (context) => const OnboardingView(),
@@ -83,6 +98,7 @@ class NavigationManager {
     asqAssessmentScreen: (context) => const ASQAssessmentScreen(),
     
     // Sukun App Routes
+    mainNavigation: (context) => const MainNavigationScreen(),
     mainNavigationScreen: (context) => const MainNavigationScreen(),
     homeScreen: (context) => const HomeScreen(),
     exercisesScreen: (context) => const ExercisesScreen(),
@@ -145,5 +161,12 @@ class NavigationManager {
         existingContent: args?['existingContent'] as String?,
       );
     },
+    aiChatbotScreen: (context) => const AiChatbotScreen(),
+    communityScreen: (context) => const CommunityScreen(),
+    resourcesScreen: (context) => const ResourcesScreen(),
+    
+    // Doctor Portal Routes (TEMPORARY FOR TESTING)
+    doctorNavigationScreen: (context) => const DoctorNavigationScreen(),
+    adminNavigationScreen: (context) => const AdminNavigationScreen(),
   };
 }

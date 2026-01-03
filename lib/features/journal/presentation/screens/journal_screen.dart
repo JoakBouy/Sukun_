@@ -5,8 +5,10 @@ import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/utils/animation_utils.dart';
 import 'package:freud_ai/features/journal/presentation/widgets/journal_prompt_card.dart';
 import 'package:freud_ai/features/journal/presentation/widgets/journal_entry_card.dart';
+import 'package:freud_ai/features/journal/presentation/screens/journal_entry_detail_screen.dart';
 import 'package:freud_ai/features/journal/presentation/widgets/quick_action_button.dart';
 import 'package:vibration/vibration.dart';
+import 'package:freud_ai/core/widgets/skeleton_loader.dart';
 
 class JournalScreen extends StatefulWidget {
   const JournalScreen({super.key});
@@ -247,261 +249,167 @@ class _JournalScreenState extends State<JournalScreen> with TickerProviderStateM
       return _buildEmptyHistoryState();
     }
 
-    return Column(
-      children: [
-        // Search and Filter Bar
-        _buildSearchAndFilterBar(),
+    return RefreshIndicator(
+      onRefresh: _refreshJournalEntries,
+      color: Theme.of(context).extension<CustomColors>()!.green,
+      child: Column(
+        children: [
+          // Search and Filter Bar
+          _buildSearchAndFilterBar(),
 
-        // Content
-        Expanded(
-          child: ListView(
-            padding: const EdgeInsets.all(24),
-            children: [
-              // Stats header
-              Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).extension<CustomColors>()!.primaryContainer,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 60,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).extension<CustomColors>()!.greenAccent,
-                        shape: BoxShape.circle,
+          // Content
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(24),
+              children: [
+                // Stats header
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).extension<CustomColors>()!.primaryContainer,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
                       ),
-                      child: Icon(
-                        Icons.book,
-                        color: Theme.of(context).extension<CustomColors>()!.green,
-                        size: 30,
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).extension<CustomColors>()!.greenAccent,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.book,
+                          color: Theme.of(context).extension<CustomColors>()!.green,
+                          size: 30,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '34/365',
-                            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).extension<CustomColors>()!.primary,
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '34/365',
+                              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).extension<CustomColors>()!.primary,
+                              ),
                             ),
-                          ),
-                          Text(
-                            'Journals this year',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Theme.of(context).extension<CustomColors>()!.onPrimaryContainer,
+                            Text(
+                              'Journals this year',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Theme.of(context).extension<CustomColors>()!.onPrimaryContainer,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
 
-              const SizedBox(height: 24),
+                const SizedBox(height: 24),
 
-              // Recent entries
-              Text(
-                'Recent Entries',
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).extension<CustomColors>()!.primary,
+                // Recent entries
+                Text(
+                  'Recent Entries',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).extension<CustomColors>()!.primary,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
+                const SizedBox(height: 16),
 
-              // Sample journal entries
-              JournalEntryCard(
-                title: 'I\'m grateful for my life. Truly',
-                preview: 'Today, I just had a revelation. It was that simple moments...',
-                mood: 'Happy',
-                moodColor: Theme.of(context).extension<CustomColors>()!.green,
-                date: 'Today',
-                type: JournalType.text,
-                onTap: () {},
-              ).animateCardEntrance(index: 0),
+                // Sample journal entries
+                _buildDismissibleEntry(
+                  key: 'entry1',
+                  child: JournalEntryCard(
+                    title: 'I\'m grateful for my life. Truly',
+                    preview: 'Today, I just had a revelation. It was that simple moments...',
+                    mood: 'Happy',
+                    moodColor: Theme.of(context).extension<CustomColors>()!.green,
+                    date: 'Today',
+                    type: JournalType.text,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => JournalEntryDetailScreen(
+                            title: 'I\'m grateful for my life. Truly',
+                            content: 'Today, I just had a revelation. It was that simple moments are what make life worth living. I sat in the park for 20 minutes and just watched the leaves fall. It was peaceful.',
+                            mood: 'Happy',
+                            moodColor: Theme.of(context).extension<CustomColors>()!.green,
+                            date: 'Today',
+                            type: JournalType.text,
+                          ),
+                        ),
+                      );
+                    },
+                  ).animateCardEntrance(index: 0),
+                ),
 
-              const SizedBox(height: 12),
+                const SizedBox(height: 12),
 
-              JournalEntryCard(
-                title: 'Feeling overwhelmed',
-                preview: 'Work has been really stressful lately. I need to find...',
-                mood: 'Anxious',
-                moodColor: Theme.of(context).extension<CustomColors>()!.orange,
-                date: 'Yesterday',
-                type: JournalType.voice,
-                onTap: () {},
-              ).animateCardEntrance(index: 1),
+                _buildDismissibleEntry(
+                  key: 'entry2',
+                  child: JournalEntryCard(
+                    title: 'Feeling overwhelmed',
+                    preview: 'Work has been really stressful lately. I need to find...',
+                    mood: 'Anxious',
+                    moodColor: Theme.of(context).extension<CustomColors>()!.orange,
+                    date: 'Yesterday',
+                    type: JournalType.voice,
+                    onTap: () {},
+                  ).animateCardEntrance(index: 1),
+                ),
 
-              const SizedBox(height: 12),
+                const SizedBox(height: 12),
 
-              JournalEntryCard(
-                title: 'A peaceful morning',
-                preview: 'Woke up early and went for a walk. The sunrise was...',
-                mood: 'Calm',
-                moodColor: Theme.of(context).extension<CustomColors>()!.violet,
-                date: '2 days ago',
-                type: JournalType.text,
-                onTap: () {},
-              ).animateCardEntrance(index: 2),
-            ],
+                _buildDismissibleEntry(
+                  key: 'entry3',
+                  child: JournalEntryCard(
+                    title: 'A peaceful morning',
+                    preview: 'Woke up early and went for a walk. The sunrise was...',
+                    mood: 'Calm',
+                    moodColor: Theme.of(context).extension<CustomColors>()!.violet,
+                    date: '2 days ago',
+                    type: JournalType.text,
+                    onTap: () {},
+                  ).animateCardEntrance(index: 2),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   Widget _buildLoadingState() {
-    final colors = Theme.of(context).extension<CustomColors>()!;
     return ListView(
       padding: const EdgeInsets.all(24),
       children: [
         // Stats header skeleton
-        Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: colors.primaryContainer,
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: colors.onPrimaryContainer.withOpacity(0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.book,
-                  color: colors.onPrimaryContainer.withOpacity(0.3),
-                  size: 30,
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 80,
-                      height: 24,
-                      decoration: BoxDecoration(
-                        color: colors.onPrimaryContainer.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Container(
-                      width: 120,
-                      height: 16,
-                      decoration: BoxDecoration(
-                        color: colors.onPrimaryContainer.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-
+        SkeletonLoader.card(height: 100),
+        
         const SizedBox(height: 24),
-
-        // Recent entries title skeleton
-        Container(
-          width: 140,
-          height: 24,
-          decoration: BoxDecoration(
-            color: colors.onPrimaryContainer.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(4),
-          ),
-        ),
+        
+        // "Recent Entries" title skeleton
+        SkeletonLoader.text(width: 140, height: 24),
+        
         const SizedBox(height: 16),
-
+        
         // Journal entry skeletons
-        ...List.generate(3, (index) => Container(
-          margin: const EdgeInsets.only(bottom: 12),
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: colors.primaryContainer,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 8,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    width: 24,
-                    height: 24,
-                    decoration: BoxDecoration(
-                      color: colors.onPrimaryContainer.withOpacity(0.1),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Container(
-                      height: 20,
-                      decoration: BoxDecoration(
-                        color: colors.onPrimaryContainer.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 12),
-              Container(
-                height: 16,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: colors.onPrimaryContainer.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Container(
-                height: 16,
-                width: MediaQuery.of(context).size.width * 0.6,
-                decoration: BoxDecoration(
-                  color: colors.onPrimaryContainer.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-              ),
-            ],
-          ),
-        )),
+        SkeletonLoader.listItem(count: 3),
       ],
     );
   }
@@ -1002,6 +910,64 @@ class _JournalScreenState extends State<JournalScreen> with TickerProviderStateM
             ),
         ],
       ),
+    );
+  }
+
+  Widget _buildDismissibleEntry({
+    required String key,
+    required Widget child,
+  }) {
+    final colors = Theme.of(context).extension<CustomColors>()!;
+    
+    return Dismissible(
+      key: Key(key),
+      direction: DismissDirection.endToStart,
+      background: Container(
+        alignment: Alignment.centerRight,
+        padding: const EdgeInsets.only(right: 20),
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: const Icon(Icons.delete, color: Colors.white),
+      ),
+      confirmDismiss: (direction) async {
+        return await showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text("Delete Entry"),
+              content: const Text("Are you sure you want to delete this journal entry?"),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: const Text("Cancel"),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: const Text("Delete", style: TextStyle(color: Colors.red)),
+                ),
+              ],
+            );
+          },
+        );
+      },
+      onDismissed: (direction) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Entry deleted'),
+            backgroundColor: colors.primary,
+            action: SnackBarAction(
+              label: 'Undo',
+              textColor: colors.primaryContainer,
+              onPressed: () {
+                // TODO: Implement undo logic
+              },
+            ),
+          ),
+        );
+      },
+      child: child,
     );
   }
 }

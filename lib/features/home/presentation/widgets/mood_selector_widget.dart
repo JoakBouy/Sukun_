@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/utils/animation_utils.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
+import 'package:freud_ai/core/widgets/reusable_animation.dart';
+import 'package:freud_ai/features/health_assessment/presentation/widgets/fifth_page/widgets/emoji_wheel_widget.dart';
 
 class MoodSelectorWidget extends StatefulWidget {
   const MoodSelectorWidget({super.key});
@@ -186,15 +189,76 @@ class _MoodSelectorWidgetState extends State<MoodSelectorWidget> {
       );
     }
 
+
+
     // Simplified mood selector - just a "Set Mood" button
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, NavigationManager.moodSelectorScreen);
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          backgroundColor: Colors.transparent,
+          builder: (context) => Container(
+            height: MediaQuery.of(context).size.height * 0.85,
+            decoration: BoxDecoration(
+              color: theme.scaffoldBackgroundColor,
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
+            ),
+            child: Column(
+              children: [
+                const SizedBox(height: 16),
+                Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Text(
+                  'How would you describe\nyour mood?',
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: const Color(0xFF4B3425),
+                  ),
+                ),
+                const SizedBox(height: 32),
+                const Expanded(child: EmojiWheelWidget()),
+                Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _logMood();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF4B3425),
+                      foregroundColor: Colors.white,
+                      minimumSize: const Size(double.infinity, 56),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(28),
+                      ),
+                    ),
+                    child: const Text(
+                      'Continue',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
       },
       child: Container(
         padding: const EdgeInsets.all(24),
         decoration: ShapeDecoration(
-          color: selectedMoodData.backgroundColor.withOpacity(0.3),
+          color: const Color(0xFFCFD8B5).withOpacity(0.3), // Default neutral bg
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
           ),
@@ -203,7 +267,7 @@ class _MoodSelectorWidgetState extends State<MoodSelectorWidget> {
           children: [
             // Combined greeting and mood question
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Welcome Back, Buoy',
@@ -212,6 +276,14 @@ class _MoodSelectorWidgetState extends State<MoodSelectorWidget> {
                     color: const Color(0xFF4B3425),
                   ),
                 ).animate().fadeIn(duration: AnimationUtils.normal),
+                const SizedBox(height: 16),
+                SizedBox(
+                  height: 150,
+                  child: ReusableAnimation(
+                    assetPath: theme.extension<CustomAssets>()!.onboarding2,
+                    fit: BoxFit.contain,
+                  ),
+                ).animate().fadeIn(delay: const Duration(milliseconds: 200), duration: AnimationUtils.normal),
                 const SizedBox(height: 8),
                 Text(
                   'How are you feeling today?',
@@ -220,7 +292,7 @@ class _MoodSelectorWidgetState extends State<MoodSelectorWidget> {
                     fontWeight: FontWeight.w700,
                     color: const Color(0xFF4B3425),
                   ),
-                ).animate().fadeIn(delay: const Duration(milliseconds: 200), duration: AnimationUtils.normal),
+                ).animate().fadeIn(delay: const Duration(milliseconds: 300), duration: AnimationUtils.normal),
               ],
             ),
             const SizedBox(height: 24),
@@ -232,13 +304,13 @@ class _MoodSelectorWidgetState extends State<MoodSelectorWidget> {
               width: double.infinity,
               height: 48,
               decoration: ShapeDecoration(
-                color: selectedMoodData.color,
+                color: const Color(0xFF9BB068), // Default neutral color
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24),
                 ),
                 shadows: [
                   BoxShadow(
-                    color: selectedMoodData.color.withOpacity(0.3),
+                    color: const Color(0xFF9BB068).withOpacity(0.3),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),

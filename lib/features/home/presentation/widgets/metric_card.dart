@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:freud_ai/core/utils/accessibility_utils.dart';
 
 /// A metric card that displays a value, label, and optional visualization
 class MetricCard extends StatelessWidget {
@@ -11,6 +12,8 @@ class MetricCard extends StatelessWidget {
   final Widget? visualization;
   final VoidCallback? onTap;
   final EdgeInsets padding;
+  final String? trend;
+  final String? semanticLabel;
 
   const MetricCard({
     super.key,
@@ -22,20 +25,33 @@ class MetricCard extends StatelessWidget {
     this.visualization,
     this.onTap,
     this.padding = const EdgeInsets.all(16),
+    this.trend,
+    this.semanticLabel,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
+    // Generate semantic label for screen readers
+    final accessibleLabel = semanticLabel ?? AccessibilityUtils.metricLabel(
+      title: label,
+      value: value,
+      trend: trend,
+    );
+    
+    return Semantics(
+      label: accessibleLabel,
+      button: onTap != null,
+      enabled: onTap != null,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
         padding: padding,
         decoration: ShapeDecoration(
           color: backgroundColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(32),
+            borderRadius: BorderRadius.circular(SizesManager.cardCircularBorderRadius),
           ),
           shadows: [
             BoxShadow(
@@ -59,10 +75,13 @@ class MetricCard extends StatelessWidget {
                 Row(
                   children: [
                     if (icon != null) ...[
-                      Icon(
-                        icon,
-                        color: Colors.white,
-                        size: 20,
+                      Semantics(
+                        excludeSemantics: true,
+                        child: Icon(
+                          icon,
+                          color: Colors.white,
+                          size: 20,
+                        ),
                       ),
                       const SizedBox(width: 8),
                     ],
@@ -102,6 +121,7 @@ class MetricCard extends StatelessWidget {
           ],
         ),
       ),
+    ),
     );
   }
 }

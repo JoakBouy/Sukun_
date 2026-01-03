@@ -7,8 +7,22 @@ import 'package:provider/provider.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/theme_manager.dart';
 import 'package:freud_ai/core/providers/theme_provider.dart';
+import 'package:freud_ai/core/providers/connectivity_provider.dart';
+import 'package:freud_ai/core/data/local/database_helper.dart';
+import 'package:freud_ai/core/data/local/cache_manager.dart';
+import 'package:freud_ai/core/services/sync_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize offline support (skip on web as sqflite doesn't support it out of the box)
+  if (!kIsWeb) {
+    await DatabaseHelper.instance.database;
+    await CacheManager.instance.init();
+  }
+  
   runApp(
     DevicePreview(
       defaultDevice: Devices.ios.iPhone16Pro,
@@ -26,6 +40,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => ConnectivityProvider()),
       ],
       child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
@@ -53,7 +68,7 @@ class MyApp extends StatelessWidget {
               themeMode: themeProvider.themeMode,
               themeAnimationCurve: Curves.easeInOut,
               themeAnimationDuration: const Duration(milliseconds: 300),
-              initialRoute: NavigationManager.mainNavigationScreen,
+              home: const InitialRouteChecker(),
               routes: NavigationManager.routes,
               onUnknownRoute: (settings) {
                 return MaterialPageRoute(
@@ -88,6 +103,44 @@ class MyApp extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class InitialRouteChecker extends StatefulWidget {
+  const InitialRouteChecker({super.key});
+
+  @override
+  State<InitialRouteChecker> createState() => _InitialRouteCheckerState();
+}
+
+class _InitialRouteCheckerState extends State<InitialRouteChecker> {
+  @override
+  void initState() {
+    super.initState();
+    _checkFirstLaunch();
+  }
+
+  Future<void> _checkFirstLaunch() async {
+    final prefs = await SharedPreferences.getInstance();
+    final hasCompletedOnboarding = prefs.getBool('hasCompletedOnboarding') ?? false;
+    
+    if (mounted) {
+      if (hasCompletedOnboarding) {
+        Navigator.of(context).pushReplacementNamed(NavigationManager.mainNavigation);
+      } else {
+        Navigator.of(context).pushReplacementNamed(NavigationManager.onboardingScreen);
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Show a simple loading indicator while checking
+    return const Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
       ),
     );
   }

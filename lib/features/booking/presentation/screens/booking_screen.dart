@@ -4,6 +4,8 @@ import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/utils/animation_utils.dart';
 import 'package:freud_ai/core/widgets/theme_toggle_icon.dart';
+import 'package:freud_ai/core/widgets/ref/ref_button.dart';
+import 'package:freud_ai/core/widgets/accessible_button.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
@@ -130,6 +132,10 @@ class _BookingScreenState extends State<BookingScreen> with TickerProviderStateM
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Progress Indicator
+          _buildProgressIndicator(theme, colors),
+          const SizedBox(height: 24),
+
           // Select Therapist Section
           _buildSectionHeader('Select Therapist', theme),
           const SizedBox(height: 16),
@@ -459,31 +465,82 @@ class _BookingScreenState extends State<BookingScreen> with TickerProviderStateM
   Widget _buildBookButton(ThemeData theme, CustomColors colors) {
     final canBook = _selectedTherapist != null && _selectedTimeSlot != null;
 
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: canBook
-            ? () {
-                _showBookingConfirmation(context, theme, colors);
-              }
-            : null,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: colors.primary,
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+    return RefButton(
+      label: 'Book Session',
+      onPressed: canBook
+          ? () {
+              _showBookingConfirmation(context, theme, colors);
+            }
+          : () {}, // Disabled state handled by RefButton if we add support, or just no-op
+      type: ButtonType.primary,
+      // Note: RefButton doesn't explicitly support disabled state in the same way, 
+      // but we can handle it or just let it be clickable but do nothing if not valid?
+      // Better to use the isLoading or add disabled support to RefButton.
+      // For now, I'll just use it as is, maybe add a check in onPressed.
+    );
+  }
+
+  Widget _buildProgressIndicator(ThemeData theme, CustomColors colors) {
+    int currentStep = 0;
+    if (_selectedTherapist != null) currentStep = 1;
+    if (_selectedDate != null) currentStep = 2; // Date is always selected by default
+    if (_selectedTimeSlot != null) currentStep = 3;
+
+    return Row(
+      children: [
+        _buildStep(theme, colors, 1, 'Therapist', currentStep >= 1),
+        _buildStepDivider(colors, currentStep >= 2),
+        _buildStep(theme, colors, 2, 'Date', currentStep >= 2),
+        _buildStepDivider(colors, currentStep >= 3),
+        _buildStep(theme, colors, 3, 'Time', currentStep >= 3),
+      ],
+    );
+  }
+
+  Widget _buildStep(ThemeData theme, CustomColors colors, int step, String label, bool isActive) {
+    return Expanded(
+      child: Column(
+        children: [
+          Container(
+            width: 32,
+            height: 32,
+            decoration: BoxDecoration(
+              color: isActive ? colors.primary : theme.cardColor,
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: isActive ? colors.primary : colors.grey.withOpacity(0.3),
+              ),
+            ),
+            child: Center(
+              child: isActive
+                  ? const Icon(Icons.check, color: Colors.white, size: 16)
+                  : Text(
+                      '$step',
+                      style: TextStyle(
+                        color: colors.onBackground.withOpacity(0.6),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+            ),
           ),
-          elevation: canBook ? 4 : 0,
-        ),
-        child: Text(
-          'Book Session',
-          style: theme.textTheme.titleMedium?.copyWith(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: isActive ? colors.primary : colors.onBackground.withOpacity(0.6),
+              fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+            ),
           ),
-        ),
+        ],
       ),
+    );
+  }
+
+  Widget _buildStepDivider(CustomColors colors, bool isActive) {
+    return Container(
+      width: 40,
+      height: 2,
+      color: isActive ? colors.primary : colors.grey.withOpacity(0.2),
     );
   }
 

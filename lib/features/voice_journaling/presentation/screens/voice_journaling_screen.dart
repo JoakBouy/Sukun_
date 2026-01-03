@@ -3,6 +3,9 @@ import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
 import 'package:freud_ai/core/managers/strings_manager.dart';
 import 'package:freud_ai/core/widgets/custom_button.dart';
+import 'package:freud_ai/core/managers/custom_assets.dart';
+import 'package:freud_ai/core/widgets/reusable_animation.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class VoiceJournalingScreen extends StatefulWidget {
   const VoiceJournalingScreen({super.key});
@@ -60,6 +63,10 @@ class _VoiceJournalingScreenState extends State<VoiceJournalingScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: const Text(StringsManager.journalTitle),
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -76,38 +83,77 @@ class _VoiceJournalingScreenState extends State<VoiceJournalingScreen> {
               ),
             ),
             const SizedBox(height: SizesManager.dPadding),
-            // Recording Button
+            // Recording UI based on ThirteenthPage
             Center(
               child: GestureDetector(
                 onTap: _toggleRecording,
-                child: Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: _isRecording ? Colors.red : colors.primary,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: (_isRecording ? Colors.red : colors.primary).withOpacity(0.3),
-                        blurRadius: 20,
-                        spreadRadius: 5,
+                child: Column(
+                  children: [
+                    Text(
+                      _isRecording ? 'Listening...' : 'Tap to Record',
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: theme.colorScheme.onPrimaryContainer,
                       ),
-                    ],
-                  ),
-                  child: Icon(
-                    _isRecording ? Icons.stop : Icons.mic,
-                    color: Colors.white,
-                    size: 48,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: SizesManager.padding),
-            Center(
-              child: Text(
-                _isRecording ? StringsManager.recording : StringsManager.tapToStart,
-                style: theme.textTheme.titleSmall?.copyWith(
-                  color: colors.onPrimaryContainer,
+                    ),
+                    const SizedBox(height: 30),
+                    SizedBox(
+                      width: 236,
+                      height: 236,
+                      child: _isRecording
+                          ? ReusableAnimation(
+                              assetPath: theme.extension<CustomAssets>()!.page13,
+                              fit: BoxFit.contain,
+                            )
+                              .animate(onPlay: (controller) => controller.repeat(reverse: true))
+                              .scaleXY(end: 1.05, duration: 1000.ms)
+                          : ReusableAnimation(
+                              assetPath: theme.extension<CustomAssets>()!.page13,
+                              fit: BoxFit.contain,
+                            ),
+                    ),
+                    const SizedBox(height: 30),
+                    
+                    // Record/Stop Button
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                      decoration: ShapeDecoration(
+                        color: _isRecording ? Colors.red.shade400 : theme.extension<CustomColors>()!.orange,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        shadows: [
+                          BoxShadow(
+                            color: (_isRecording ? Colors.red : theme.extension<CustomColors>()!.orange).withOpacity(0.3),
+                            blurRadius: 12,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            _isRecording ? Icons.stop_rounded : Icons.mic_rounded,
+                            color: Colors.white,
+                            size: 28,
+                          ),
+                          const SizedBox(width: 12),
+                          Text(
+                            _isRecording ? 'Stop Recording' : 'Start Recording',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ).animate(target: _isRecording ? 1 : 0)
+                     .shimmer(duration: 1500.ms, color: Colors.white.withOpacity(0.2)),
+                  ],
                 ),
               ),
             ),

@@ -3,6 +3,8 @@ import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/features/profile/presentation/widgets/profile_menu_item.dart';
 import 'package:freud_ai/features/profile/presentation/widgets/habit_tracker_card.dart';
 import 'package:freud_ai/features/profile/presentation/widgets/resource_card.dart';
+import 'package:freud_ai/core/widgets/ref/ref_button.dart';
+import 'package:freud_ai/core/widgets/accessible_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -124,6 +126,63 @@ class ProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 32),
 
+          // TEMPORARY: Doctor Portal Test Button
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.blue.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: Colors.blue, width: 2),
+            ),
+            child: Column(
+              children: [
+                const Text(
+                  '🧪 TESTING MODE',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                ElevatedButton.icon(
+                  onPressed: () => Navigator.pushNamed(
+                    context,
+                    NavigationManager.doctorNavigationScreen,
+                  ),
+                  icon: const Icon(Icons.medical_services),
+                  label: const Text('View Doctor Dashboard'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                ElevatedButton.icon(
+                  onPressed: () => Navigator.pushNamed(
+                    context,
+                    NavigationManager.adminNavigationScreen,
+                  ),
+                  icon: const Icon(Icons.admin_panel_settings),
+                  label: const Text('View Admin Portal'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 32),
+
           // Account & Settings
           Text(
             'Account & Settings',
@@ -167,6 +226,43 @@ class ProfileScreen extends StatelessWidget {
             subtitle: 'App version and information',
             icon: Icons.info,
             onTap: () => _navigateToAbout(context),
+          ),
+
+          const SizedBox(height: 32),
+
+          // FAQ Section
+          Text(
+            'Frequently Asked Questions',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: const Color(0xFF4B3425),
+            ),
+          ),
+          const SizedBox(height: 16),
+          _buildFaqItem(
+            context,
+            'How do I book a session?',
+            'You can book a session by navigating to the Booking tab and selecting an available slot.',
+          ),
+          _buildFaqItem(
+            context,
+            'Is my data private?',
+            'Yes, your data is encrypted and stored securely. We prioritize your privacy.',
+          ),
+          _buildFaqItem(
+            context,
+            'Can I cancel a booking?',
+            'Yes, you can cancel a booking up to 24 hours in advance from the Booking tab.',
+          ),
+
+          const SizedBox(height: 32),
+
+          // Contact Support
+          RefButton(
+            label: 'Contact Support',
+            onPressed: () => _navigateToHelp(context),
+            type: ButtonType.primary,
+            icon: Icons.headset_mic,
           ),
 
           const SizedBox(height: 32),
@@ -391,6 +487,37 @@ class ProfileScreen extends StatelessWidget {
             child: const Text(
               'Sign Out',
               style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  Widget _buildFaqItem(BuildContext context, String question, String answer) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      elevation: 0,
+      color: Theme.of(context).cardColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: Colors.black.withOpacity(0.05)),
+      ),
+      child: ExpansionTile(
+        title: Text(
+          question,
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF4B3425),
+          ),
+        ),
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: Text(
+              answer,
+              style: TextStyle(
+                color: const Color(0xFF4B3425).withOpacity(0.8),
+              ),
             ),
           ),
         ],

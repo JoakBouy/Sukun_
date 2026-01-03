@@ -3,7 +3,9 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/core/managers/navigation_manager.dart';
 import 'package:freud_ai/core/managers/sizes_manager.dart';
+import 'package:freud_ai/core/utils/animation_constants.dart';
 import 'package:freud_ai/core/utils/animation_utils.dart';
+
 
 import 'package:freud_ai/features/home/presentation/widgets/assessment_card.dart';
 import 'package:freud_ai/features/home/presentation/widgets/calendar_grid.dart';
@@ -13,7 +15,17 @@ import 'package:freud_ai/features/home/presentation/widgets/hero_metric_card.dar
 import 'package:freud_ai/features/home/presentation/widgets/mood_bar_chart.dart';
 import 'package:freud_ai/features/home/presentation/widgets/mood_selector_widget.dart';
 import 'package:freud_ai/features/home/presentation/widgets/section_header.dart';
+import 'package:freud_ai/features/home/presentation/widgets/wellness_score_card.dart';
+import 'package:freud_ai/features/home/presentation/widgets/quick_action_tile.dart';
+import 'package:freud_ai/features/home/presentation/widgets/todays_goals.dart';
 import 'package:freud_ai/core/widgets/theme_toggle_icon.dart';
+import 'package:freud_ai/features/insights/presentation/widgets/insight_card.dart';
+import 'package:freud_ai/features/insights/data/services/insight_service.dart';
+import 'package:freud_ai/features/insights/data/models/mood_insight.dart';
+import 'package:freud_ai/core/widgets/quick_action_fab.dart';
+import 'package:freud_ai/core/widgets/glass_container.dart';
+import 'package:freud_ai/core/managers/theme_manager.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,6 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
   double _therapyScore = 0.8;
   int _currentMetricPage = 0;
   final PageController _pageController = PageController();
+  
+  // Insights
+  final InsightService _insightService = InsightService();
+  MoodInsight? _moodInsight;
+  bool _isLoadingInsights = true;
 
   // Sample mood data for bar chart (last 12 days)
   final List<double> _moodData = [
@@ -47,6 +64,28 @@ class _HomeScreenState extends State<HomeScreen> {
   );
 
   @override
+  void initState() {
+    super.initState();
+    _loadInsights();
+  }
+
+  Future<void> _loadInsights() async {
+    try {
+      final insight = await _insightService.analyzeMoodTrends(days: 7);
+      if (mounted) {
+        setState(() {
+          _moodInsight = insight;
+          _isLoadingInsights = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoadingInsights = false);
+      }
+    }
+  }
+
+  @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
@@ -63,6 +102,18 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: false,
+        flexibleSpace: GlassContainer(
+          blur: 10,
+          opacity: 0.2,
+          borderRadius: BorderRadius.zero,
+          border: Border(
+            bottom: BorderSide(
+              color: Colors.white.withOpacity(0.2),
+              width: 1,
+            ),
+          ),
+          child: Container(),
+        ),
         actions: [
           const ThemeToggleIcon(),
           IconButton(
@@ -76,20 +127,31 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      extendBodyBehindAppBar: true,
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: SizesManager.padding),
+        padding: const EdgeInsets.only(
+          left: SizesManager.padding,
+          right: SizesManager.padding,
+          top: kToolbarHeight + SizesManager.padding * 2, // Account for transparent AppBar
+          bottom: SizesManager.padding,
+        ),
         children: [
           // Combined greeting and mood selector
-          const MoodSelectorWidget()
+          GlassContainer(
+            opacity: 0.05,
+            blur: 5,
+            child: const MoodSelectorWidget(),
+          )
               .animate()
-              .fadeIn(duration: AnimationUtils.normal),
+              .fadeIn(duration: Duration(milliseconds: AnimationConstants.durationNormal))
+              .slideY(begin: -0.1, end: 0),
 
           const SizedBox(height: SizesManager.dPadding),
 
           // Mental Health Assessments Section
           _buildAssessmentsSection(context, colors)
               .animate()
-              .fadeIn(delay: const Duration(milliseconds: 300), duration: AnimationUtils.normal)
+              .fadeIn(delay: Duration(milliseconds: AnimationConstants.staggerMedium), duration: Duration(milliseconds: AnimationConstants.durationNormal))
               .slide(begin: const Offset(0, 0.1)),
 
           const SizedBox(height: SizesManager.dPadding),
@@ -97,10 +159,27 @@ class _HomeScreenState extends State<HomeScreen> {
           // Mental Health Metrics Section
           _buildMentalHealthMetricsSection(colors)
               .animate()
-              .fadeIn(delay: const Duration(milliseconds: 600), duration: AnimationUtils.normal)
+              .fadeIn(delay: Duration(milliseconds: AnimationConstants.staggerMedium * 2), duration: Duration(milliseconds: AnimationConstants.durationNormal))
               .slide(begin: const Offset(0, 0.1)),
 
           const SizedBox(height: SizesManager.dPadding),
+
+          // Personalized Insights Section
+          if (_moodInsight != null)
+            InsightCard(
+              insight: _moodInsight!,
+              onViewFullReport: () {
+                // TODO: Navigate to full insights report
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Full insights report coming soon!')),
+                );
+              },
+            )
+                .animate()
+                .fadeIn(delay: Duration(milliseconds: (AnimationConstants.staggerMedium * 2.5).round()), duration: Duration(milliseconds: AnimationConstants.durationNormal))
+                .slide(begin: const Offset(0, 0.1)),
+
+          if (_moodInsight != null) const SizedBox(height: SizesManager.dPadding),
 
           // Essential Quick Actions
           Column(
@@ -110,13 +189,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 actionLabel: 'View All',
                 onActionTap: () {},
               ).animate()
-                  .fadeIn(delay: const Duration(milliseconds: 900), duration: AnimationUtils.normal),
+                  .fadeIn(delay: Duration(milliseconds: AnimationConstants.staggerMedium * 3), duration: Duration(milliseconds: AnimationConstants.durationNormal)),
 
               const SizedBox(height: 16),
 
               _buildEssentialQuickActions(context, colors)
                   .animate()
-                  .fadeIn(delay: const Duration(milliseconds: 1000), duration: AnimationUtils.normal)
+                  .fadeIn(delay: Duration(milliseconds: (AnimationConstants.staggerMedium * 3.5).round()), duration: Duration(milliseconds: AnimationConstants.durationNormal))
                   .scale(begin: const Offset(0.95, 0.95)),
             ],
           ),
@@ -126,12 +205,13 @@ class _HomeScreenState extends State<HomeScreen> {
           // Crisis Support Banner
           _buildCrisisSupportBanner(context, colors)
               .animate()
-              .fadeIn(delay: const Duration(milliseconds: 1200), duration: AnimationUtils.normal)
+              .fadeIn(delay: Duration(milliseconds: AnimationConstants.staggerMedium * 4), duration: Duration(milliseconds: AnimationConstants.durationNormal))
               .slide(begin: const Offset(0, 0.1)),
 
           const SizedBox(height: SizesManager.dPadding),
         ],
       ),
+      floatingActionButton: const QuickActionFAB(),
     );
   }
 
@@ -162,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
               arguments: 'phq9',
             );
           },
-        ).animateStaggered(0, baseDelay: const Duration(milliseconds: 400)),
+        ).animateStaggered(0, baseDelay: Duration(milliseconds: AnimationConstants.staggerMedium)),
         AssessmentCard(
           title: 'DASS-21 Screening',
           subtitle: '21 questions • ~5 min',
@@ -177,7 +257,7 @@ class _HomeScreenState extends State<HomeScreen> {
               arguments: 'dass21',
             );
           },
-        ).animateStaggered(1, baseDelay: const Duration(milliseconds: 400)),
+        ).animateStaggered(1, baseDelay: Duration(milliseconds: AnimationConstants.staggerMedium)),
         AssessmentCard(
           title: 'ASQ Suicide Risk',
           subtitle: '4 questions • ~2 min',
@@ -191,7 +271,7 @@ class _HomeScreenState extends State<HomeScreen> {
               arguments: 'asq',
             );
           },
-        ).animateStaggered(2, baseDelay: const Duration(milliseconds: 400)),
+        ).animateStaggered(2, baseDelay: Duration(milliseconds: AnimationConstants.staggerMedium)),
       ],
     );
   }
