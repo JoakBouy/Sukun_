@@ -1,163 +1,99 @@
+# 🧠 Sukun: AI-Powered Mental Health Ecosystem
 
+> **"To democratize mental health care using machine learning."**
 
-<h1 align="center">🧠 Freud UI Challenge App</h1>
-
-<p align="center">
-  A Flutter project to challenge myself by recreating a stunning and highly complex UI from the <strong>Freud UI Kit: AI Mental Health App</strong> on Figma.
-</p>
+Sukun is a comprehensive mental health application designed to bridge the gap between self-care and professional therapy. Built as a capstone project, it aims to leverage **Machine Learning (ML)** and **Artificial Intelligence (AI)** to provide personalized, proactive, and accessible mental health support for everyone.
 
 ---
 
-<p align="center">
-  <a href="https://www.figma.com/community/file/1334786732856608238" target="_blank">
-  <img src="https://github.com/user-attachments/assets/5ad12ebe-1160-4e99-81c8-534d2a9ba467" alt="Freud UI App Banner" width="100%" />
-    </a>
-</p>
+## 🚀 Project Mission (Capstone)
+
+**Research Topic:** *Applying Natural Language Processing and Time-Series Forecasting for Personalized Mental Health Insights: A Mobile Application Approach*
+
+Sukun moves beyond traditional tracking by using data to understand the user. The goal is to build an intelligent companion that doesn't just record data, but *understands* it—predicting mood shifts, identifying stress patterns from voice/text journals, and offering timely interventions before a crisis occurs.
 
 ---
 
-## ✨ Overview
+## ✨ Current Features
 
-This app is a **personal Flutter UI challenge** where I set out to build a feature-rich, pixel-perfect UI from the Freud UI Kit (AI Mental Health App) found on Figma.
+### 📊 Clinical-Grade Assessments
+Digital implementation of standardized psychological tools:
+- **PHQ-9**: Depression Health Questionnaire.
+- **DASS-21**: Depression, Anxiety, and Stress scale.
+- **ASQ**: Ask Suicide-Screening Questions for immediate risk detection.
 
-It includes some of the **most difficult UI elements** I've ever worked on — from custom shapes, complex scroll interactions, to elegant layered widgets — all built from scratch in Flutter.
+### 📝 Intelligent Journaling
+- **Text Journaling**: Rich text editor with prompts to guide reflection.
+- **Voice Journaling**: Audio recording for easier expression (~*Planned: Voice Emotion Analytics*~).
+- **Secure Storage**: Local-first architecture ensuring privacy.
 
-While the design is primarily mobile-focused, I’m working to make the layout **responsive** and **adaptable** to tablets and wider screens.
+### 🧘‍♀️ Therapeutic Tools
+- **Breathing Exercises**: Customizable patterns (Box breathing, 4-7-8, etc.) with visual guides.
+- **Relaxation Techniques**: Guided mindfulness and grounding exercises.
+- **Habit Tracking**: Monitor daily wellness routines (sleep, water, medication).
+
+### 🤝 Professional Support
+- **Therapist Finder**: Directory to find and connect with specialists.
+- **Session Management**: Book and view upcoming therapy sessions.
+- **Secure Messaging**: Private channel for patient-doctor communication.
+
+### 🤖 AI Companion
+- **AI Chatbot**: 24/7 conversational support for immediate emotional grounding (Rule-based/LLM hybrid).
 
 ---
 
-## 📱 Features
+## 🧠 Machine Learning Roadmap (Capstone Goals)
 
-- 🎨 **Stunning design** based on Freud UI Kit (Figma)
-- 🔧 **Custom hand-crafted widgets** and animations
-- 📏 **Responsive UI** that adapts to different screen sizes
-- 🌍 **Device preview support** when running the [web version](https://moazsalem.github.io/Flutter_freud_UI_Kit/)
-- 🚀 **Precompiled APKs** in [Releases](#-releases) for quick access
+These features are currently in research/development as part of the specialized ML curriculum:
+
+1.  **NLP Sentiment Analysis on Journals**
+    *   *Goal*: Analyze text entries to detect underlying emotional tone (Positive, Negative, Neutral, Anxious).
+    *   *Tech*: BERT/TensorFlow Lite.
+
+2.  **Predictive Mood Analytics**
+    *   *Goal*: Forecast future mood trends based on historical data, sleep patterns, and activity.
+    *   *Tech*: Time-series forecasting (LSTM/ARIMA).
+
+3.  **Voice Emotion Recognition**
+    *   *Goal*: Analyze vocal prosody (pitch, tone, speed) in voice journals to detect stress or sadness invisible in text.
+    *   *Tech*: Audio classification models.
+
+4.  **Smart Crisis Detection**
+    *   *Goal*: Real-time anomaly detection to identify sudden drops in well-being and trigger safety protocols/ASQ screenings.
 
 ---
 
-## 🧰 Getting Started
+## 🛠️ Tech Stack
 
-### ✅ Prerequisites
+- **Framework**: Flutter (Dart)
+- **State Management**: Provider
+- **Local Database**: SQLite (sqflite)
+- **Architecture**: Feature-first, Clean Architecture principles
+- **UI Kit**: Custom implementation inspired by Freud UI Kit
 
-- [Flutter SDK](https://flutter.dev/docs/get-started/install)
-- A Flutter-compatible IDE (VSCode, Android Studio, etc.)
-- Chrome or another browser (to test the web version)
+---
 
-### 📥 Installation
+## 📂 Project Structure
 
-Clone the repository and fetch dependencies:
-
-```bash
-git clone https://github.com/MoazSalem/Flutter_freud_UI_Kit.git
-cd freud-ui-challenge
-flutter pub get
 ```
----
-
-## ▶️ Running the App
-
-### 📱 Mobile
-Run the app on an emulator or real device:
-```bash
-flutter run
+lib/
+├── features/           # Feature-based modular architecture
+│   ├── auth/           # Authentication & Onboarding
+│   ├── chatbot/        # AI Chat Interface
+│   ├── doctor/         # Doctor Portal & Messaging
+│   ├── exercises/      # Breathing & Relaxation Tools
+│   ├── health_assess/  # PHQ-9, DASS-21, ASQ Implementation
+│   ├── insights/       # Data Visualization & Analytics
+│   ├── journal/        # Text & Voice Journaling
+│   ├── mood_tracking/  # Mood Logging Logic
+│   └── ...
+├── core/               # Shared utilities, services, and widgets
+└── main.dart           # App Entry Point
 ```
-### 🌐 Web with Device Preview
-To try the app on various screen sizes using the device_preview package:
-```bash
-flutter run -d chrome
-```
-### 💡 You can also enable DevicePreview in main.dart like this:
-```bash
-DevicePreview(
-  enabled: true,
-  builder: (context) => MyApp(),
-);
-```
-This lets you simulate multiple screen types inside the browser.
 
 ---
 
-## ▶️ 📸 Preview 
-<div align="center">
+## 🤝 Contribution & Usage
 
-| Light Mode                                                                                                           | Dark Mode                                                                                                        |
-|:---------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/user-attachments/assets/bfd52f16-88d3-4b03-b276-91d93f384f39" width="300">               | <img src="https://github.com/user-attachments/assets/c5e7ed26-a1f9-48cf-8e50-3fdeecc36717" width="300">               |
-
-</div>
-
----
-
-## 📦 Releases
-
-You can try the [Web version here](https://moazsalem.github.io/Flutter_freud_UI_Kit/) 
-
-or You can download the latest APK builds from the [Releases](https://github.com/MoazSalem/Flutter_freud_UI_Kit/releases) section.
-
-This makes it easy for others to test the app without building it locally.
-
----
-
-## 🍃 Why I Built This
-
-This project is about challenging myself with extremely advanced UI work in Flutter. I wanted to push my boundaries, experiment with creative UI layouts, and improve my skills working with:
-
-- Custom paint and shapes
-
-- Advanced scroll views
-
-- Adaptive layouts
-
-- Animation management
-
-It’s also a fun and visually rewarding experience!
-
----
-
-## 🤝 Contributions
-This is a personal learning project, but I welcome:
-
-- Opening issues for bugs
-
-- Feedback
-
-- Questions about widget implementation
-
-- UI/UX discussions
-
-Feel free to fork it or use pieces in your own UI work.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-## 🔗 Links
-
-- [Flutter documentation](https://docs.flutter.dev/)
-
-- [Freud UI Kit on Figma](https://www.figma.com/community/file/1334786732856608238)
-
-- [Device Preview package](https://pub.dev/packages/device_preview)
-
----
-
-## 🛠️ To Be Done
-
-Here are some of the things I'm still working on or planning to improve:
-
-- ❇️ Implement **more screens and widgets**
-- ~~🌐 Host the **web version** of the app for easier previews and demos~~
-- 📱 Improve **responsive behavior** on tablets and wide screens
-- 🔄 Refactor and clean up state management
-- 📷 Add **more screenshots and demo GIFs** to this README
-
-Feel free to suggest or request features via [issues](https://github.com/MoazSalem/Flutter_freud_UI_Kit/issues)!
-
----
-
-
+This project is currently under active development for a university capstone requirements.
+For inquiries, please contact: **Joak Buoy Gai** (b.joak@alustudent.com)
