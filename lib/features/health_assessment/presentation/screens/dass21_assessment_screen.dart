@@ -3,7 +3,8 @@ import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/assessment_question_card.dart';
 
 class DASS21AssessmentScreen extends StatefulWidget {
-  const DASS21AssessmentScreen({super.key});
+  final bool isClinicianFlow;
+  const DASS21AssessmentScreen({super.key, this.isClinicianFlow = false});
 
   @override
   State<DASS21AssessmentScreen> createState() => _DASS21AssessmentScreenState();
@@ -82,6 +83,8 @@ class _DASS21AssessmentScreenState extends State<DASS21AssessmentScreen> {
           depressionScore: depression,
           anxietyScore: anxiety,
           stressScore: stress,
+          isClinicianFlow: widget.isClinicianFlow,
+          answers: _answers,
         ),
       ),
     );
@@ -279,11 +282,15 @@ class _DASS21ResultsScreen extends StatelessWidget {
   final int depressionScore;
   final int anxietyScore;
   final int stressScore;
+  final bool isClinicianFlow;
+  final Map<int, String> answers;
 
   const _DASS21ResultsScreen({
     required this.depressionScore,
     required this.anxietyScore,
     required this.stressScore,
+    this.isClinicianFlow = false,
+    required this.answers,
   });
 
   String _getLevel(int score, String category) {
@@ -439,6 +446,7 @@ class _DASS21ResultsScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 spacing: 12,
                 children: [
                   ElevatedButton(
@@ -450,8 +458,21 @@ class _DASS21ResultsScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pop(context);
-                      Navigator.pop(context);
+                      if (isClinicianFlow) {
+                        final totalScore = depressionScore + anxietyScore + stressScore;
+                        final depLevel = _getLevel(depressionScore, 'depression');
+                        final anxLevel = _getLevel(anxietyScore, 'anxiety');
+                        final strLevel = _getLevel(stressScore, 'stress');
+                        final combinedSeverity = 'Depression: $depLevel | Anxiety: $anxLevel | Stress: $strLevel';
+                        Navigator.pop(context, {
+                          'score': totalScore,
+                          'severity': combinedSeverity,
+                          'answers': answers,
+                        });
+                      } else {
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                      }
                     },
                     child: const Text(
                       'Back to Home',

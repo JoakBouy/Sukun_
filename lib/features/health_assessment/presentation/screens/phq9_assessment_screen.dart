@@ -194,6 +194,7 @@ class _PHQ9AssessmentScreenState extends State<PHQ9AssessmentScreen> {
               SizedBox(
                 width: double.infinity,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   spacing: 12,
                   children: [
                     ElevatedButton(
@@ -205,7 +206,11 @@ class _PHQ9AssessmentScreenState extends State<PHQ9AssessmentScreen> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pop(context, {
+                          'score': score,
+                          'severity': level,
+                          'answers': _answers,
+                        });
                       },
                       child: const Text(
                         'Back to Home',

@@ -20,6 +20,10 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color yellowAccent;
   final Color violet = const Color(0xFFA694F5);
   final Color violetAccent;
+  // Primetel Health brand colors — extracted from official logo
+  static const Color primetelRed = Color(0xFFC82828);
+  static const Color primetelRedLight = Color(0xFFFBEAEA);
+  static const Color primetelRedDark = Color(0xFF8B1A1A);
 
   const CustomColors({
     required this.primary,

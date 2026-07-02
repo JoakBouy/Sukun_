@@ -3,7 +3,8 @@ import 'package:freud_ai/core/managers/custom_colors.dart';
 import 'package:freud_ai/features/health_assessment/presentation/widgets/assessment_question_card.dart';
 
 class ASQAssessmentScreen extends StatefulWidget {
-  const ASQAssessmentScreen({super.key});
+  final bool isClinicianFlow;
+  const ASQAssessmentScreen({super.key, this.isClinicianFlow = false});
 
   @override
   State<ASQAssessmentScreen> createState() => _ASQAssessmentScreenState();
@@ -229,6 +230,7 @@ class _ASQAssessmentScreenState extends State<ASQAssessmentScreen> {
               SizedBox(
                 width: double.infinity,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   spacing: 12,
                   children: [
                     if (riskLevel >= 2)
@@ -261,8 +263,16 @@ class _ASQAssessmentScreenState extends State<ASQAssessmentScreen> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.pop(context);
+                        if (widget.isClinicianFlow) {
+                          Navigator.pop(context, {
+                            'score': riskLevel,
+                            'severity': riskDescription,
+                            'answers': _answers,
+                          });
+                        } else {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        }
                       },
                       child: const Text(
                         'Back to Home',

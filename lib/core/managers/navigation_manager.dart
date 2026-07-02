@@ -33,6 +33,7 @@ import 'package:freud_ai/features/exercises/presentation/widgets/breathing_exerc
 import 'package:freud_ai/features/chatbot/presentation/screens/ai_chatbot_screen.dart';
 import 'package:freud_ai/features/community/presentation/screens/community_screen.dart';
 // Removed: onboarding_screen.dart (duplicate onboarding)
+import 'package:freud_ai/features/clinician/presentation/screens/primetel_portal_screen.dart';
 import 'package:freud_ai/features/navigation/presentation/screens/doctor_navigation_screen.dart';
 import 'package:freud_ai/features/navigation/presentation/screens/admin_navigation_screen.dart';
 import 'package:freud_ai/features/resources/presentation/screens/resources_screen.dart';
@@ -76,6 +77,9 @@ class NavigationManager {
   static const String communityScreen = '/community';
   static const String resourcesScreen = '/resources';
   
+  // Primetel Health Clinician Portal
+  static const String primetelPortalScreen = '/primetelPortal';
+
   // Doctor Portal Routes (TEMPORARY FOR TESTING)
   static const String doctorNavigationScreen = '/doctorNavigation';
   static const String adminNavigationScreen = '/adminNavigation';
@@ -165,8 +169,11 @@ class NavigationManager {
     communityScreen: (context) => const CommunityScreen(),
     resourcesScreen: (context) => const ResourcesScreen(),
     
+    // Primetel Health Clinician Portal
+    primetelPortalScreen: (context) => const PrimetelPortalScreen(),
+
     // Doctor Portal Routes (TEMPORARY FOR TESTING)
-    doctorNavigationScreen: (context) => const DoctorNavigationScreen(),
+    doctorNavigationScreen: (context) => const PrimetelPortalScreen(),
     adminNavigationScreen: (context) => const AdminNavigationScreen(),
   };
 }

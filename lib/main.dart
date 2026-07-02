@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
               locale: DevicePreview.locale(context),
               builder: DevicePreview.appBuilder,
               debugShowCheckedModeBanner: false,
-              title: 'Sukun',
+              title: 'Primetel Health',
               theme: ThemeManager.lightTheme,
               darkTheme: ThemeManager.darkTheme,
               themeMode: themeProvider.themeMode,
@@ -119,10 +119,20 @@ class _InitialRouteCheckerState extends State<InitialRouteChecker> {
   @override
   void initState() {
     super.initState();
-    _checkFirstLaunch();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(milliseconds: 100), () {
+        if (mounted) {
+          _checkFirstLaunch();
+        }
+      });
+    });
   }
 
   Future<void> _checkFirstLaunch() async {
+    if (kIsWeb) {
+      Navigator.of(context).pushReplacementNamed(NavigationManager.primetelPortalScreen);
+      return;
+    }
     final prefs = await SharedPreferences.getInstance();
     final hasCompletedOnboarding = prefs.getBool('hasCompletedOnboarding') ?? false;
     
